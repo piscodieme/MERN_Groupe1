@@ -35,3 +35,7 @@ db.tb_Products.insertOne(
 //         "_Mark": 5
 //     } 
 
+// {
+//     "_Name": "Sandale",
+//     "_Image": "djvnsjvnssjn";
+// }
