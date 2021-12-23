@@ -41,9 +41,10 @@ exports.updateCart = (req, res) => {
         cart._Status = c._Status ;
         cart._Quantity = c._Quantity ;
         cart._Total = c._Total ;
+        cart._Products.splice(0, cart._Products.length) ;
         for (let i = 0; i < c._Products.length; i++) {
-            cart._Products[i] = c._Products[i] ;    
-        }
+        cart._Products.push(c._Products[i]) ;     
+        }    
         cart.save((err) =>{
             if(err){
                 res.send(err);
