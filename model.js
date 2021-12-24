@@ -39,3 +39,17 @@ db.tb_Products.insertOne(
 //     "_Name": "Sandale",
 //     "_Image": "djvnsjvnssjn";
 // }
+
+// {
+//     "_id": "marfadiga@gmail.com",
+//     "_FirstName": "Mame Mar",
+//     "_LastName": "Niang",
+//     "_Password": "Aissatou", 
+//     "_Adresse": {
+//         "_Pays": "Senegal",
+//         "_Region": "Dakar",
+//         "_Ville": "Rufisque",
+//         "_Quartier": "Keury Souf"
+//     },
+//     "_NumeroTel": "772234566"
+// }
