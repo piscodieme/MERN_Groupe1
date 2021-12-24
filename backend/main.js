@@ -4,6 +4,7 @@ const app = express();
 const productsController = require("./Controllers/ProductsController");
 const categoryController = require("./Controllers/CategoryController");
 const cartsController = require("./Controllers/CartsController");
+const customersController = require("./Controllers/CustomersController");
 const mongoose = require("mongoose");
 const cors = require("cors");
 
@@ -47,9 +48,9 @@ app.get("/products/:category", productsController.getProductsByCategory, (req, r
 });
 
 //Modifier un produit
-// app.put("/products/:id", productsController.updateProduct, (req, res, next) => {
-//     res.status(200).json(req.data) ;
-// });
+app.put("/products/:id", productsController.updateProduct, (req, res, next) => {
+    res.status(200).json(req.data) ;
+});
 
 //Supprimer un produit
 app.delete("/products/:id", productsController.deleteProductById, (req, res, next) => {
@@ -99,6 +100,29 @@ app.put("/cart/:id", cartsController.updateCart, (req, res, next) => {
 //Supprimer un panier
 app.delete("/cart/:id", cartsController.deleteCart, (req, res, next) => {
     console.log("cart deleted"); 
+});
+
+
+// Customers Routes
+
+//Ajouter un client
+app.post("/customer/", customersController.postCustomer, (req, res, next) => {
+    console.log("Post Successful");
+});
+
+//Recuperer un client
+app.get("/customer/:id", customersController.getCustomer, (req, res, next) => {
+    res.status(200).json(req.data) ;
+});
+
+//Modifier un client
+app.put("/customer/:id", customersController.updateCustomer, (req, res, next) => {
+    console.log("customer updated");
+});
+
+//Supprimer un client
+app.delete("/customer/:id", customersController.deleteCustomer, (req, res, next) => {
+    console.log("customer deleted"); 
 });
 
 app.listen(port, () => {
