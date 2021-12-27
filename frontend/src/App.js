@@ -1,24 +1,41 @@
 import logo from './logo.svg';
+import Home from './containers/home/Home';
+import reactDom from 'react-dom';
+import {BrowserRouter, Route, Routes} from 'react-router-dom';
+import Header from './components/header/header';
+import Footer from './components/contains/Footer';
+import Login from './containers/loginAndRegister/Login';
+import About from './containers/header/About';
+import PageNotFound from './containers/error/PageNotFound';
+import Contact from './containers/header/Contact';
+import MyCart from './containers/header/Mycart';
+import SingleCategory from './containers/category/SingleCategory';
+import AllProduct from './containers/product/AllProduct';
 import './App.css';
+import SingleProduct from './containers/product/SingleProduct';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Header/>
+      </div>
+      <Routes>
+        <Route exact path='/' element={<Home/>}></Route>
+        <Route path='/login' element={<Login/>}></Route>
+        <Route path='/about' element={<About/>}></Route>
+        <Route path='/contact' element={<Contact/>}></Route>
+        <Route path='/cart' element={<MyCart/>}></Route>
+        <Route path='/category' element={<SingleCategory/>}></Route>
+        <Route path='/produits' element={<AllProduct/>}></Route>
+        <Route path='/produit' element={<SingleProduct/>}></Route>
+        <Route path='*' exact={true} element={<PageNotFound/>}></Route>
+      </Routes>
+      <div className="App">
+        <Footer/>
+      </div>
+    </BrowserRouter>
   );
 }
 
