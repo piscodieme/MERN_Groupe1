@@ -5,12 +5,18 @@ const productsController = require("./Controllers/ProductsController");
 const categoryController = require("./Controllers/CategoryController");
 const cartsController = require("./Controllers/CartsController");
 const customersController = require("./Controllers/CustomersController");
+const adminController = require("./Controllers/AdminController");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const layouts = require("express-ejs-layouts") ;
 
 
 app.use(express.json());
 app.use(cors()) ;
+app.use(layouts);
+app.use(express.static("public"));
+
+app.set("view engine", "ejs") ;
 
 
 mongoose.connect('mongodb://localhost:27017/shop');
@@ -21,9 +27,7 @@ db.once("open", () =>{
     console.log("Connected") ;
 })
 
-app.get("/", (req, res) => {
-    res.send("Hello, universe !") ;
-});
+app.get("/adminHome", adminController.displayHome) ;
 
 //Products Routes
 
