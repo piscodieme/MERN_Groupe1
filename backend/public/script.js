@@ -12,3 +12,12 @@ console.log(sidebarBtn);
 sidebarBtn.addEventListener("click", ()=>{
   sidebar.classList.toggle("close");
 });
+
+let AddBtn = document.querySelector("#add");
+AddBtn.addEventListener("click", ()=>{
+  let html = '<div class="mb-3"><label for="subcategory" class="form-label">Subcategory Name</label><input type="text" name="subcategory[]" class="form-control"></div>' ;
+  let d1 = document.querySelector("#add");
+  d1.insertAdjacentHTML('beforebegin', html);
+
+});
+

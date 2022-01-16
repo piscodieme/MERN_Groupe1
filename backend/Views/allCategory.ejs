@@ -5,6 +5,7 @@
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Category Name</th>
+                    <th scope="col">SubCategory Name</th>
                     <th scope="col">Options</th>
                 </tr>
             </thead>
@@ -14,8 +15,11 @@
                     <th scope="row"><%= ++i %></th>
                     <td><%= category._Name %></td>
                     <td>
+                        SubCategory
+                    </td>
+                    <td>
                         <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                            <a href="/updatingCategory">
+                            <a href="/updatingCategory/<%= category._id %>">
                                 <button type="button" class="btn btn-warning">Update</button></a>
                             <a href="/deleteCategory/<%= category._id %>">
                                 <button type="button" class="btn btn-danger">Delete</button>

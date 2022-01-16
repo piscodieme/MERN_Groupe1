@@ -16,6 +16,7 @@ exports.postCategory = (req, res) => {
 
     let category = new Category ;
     category._Name = req.body.name ;
+    category._SubCategory = req.body.subcategory ;
     category._Image = req.file.destination + req.file.filename ;
     category.save((err) =>{
         if(err){
@@ -32,6 +33,7 @@ exports.updateCategory = (req, res) => {
         }
         let cat = req.body ;
         category._Name = cat._Name ;
+        category._SubCategory = cat.subcategory ;
         category._Image = cat._Image ;
         category.save((err) =>{
             if(err){

@@ -31,12 +31,10 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 app.use(express.json());
 app.use(cors()) ;
 app.use(layouts);
+app.use(express.static("public"));
 app.use('/css', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/css'))) ;
 app.use('/js', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/js'))) ;
 app.use('/js', express.static(path.join(__dirname, 'node_modules/jquery/dist'))) ;
-
-
-app.use(express.static("public"));
 
 app.set("view engine", "ejs") ;
 
@@ -54,7 +52,7 @@ app.get("/", adminController.displayHome) ;
 app.get("/adminHome", adminController.displayHome) ;
 app.get("/allCategory", adminController.allCategory) ;
 app.get("/addingCategory", adminController.addCategory) ;
-app.get("/updatingCategory", adminController.updateCategory) ;
+app.get("/updatingCategory/:id", adminController.updateCategory) ;
 app.get("/allProducts", adminController.allProducts) ;
 app.get("/addProduct", adminController.addProduct) ;
 

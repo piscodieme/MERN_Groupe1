@@ -9,6 +9,7 @@ exports.allCategory = (req, res) => {
         if(error)
             res.send(error);
         res.render("allCategory", {cat: categories}) ;   
+        // res.send(categories);
     }) ;
     
 } ;
@@ -18,13 +19,12 @@ exports.addCategory = (req, res) => {
 } ;
 
 exports.updateCategory = (req, res) => {
-    // Category.findOne({_id: req.params.id}, (error, category) => {
-    //     if(error){
-    //         res.send(error);
-    //     }
-    //     res.render("updateCategory", {cat: category}) ;
-    // }) ;
-    res.render("updateCategory") ;
+    Category.findOne({_id: req.params.id}, (error, category) => {
+        if(error){
+            return res.send(error);
+        }
+        return res.render("updateCategory") ;
+    }) ;
 } ;
 
 exports.allProducts = (req, res) => {
