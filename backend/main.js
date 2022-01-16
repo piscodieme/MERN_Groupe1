@@ -33,16 +33,19 @@ app.post("/products", productsController.postProduct, (req, res, next) => {
 
 //Recuperer tous les produits
 app.get("/products", productsController.getAllProducts, (req, res, next) => {
+    console.log("get in test");
     res.status(200).json(req.data) ;
+    console.log("Donnees  ===="+req.data);
 });
 
 //Recuperer un produit par Id
 app.get("/products/:id", productsController.getProductById, (req, res, next) => {
     res.status(200).json(req.data) ;
+   
 });
 
 //Recuperer les produits par Categorie
-app.get("/products/:category", productsController.getProductsByCategory, (req, res, next) => {
+app.get("/productsCategory/:category", productsController.getProductsByCategory, (req, res, next) => {
     res.status(200).json(req.data) ;
 });
 
@@ -67,6 +70,7 @@ app.post("/category", categoryController.postCategory, (req, res, next) => {
 //Recuperer toutes les categories
 app.get("/category", categoryController.getAllCategory, (req, res, next) => {
     res.status(200).json(req.data) ;
+    console.log(req.data);
 });
 
 //Modifier une categorie

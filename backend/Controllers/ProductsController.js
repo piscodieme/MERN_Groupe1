@@ -6,7 +6,8 @@ exports.getAllProducts = (req, res, next) => {
         if(error)
             next(error);
         req.data = products ;
-        next();    
+        next();
+        //console.log(req.data);    
     }) ;
 } ;
 

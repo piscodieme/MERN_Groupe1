@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import {Link} from 'react-router-dom'
 
 class ProductsList extends Component {
     constructor(props) {
@@ -7,6 +8,9 @@ class ProductsList extends Component {
 
     }
     render() {
+        const  {
+            dataProduct,
+        }=this.props;
         return (
             <>
                 <div class="desktop-tab">
@@ -123,12 +127,14 @@ class ProductsList extends Component {
                                             <div class="tab-content">
                                                 <div class="tab-pane fade show active" id="shop-grid">
                                                     <div class="row mb-n-30px">
+                                                        {dataProduct.map((data,index)=>(
+                                                        
                                                         <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 mb-30px" data-aos="fade-up"
                                                             data-aos-delay="200">
                                                             {/*  Single Prodect */}
                                                             <div class="product">
                                                                 <div class="thumb">
-                                                                    <a href="/produit" class="image">
+                                                                    <a href={"/produit/"+data._id} class="image">
                                                                         <img src="assets/images/product-image/1.jpg"
                                                                             alt="Product" />
                                                                         <img class="hover-image"
@@ -142,7 +148,7 @@ class ProductsList extends Component {
                                                                             title="Wishlist"><i class="pe-7s-like"></i></a>
                                                                         <a href="/" class="action quickview"
                                                                             data-link-action="quickview" title="Quick view"
-                                                                            data-bs-toggle="modal" data-bs-target="#exampleModal"><i
+                                                                            data-bs-toggle="modal" data-bs-target={"#exampleModal"+index}><i
                                                                                 class="pe-7s-look"></i></a>
                                                                         <a href="compare.html" class="action compare"
                                                                             title="Compare"><i class="pe-7s-refresh-2"></i></a>
@@ -155,389 +161,30 @@ class ProductsList extends Component {
                                                                         </span>
                                                                         <span class="rating-num d-none">( 5 Review )</span>
                                                                     </span>
-                                                                    <h5 class="title"><a href="/produit">Hand-Made Garlic
-                                                                            Mortar
-                                                                        </a>
+                                                                    <h5 class="title">{/* <a href="/produit"> */}
+                                                                           {data._Title}
+                                                                       {/*  </a> */}
                                                                     </h5>
                                                                     <span class="price">
-                                                                        <span class="new">$38.50</span>
+                                                                        <span class="new">{data._Princing._Price} Fcfa</span>
                                                                     </span>
                                                                 </div>
                                                                 <button title="Add To Cart" class=" add-to-cart">Add
                                                                     To Cart</button>
                                                             </div>
                                                         </div>
-                                                        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 mb-30px" data-aos="fade-up"
-                                                            data-aos-delay="400">
-                                                            {/*  Single Prodect */}
-                                                            <div class="product">
-                                                                <div class="thumb">
-                                                                    <a href="/product" class="image">
-                                                                        <img src="assets/images/product-image/2.jpg"
-                                                                            alt="Product" />
-                                                                        <img class="hover-image"
-                                                                            src="assets/images/product-image/2.jpg" alt="Product" />
-                                                                    </a>
-                                                                    <span class="badges">
-                                                                        <span class="sale">-10%</span>
-                                                                        <span class="new">New</span>
-                                                                    </span>
-                                                                    <div class="actions">
-                                                                        <a href="wishlist.html" class="action wishlist"
-                                                                            title="Wishlist"><i class="pe-7s-like"></i></a>
-                                                                        <a href="/" class="action quickview"
-                                                                            data-link-action="quickview" title="Quick view"
-                                                                            data-bs-toggle="modal" data-bs-target="#exampleModal"><i
-                                                                                class="pe-7s-look"></i></a>
-                                                                        <a href="compare.html" class="action compare"
-                                                                            title="Compare"><i class="pe-7s-refresh-2"></i></a>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="content">
-                                                                    <span class="ratings">
-                                                                        <span class="rating-wrap">
-                                                                            <span class="star" Style="width: 100%"></span>
-                                                                        </span>
-                                                                        <span class="rating-num d-none">( 5 Review )</span>
-                                                                    </span>
-                                                                    <h5 class="title"><a href="/produit">Handmade Ceramic
-                                                                            Pottery
-                                                                        </a>
-                                                                    </h5>
-                                                                    <span class="price">
-                                                                        <span class="new">$38.50</span>
-                                                                        <span class="old">$45.50</span>
-                                                                    </span>
-                                                                </div>
-                                                                <button title="Add To Cart" class=" add-to-cart">Add
-                                                                    To Cart</button>
-                                                            </div>
-                                                            {/*  Single Prodect */}
-                                                        </div>
-                                                        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 mb-30px" data-aos="fade-up"
-                                                            data-aos-delay="600">
-                                                            {/*  Single Prodect */}
-                                                            <div class="product">
-                                                                <div class="thumb">
-                                                                    <a href="/produit" class="image">
-                                                                        <img src="assets/images/product-image/3.jpg"
-                                                                            alt="Product" />
-                                                                        <img class="hover-image"
-                                                                            src="assets/images/product-image/3.jpg" alt="Product" />
-                                                                    </a>
-                                                                    <span class="badges">
-                                                                        <span class="new">Sale</span>
-                                                                    </span>
-                                                                    <div class="actions">
-                                                                        <a href="wishlist.html" class="action wishlist"
-                                                                            title="Wishlist"><i class="pe-7s-like"></i></a>
-                                                                        <a href="/" class="action quickview"
-                                                                            data-link-action="quickview" title="Quick view"
-                                                                            data-bs-toggle="modal" data-bs-target="#exampleModal"><i
-                                                                                class="pe-7s-look"></i></a>
-                                                                        <a href="compare.html" class="action compare"
-                                                                            title="Compare"><i class="pe-7s-refresh-2"></i></a>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="content">
-                                                                    <span class="ratings">
-                                                                        <span class="rating-wrap">
-                                                                            <span class="star" Style="width: 100%"></span>
-                                                                        </span>
-                                                                        <span class="rating-num d-none">( 5 Review )</span>
-                                                                    </span>
-                                                                    <h5 class="title"><a href="/produit">Hand Painted
-                                                                            Bowls
-                                                                        </a>
-                                                                    </h5>
-                                                                    <span class="price">
-                                                                        <span class="new">$38.50</span>
-                                                                    </span>
-                                                                </div>
-                                                                <button title="Add To Cart" class=" add-to-cart">Add
-                                                                    To Cart</button>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 mb-30px" data-aos="fade-up"
-                                                            data-aos-delay="800">
-                                                            {/*  Single Prodect */}
-                                                            <div class="product">
-                                                                <div class="thumb">
-                                                                    <a href="/produit" class="image">
-                                                                        <img src="assets/images/product-image/4.jpg"
-                                                                            alt="Product" />
-                                                                        <img class="hover-image"
-                                                                            src="assets/images/product-image/5.jpg" alt="Product" />
-                                                                    </a>
-                                                                    <span class="badges">
-                                                                        <span class="sale">-5%</span>
-                                                                    </span>
-                                                                    <div class="actions">
-                                                                        <a href="wishlist.html" class="action wishlist"
-                                                                            title="Wishlist"><i class="pe-7s-like"></i></a>
-                                                                        <a href="/" class="action quickview"
-                                                                            data-link-action="quickview" title="Quick view"
-                                                                            data-bs-toggle="modal" data-bs-target="#exampleModal"><i
-                                                                                class="pe-7s-look"></i></a>
-                                                                        <a href="compare.html" class="action compare"
-                                                                            title="Compare"><i class="pe-7s-refresh-2"></i></a>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="content">
-                                                                    <span class="ratings">
-                                                                        <span class="rating-wrap">
-                                                                            <span class="star" Style="width: 100%"></span>
-                                                                        </span>
-                                                                        <span class="rating-num d-none">( 5 Review )</span>
-                                                                    </span>
-                                                                    <h5 class="title"><a href="/produit">Antique Wooden
-                                                                            Farm Large
-                                                                        </a>
-                                                                    </h5>
-                                                                    <span class="price">
-                                                                        <span class="new">$38.50</span>
-                                                                        <span class="old">$40.50</span>
-                                                                    </span>
-                                                                </div>
-                                                                <button title="Add To Cart" class=" add-to-cart">Add
-                                                                    To Cart</button>
-                                                            </div>
-                                                            {/*  Single Prodect */}
-                                                        </div>
-                                                        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 mb-30px" data-aos="fade-up"
-                                                            data-aos-delay="200">
-                                                            {/*  Single Prodect */}
-                                                            <div class="product">
-                                                                <div class="thumb">
-                                                                    <a href="/produit" class="image">
-                                                                        <img src="assets/images/product-image/6.jpg"
-                                                                            alt="Product" />
-                                                                        <img class="hover-image"
-                                                                            src="assets/images/product-image/6.jpg" alt="Product" />
-                                                                    </a>
-                                                                    <span class="badges">
-                                                                    </span>
-                                                                    <div class="actions">
-                                                                        <a href="wishlist.html" class="action wishlist"
-                                                                            title="Wishlist"><i class="pe-7s-like"></i></a>
-                                                                        <a href="/" class="action quickview"
-                                                                            data-link-action="quickview" title="Quick view"
-                                                                            data-bs-toggle="modal" data-bs-target="#exampleModal"><i
-                                                                                class="pe-7s-look"></i></a>
-                                                                        <a href="compare.html" class="action compare"
-                                                                            title="Compare"><i class="pe-7s-refresh-2"></i></a>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="content">
-                                                                    <span class="ratings">
-                                                                        <span class="rating-wrap">
-                                                                            <span class="star" Style="width: 100%"></span>
-                                                                        </span>
-                                                                        <span class="rating-num d-none">( 5 Review )</span>
-                                                                    </span>
-                                                                    <h5 class="title"><a href="/produit">Handmade Jute
-                                                                            Basket
-                                                                        </a>
-                                                                    </h5>
-                                                                    <span class="price">
-                                                                        <span class="new">$38.50</span>
-                                                                    </span>
-                                                                </div>
-                                                                <button title="Add To Cart" class=" add-to-cart">Add
-                                                                    To Cart</button>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6  mb-30px" data-aos="fade-up"
-                                                            data-aos-delay="400">
-                                                            {/*  Single Prodect */}
-                                                            <div class="product">
-                                                                <div class="thumb">
-                                                                    <a href="/produit" class="image">
-                                                                        <img src="assets/images/product-image/7.jpg"
-                                                                            alt="Product" />
-                                                                        <img class="hover-image"
-                                                                            src="assets/images/product-image/7.jpg" alt="Product" />
-                                                                    </a>
-                                                                    <span class="badges">
-                                                                        <span class="new">New</span>
-                                                                    </span>
-                                                                    <div class="actions">
-                                                                        <a href="wishlist.html" class="action wishlist"
-                                                                            title="Wishlist"><i class="pe-7s-like"></i></a>
-                                                                        <a href="/" class="action quickview"
-                                                                            data-link-action="quickview" title="Quick view"
-                                                                            data-bs-toggle="modal" data-bs-target="#exampleModal"><i
-                                                                                class="pe-7s-look"></i></a>
-                                                                        <a href="compare.html" class="action compare"
-                                                                            title="Compare"><i class="pe-7s-refresh-2"></i></a>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="content">
-                                                                    <span class="ratings">
-                                                                        <span class="rating-wrap">
-                                                                            <span class="star" Style="width: 100%"></span>
-                                                                        </span>
-                                                                        <span class="rating-num d-none">( 5 Review )</span>
-                                                                    </span>
-                                                                    <h5 class="title"><a href="/produit">Knitting yarn &
-                                                                            crochet hook
-                                                                        </a>
-                                                                    </h5>
-                                                                    <span class="price">
-                                                                        <span class="new">$38.50</span>
-                                                                    </span>
-                                                                </div>
-                                                                <button title="Add To Cart" class=" add-to-cart">Add
-                                                                    To Cart</button>
-                                                            </div>
-                                                            {/*  Single Prodect */}
-                                                        </div>
-                                                        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 mb-30px" data-aos="fade-up"
-                                                            data-aos-delay="600">
-                                                            {/*  Single Prodect */}
-                                                            <div class="product">
-                                                                <div class="thumb">
-                                                                    <a href="/produit" class="image">
-                                                                        <img src="assets/images/product-image/8.jpg"
-                                                                            alt="Product" />
-                                                                        <img class="hover-image"
-                                                                            src="assets/images/product-image/8.jpg" alt="Product" />
-                                                                    </a>
-                                                                    <span class="badges">
-                                                                        <span class="sale">-8%</span>
-                                                                        <span class="new">New</span>
-                                                                    </span>
-                                                                    <div class="actions">
-                                                                        <a href="wishlist.html" class="action wishlist"
-                                                                            title="Wishlist"><i class="pe-7s-like"></i></a>
-                                                                        <a href="/" class="action quickview"
-                                                                            data-link-action="quickview" title="Quick view"
-                                                                            data-bs-toggle="modal" data-bs-target="#exampleModal"><i
-                                                                                class="pe-7s-look"></i></a>
-                                                                        <a href="compare.html" class="action compare"
-                                                                            title="Compare"><i class="pe-7s-refresh-2"></i></a>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="content">
-                                                                    <span class="ratings">
-                                                                        <span class="rating-wrap">
-                                                                            <span class="star" Style="width: 100%"></span>
-                                                                        </span>
-                                                                        <span class="rating-num d-none">( 5 Review )</span>
-                                                                    </span>
-                                                                    <h5 class="title"><a href="/produit">David Head
-                                                                            Portraits
-                                                                        </a>
-                                                                    </h5>
-                                                                    <span class="price">
-                                                                        <span class="new">$38.50</span>
-                                                                        <span class="old">$44.50</span>
-                                                                    </span>
-                                                                </div>
-                                                                <button title="Add To Cart" class=" add-to-cart">Add
-                                                                    To Cart</button>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 mb-30px" data-aos="fade-up"
-                                                            data-aos-delay="800">
-                                                            {/*  Single Prodect */}
-                                                            <div class="product">
-                                                                <div class="thumb">
-                                                                    <a href="/produit" class="image">
-                                                                        <img src="assets/images/product-image/9.jpg"
-                                                                            alt="Product" />
-                                                                        <img class="hover-image"
-                                                                            src="assets/images/product-image/10.jpg"
-                                                                            alt="Product" />
-                                                                    </a>
-                                                                    <span class="badges">
-                                                                        <span class="new">Sale</span>
-                                                                    </span>
-                                                                    <div class="actions">
-                                                                        <a href="wishlist.html" class="action wishlist"
-                                                                            title="Wishlist"><i class="pe-7s-like"></i></a>
-                                                                        <a href="/" class="action quickview"
-                                                                            data-link-action="quickview" title="Quick view"
-                                                                            data-bs-toggle="modal" data-bs-target="#exampleModal"><i
-                                                                                class="pe-7s-look"></i></a>
-                                                                        <a href="compare.html" class="action compare"
-                                                                            title="Compare"><i class="pe-7s-refresh-2"></i></a>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="content">
-                                                                    <span class="ratings">
-                                                                        <span class="rating-wrap">
-                                                                            <span class="star" Style="width: 100%"></span>
-                                                                        </span>
-                                                                        <span class="rating-num d-none">( 5 Review )</span>
-                                                                    </span>
-                                                                    <h5 class="title"><a href="/produit">solid wood
-                                                                            cherry paddle
-                                                                        </a>
-                                                                    </h5>
-                                                                    <span class="price">
-                                                                        <span class="new">$38.50</span>
-                                                                    </span>
-                                                                </div>
-                                                                <button title="Add To Cart" class=" add-to-cart">Add
-                                                                    To Cart</button>
-                                                            </div>
-                                                            {/*  Single Prodect */}
-                                                        </div>
-                                                        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 mb-30px" data-aos="fade-up"
-                                                            data-aos-delay="800">
-                                                            {/*  Single Prodect */}
-                                                            <div class="product">
-                                                                <div class="thumb">
-                                                                    <a href="/produit" class="image">
-                                                                        <img src="assets/images/product-image/1.jpg"
-                                                                            alt="Product" />
-                                                                        <img class="hover-image"
-                                                                            src="assets/images/product-image/1.jpg" alt="Product" />
-                                                                    </a>
-                                                                    <span class="badges">
-                                                                        <span class="new">New</span>
-                                                                    </span>
-                                                                    <div class="actions">
-                                                                        <a href="wishlist.html" class="action wishlist"
-                                                                            title="Wishlist"><i class="pe-7s-like"></i></a>
-                                                                        <a href="/" class="action quickview"
-                                                                            data-link-action="quickview" title="Quick view"
-                                                                            data-bs-toggle="modal" data-bs-target="#exampleModal"><i
-                                                                                class="pe-7s-look"></i></a>
-                                                                        <a href="compare.html" class="action compare"
-                                                                            title="Compare"><i class="pe-7s-refresh-2"></i></a>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="content">
-                                                                    <span class="ratings">
-                                                                        <span class="rating-wrap">
-                                                                            <span class="star" Style="width: 100%"></span>
-                                                                        </span>
-                                                                        <span class="rating-num d-none">( 5 Review )</span>
-                                                                    </span>
-                                                                    <h5 class="title"><a href="/produit">Hand-Made Garlic
-                                                                            Mortar
-                                                                        </a>
-                                                                    </h5>
-                                                                    <span class="price">
-                                                                        <span class="new">$38.50</span>
-                                                                    </span>
-                                                                </div>
-                                                                <button title="Add To Cart" class=" add-to-cart">Add
-                                                                    To Cart</button>
-                                                            </div>
-                                                            {/*  Single Prodect */}
-                                                        </div>
+                                                        )
+                                                        )};
                                                     </div>
                                                 </div>
                                                 <div class="tab-pane fade" id="shop-list">
+                                                {dataProduct.map((data,index)=>(
                                                     <div class="shop-list-wrapper">
                                                         <div class="row">
                                                             <div class="col-md-5 col-lg-5 col-xl-4">
                                                                 <div class="product">
                                                                     <div class="thumb">
-                                                                        <a href="/produit" class="image">
+                                                                        <a href={"/produit/"+index} class="image">
                                                                             <img src="assets/images/product-image/1.jpg"
                                                                                 alt="Product" />
                                                                             <img class="hover-image"
@@ -562,10 +209,7 @@ class ProductsList extends Component {
                                                                         <h5 class="title"><a href="/produit">Hand-Made Garlic
                                                                             Mortar
                                                                         </a></h5>
-                                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                                                                            sed do eiusmodol tempor incididunt ut labore et dolore
-                                                                            magna aliqua. Ut enim ad minim veni quis nostrud
-                                                                            exercitation ullamco laboris </p>
+                                                                        <p>{data._Descriptions._Long} </p>
                                                                     </div>
                                                                     <div class="box-inner">
                                                                         <span class="price">
@@ -577,7 +221,7 @@ class ProductsList extends Component {
                                                                             <a href="/" class="action quickview"
                                                                                 data-link-action="quickview" title="Quick view"
                                                                                 data-bs-toggle="modal"
-                                                                                data-bs-target="#exampleModal"><i
+                                                                                data-bs-target={"#exampleModal"+index}><i
                                                                                     class="pe-7s-search"></i></a>
                                                                             <a href="compare.html" class="action compare"
                                                                                 title="Compare"><i class="pe-7s-refresh-2"></i></a>
@@ -589,467 +233,8 @@ class ProductsList extends Component {
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="shop-list-wrapper">
-                                                        <div class="row">
-                                                            <div class="col-md-5 col-lg-5 col-xl-4">
-                                                                <div class="product">
-                                                                    <div class="thumb">
-                                                                        <a href="/produit" class="image">
-                                                                            <img src="assets/images/product-image/2.jpg"
-                                                                                alt="Product" />
-                                                                            <img class="hover-image"
-                                                                                src="assets/images/product-image/2.jpg"
-                                                                                alt="Product" />
-                                                                        </a>
-                                                                        <span class="badges">
-                                                                            <span class="sale">-10%</span>
-                                                                            <span class="new">New</span>
-                                                                        </span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-7 col-lg-7 col-xl-8">
-                                                                <div class="content-desc-wrap">
-                                                                    <div class="content">
-                                                                        <span class="ratings">
-                                                                            <span class="rating-wrap">
-                                                                                <span class="star" Style="width: 80%"></span>
-                                                                            </span>
-                                                                            <span class="rating-num d-none">( 4 Review )</span>
-                                                                        </span>
-                                                                        <h5 class="title"><a href="/produit">Handmade Ceramic
-                                                                            Pottery
-                                                                        </a>
-                                                                        </h5>
-                                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                                                                            sed do eiusmodol tempor incididunt ut labore et dolore
-                                                                            magna aliqua. Ut enim ad minim veni quis nostrud
-                                                                            exercitation ullamco laboris </p>
-                                                                    </div>
-                                                                    <div class="box-inner">
-                                                                        <span class="price">
-                                                                            <span class="new">$38.50</span>
-                                                                            <span class="old">$48.50</span>
-                                                                        </span>
-                                                                        <div class="actions">
-                                                                            <a href="wishlist.html" class="action wishlist"
-                                                                                title="Wishlist"><i class="pe-7s-like"></i></a>
-                                                                            <a href="/" class="action quickview"
-                                                                                data-link-action="quickview" title="Quick view"
-                                                                                data-bs-toggle="modal"
-                                                                                data-bs-target="#exampleModal"><i
-                                                                                    class="pe-7s-search"></i></a>
-                                                                            <a href="compare.html" class="action compare"
-                                                                                title="Compare"><i class="pe-7s-refresh-2"></i></a>
-                                                                        </div>
-                                                                        <button title="Add To Cart" class=" add-to-cart">Add
-                                                                            To Cart</button>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="shop-list-wrapper">
-                                                        <div class="row">
-                                                            <div class="col-md-5 col-lg-5 col-xl-4">
-                                                                <div class="product">
-                                                                    <div class="thumb">
-                                                                        <a href="/produit" class="image">
-                                                                            <img src="assets/images/product-image/3.jpg"
-                                                                                alt="Product" />
-                                                                            <img class="hover-image"
-                                                                                src="assets/images/product-image/3.jpg"
-                                                                                alt="Product" />
-                                                                        </a>
-                                                                        <span class="badges">
-                                                                            <span class="sale">-7%</span>
-                                                                        </span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-7 col-lg-7 col-xl-8">
-                                                                <div class="content-desc-wrap">
-                                                                    <div class="content">
-                                                                        <span class="ratings">
-                                                                            <span class="rating-wrap">
-                                                                                <span class="star" Style="width: 0%"></span>
-                                                                            </span>
-                                                                            <span class="rating-num d-none">( 0 Review )</span>
-                                                                        </span>
-                                                                        <h5 class="title"><a href="/produit">Hand Painted
-                                                                            Bowls
-                                                                        </a></h5>
-                                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                                                                            sed do eiusmodol tempor incididunt ut labore et dolore
-                                                                            magna aliqua. Ut enim ad minim veni quis nostrud
-                                                                            exercitation ullamco laboris </p>
-                                                                    </div>
-                                                                    <div class="box-inner">
-                                                                        <span class="price">
-                                                                            <span class="new">$38.50</span>
-                                                                            <span class="old">$45.00</span>
-                                                                        </span>
-                                                                        <div class="actions">
-                                                                            <a href="wishlist.html" class="action wishlist"
-                                                                                title="Wishlist"><i class="pe-7s-like"></i></a>
-                                                                            <a href="/" class="action quickview"
-                                                                                data-link-action="quickview" title="Quick view"
-                                                                                data-bs-toggle="modal"
-                                                                                data-bs-target="#exampleModal"><i
-                                                                                    class="pe-7s-search"></i></a>
-                                                                            <a href="compare.html" class="action compare"
-                                                                                title="Compare"><i class="pe-7s-refresh-2"></i></a>
-                                                                        </div>
-                                                                        <button title="Add To Cart" class=" add-to-cart">Add
-                                                                            To Cart</button>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="shop-list-wrapper">
-                                                        <div class="row">
-                                                            <div class="col-md-5 col-lg-5 col-xl-4">
-                                                                <div class="product">
-                                                                    <div class="thumb">
-                                                                        <a href="/produit" class="image">
-                                                                            <img src="assets/images/product-image/4.jpg"
-                                                                                alt="Product" />
-                                                                            <img class="hover-image"
-                                                                                src="assets/images/product-image/4.jpg"
-                                                                                alt="Product" />
-                                                                        </a>
-                                                                        <span class="badges">
-                                                                            <span class="new">Sale</span>
-                                                                        </span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-7 col-lg-7 col-xl-8">
-                                                                <div class="content-desc-wrap">
-                                                                    <div class="content">
-                                                                        <span class="ratings">
-                                                                            <span class="rating-wrap">
-                                                                                <span class="star" Style="width: 70%"></span>
-                                                                            </span>
-                                                                            <span class="rating-num d-none">( 3.5 Review )</span>
-                                                                        </span>
-                                                                        <h5 class="title"><a href="/produit">Antique Wooden
-                                                                            Farm Large
-                                                                        </a></h5>
-                                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                                                                            sed do eiusmodol tempor incididunt ut labore et dolore
-                                                                            magna aliqua. Ut enim ad minim veni quis nostrud
-                                                                            exercitation ullamco laboris </p>
-                                                                    </div>
-                                                                    <div class="box-inner">
-                                                                        <span class="price">
-                                                                            <span class="new">$38.50</span>
-                                                                        </span>
-                                                                        <div class="actions">
-                                                                            <a href="wishlist.html" class="action wishlist"
-                                                                                title="Wishlist"><i class="pe-7s-like"></i></a>
-                                                                            <a href="/" class="action quickview"
-                                                                                data-link-action="quickview" title="Quick view"
-                                                                                data-bs-toggle="modal"
-                                                                                data-bs-target="#exampleModal"><i
-                                                                                    class="pe-7s-search"></i></a>
-                                                                            <a href="compare.html" class="action compare"
-                                                                                title="Compare"><i class="pe-7s-refresh-2"></i></a>
-                                                                        </div>
-                                                                        <button title="Add To Cart" class=" add-to-cart">Add
-                                                                            To Cart</button>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="shop-list-wrapper">
-                                                        <div class="row">
-                                                            <div class="col-md-5 col-lg-5 col-xl-4">
-                                                                <div class="product">
-                                                                    <div class="thumb">
-                                                                        <a href="/produit" class="image">
-                                                                            <img src="assets/images/product-image/5.jpg"
-                                                                                alt="Product" />
-                                                                            <img class="hover-image"
-                                                                                src="assets/images/product-image/5.jpg"
-                                                                                alt="Product" />
-                                                                        </a>
-                                                                        <span class="badges">
-                                                                            <span class="sale">-5%</span>
-                                                                            <span class="new">New</span>
-                                                                        </span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-7 col-lg-7 col-xl-8">
-                                                                <div class="content-desc-wrap">
-                                                                    <div class="content">
-                                                                        <span class="ratings">
-                                                                            <span class="rating-wrap">
-                                                                                <span class="star" Style="width: 100%"></span>
-                                                                            </span>
-                                                                            <span class="rating-num d-none">( 5 Review )</span>
-                                                                        </span>
-                                                                        <h5 class="title"><a href="/produit">Handmade Jute
-                                                                            Basket
-                                                                        </a></h5>
-                                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                                                                            sed do eiusmodol tempor incididunt ut labore et dolore
-                                                                            magna aliqua. Ut enim ad minim veni quis nostrud
-                                                                            exercitation ullamco laboris </p>
-                                                                    </div>
-                                                                    <div class="box-inner">
-                                                                        <span class="price">
-                                                                            <span class="new">$38.50</span>
-                                                                            <span class="old">$45.50</span>
-                                                                        </span>
-                                                                        <div class="actions">
-                                                                            <a href="wishlist.html" class="action wishlist"
-                                                                                title="Wishlist"><i class="pe-7s-like"></i></a>
-                                                                            <a href="/" class="action quickview"
-                                                                                data-link-action="quickview" title="Quick view"
-                                                                                data-bs-toggle="modal"
-                                                                                data-bs-target="#exampleModal"><i
-                                                                                    class="pe-7s-search"></i></a>
-                                                                            <a href="compare.html" class="action compare"
-                                                                                title="Compare"><i class="pe-7s-refresh-2"></i></a>
-                                                                        </div>
-                                                                        <button title="Add To Cart" class=" add-to-cart">Add
-                                                                            To Cart</button>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="shop-list-wrapper">
-                                                        <div class="row">
-                                                            <div class="col-md-5 col-lg-5 col-xl-4">
-                                                                <div class="product">
-                                                                    <div class="thumb">
-                                                                        <a href="/produit" class="image">
-                                                                            <img src="assets/images/product-image/6.jpg"
-                                                                                alt="Product" />
-                                                                            <img class="hover-image"
-                                                                                src="assets/images/product-image/6.jpg"
-                                                                                alt="Product" />
-                                                                        </a>
-                                                                        <span class="badges">
-                                                                        </span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-7 col-lg-7 col-xl-8">
-                                                                <div class="content-desc-wrap">
-                                                                    <div class="content">
-                                                                        <span class="ratings">
-                                                                            <span class="rating-wrap">
-                                                                                <span class="star" Style="width: 100%"></span>
-                                                                            </span>
-                                                                            <span class="rating-num d-none">( 5 Review )</span>
-                                                                        </span>
-                                                                        <h5 class="title"><a href="/produit">Knitting yarn &
-                                                                            crochet hook
-                                                                        </a> </h5>
-
-                                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                                                                            sed do eiusmodol tempor incididunt ut labore et dolore
-                                                                            magna aliqua. Ut enim ad minim veni quis nostrud
-                                                                            exercitation ullamco laboris </p>
-                                                                    </div>
-                                                                    <div class="box-inner">
-                                                                        <span class="price">
-                                                                            <span class="new">$38.50</span>
-                                                                        </span>
-                                                                        <div class="actions">
-                                                                            <a href="wishlist.html" class="action wishlist"
-                                                                                title="Wishlist"><i class="pe-7s-like"></i></a>
-                                                                            <a href="/" class="action quickview"
-                                                                                data-link-action="quickview" title="Quick view"
-                                                                                data-bs-toggle="modal"
-                                                                                data-bs-target="#exampleModal"><i
-                                                                                    class="pe-7s-search"></i></a>
-                                                                            <a href="compare.html" class="action compare"
-                                                                                title="Compare"><i class="pe-7s-refresh-2"></i></a>
-                                                                        </div>
-                                                                        <button title="Add To Cart" class=" add-to-cart">Add
-                                                                            To Cart</button>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="shop-list-wrapper">
-                                                        <div class="row">
-                                                            <div class="col-md-5 col-lg-5 col-xl-4">
-                                                                <div class="product">
-                                                                    <div class="thumb">
-                                                                        <a href="/produit" class="image">
-                                                                            <img src="assets/images/product-image/7.jpg"
-                                                                                alt="Product" />
-                                                                            <img class="hover-image"
-                                                                                src="assets/images/product-image/7.jpg"
-                                                                                alt="Product" />
-                                                                        </a>
-                                                                        <span class="badges">
-                                                                        </span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-7 col-lg-7 col-xl-8">
-                                                                <div class="content-desc-wrap">
-                                                                    <div class="content">
-                                                                        <span class="ratings">
-                                                                            <span class="rating-wrap">
-                                                                                <span class="star" Style="width: 80%"></span>
-                                                                            </span>
-                                                                            <span class="rating-num d-none">( 4 Review )</span>
-                                                                        </span>
-                                                                        <h5 class="title"><a href="/produit">David Head
-                                                                            Portraits
-                                                                        </a></h5>
-                                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                                                                            sed do eiusmodol tempor incididunt ut labore et dolore
-                                                                            magna aliqua. Ut enim ad minim veni quis nostrud
-                                                                            exercitation ullamco laboris </p>
-                                                                    </div>
-                                                                    <div class="box-inner">
-                                                                        <span class="price">
-                                                                            <span class="new">$38.50</span>
-                                                                        </span>
-                                                                        <div class="actions">
-                                                                            <a href="wishlist.html" class="action wishlist"
-                                                                                title="Wishlist"><i class="pe-7s-like"></i></a>
-                                                                            <a href="/" class="action quickview"
-                                                                                data-link-action="quickview" title="Quick view"
-                                                                                data-bs-toggle="modal"
-                                                                                data-bs-target="#exampleModal"><i
-                                                                                    class="pe-7s-search"></i></a>
-                                                                            <a href="compare.html" class="action compare"
-                                                                                title="Compare"><i class="pe-7s-refresh-2"></i></a>
-                                                                        </div>
-                                                                        <button title="Add To Cart" class=" add-to-cart">Add
-                                                                            To Cart</button>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="shop-list-wrapper">
-                                                        <div class="row">
-                                                            <div class="col-md-5 col-lg-5 col-xl-4">
-                                                                <div class="product">
-                                                                    <div class="thumb">
-                                                                        <a href="/produit" class="image">
-                                                                            <img src="assets/images/product-image/8.jpg"
-                                                                                alt="Product" />
-                                                                            <img class="hover-image"
-                                                                                src="assets/images/product-image/8.jpg"
-                                                                                alt="Product" />
-                                                                        </a>
-                                                                        <span class="badges">
-                                                                            <span class="new">Sale</span>
-                                                                        </span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-7 col-lg-7 col-xl-8">
-                                                                <div class="content-desc-wrap">
-                                                                    <div class="content">
-                                                                        <span class="ratings">
-                                                                            <span class="rating-wrap">
-                                                                                <span class="star" Style="width: 60%"></span>
-                                                                            </span>
-                                                                            <span class="rating-num d-none">( 3 Review )</span>
-                                                                        </span>
-                                                                        <h5 class="title"><a href="/produit">solid wood
-                                                                            cherry paddle
-                                                                        </a></h5>
-                                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                                                                            sed do eiusmodol tempor incididunt ut labore et dolore
-                                                                            magna aliqua. Ut enim ad minim veni quis nostrud
-                                                                            exercitation ullamco laboris </p>
-                                                                    </div>
-                                                                    <div class="box-inner">
-                                                                        <span class="price">
-                                                                            <span class="new">$38.50</span>
-                                                                        </span>
-                                                                        <div class="actions">
-                                                                            <a href="wishlist.html" class="action wishlist"
-                                                                                title="Wishlist"><i class="pe-7s-like"></i></a>
-                                                                            <a href="/" class="action quickview"
-                                                                                data-link-action="quickview" title="Quick view"
-                                                                                data-bs-toggle="modal"
-                                                                                data-bs-target="#exampleModal"><i
-                                                                                    class="pe-7s-search"></i></a>
-                                                                            <a href="compare.html" class="action compare"
-                                                                                title="Compare"><i class="pe-7s-refresh-2"></i></a>
-                                                                        </div>
-                                                                        <button title="Add To Cart" class=" add-to-cart">Add
-                                                                            To Cart</button>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="shop-list-wrapper">
-                                                        <div class="row">
-                                                            <div class="col-md-5 col-lg-5 col-xl-4">
-                                                                <div class="product">
-                                                                    <div class="thumb">
-                                                                        <a href="/produit" class="image">
-                                                                            <img src="assets/images/product-image/9.jpg"
-                                                                                alt="Product" />
-                                                                            <img class="hover-image"
-                                                                                src="assets/images/product-image/9.jpg"
-                                                                                alt="Product" />
-                                                                        </a>
-                                                                        <span class="badges">
-                                                                            <span class="new">Sale</span>
-                                                                        </span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-7 col-lg-7 col-xl-8">
-                                                                <div class="content-desc-wrap">
-                                                                    <div class="content">
-                                                                        <span class="ratings">
-                                                                            <span class="rating-wrap">
-                                                                                <span class="star" Style="width: 60%"></span>
-                                                                            </span>
-                                                                            <span class="rating-num d-none">( 3 Review )</span>
-                                                                        </span>
-                                                                        <h5 class="title"><a href="/produit">Hand-Made Garlic
-                                                                            Mortar
-                                                                        </a></h5>
-                                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                                                                            sed do eiusmodol tempor incididunt ut labore et dolore
-                                                                            magna aliqua. Ut enim ad minim veni quis nostrud
-                                                                            exercitation ullamco laboris </p>
-                                                                    </div>
-                                                                    <div class="box-inner">
-                                                                        <span class="price">
-                                                                            <span class="new">$38.50</span>
-                                                                        </span>
-                                                                        <div class="actions">
-                                                                            <a href="wishlist.html" class="action wishlist"
-                                                                                title="Wishlist"><i class="pe-7s-like"></i></a>
-                                                                            <a href="/" class="action quickview"
-                                                                                data-link-action="quickview" title="Quick view"
-                                                                                data-bs-toggle="modal"
-                                                                                data-bs-target="#exampleModal"><i
-                                                                                    class="pe-7s-search"></i></a>
-                                                                            <a href="compare.html" class="action compare"
-                                                                                title="Compare"><i class="pe-7s-refresh-2"></i></a>
-                                                                        </div>
-                                                                        <button title="Add To Cart" class=" add-to-cart">Add
-                                                                            To Cart</button>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                    )
+                                                    )}; 
                                                 </div>
                                             </div>
                                         </div>

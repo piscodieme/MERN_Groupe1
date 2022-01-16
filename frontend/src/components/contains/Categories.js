@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import{ Tab, TabList, TabPanel, Box, TabContext, Tabs} from 'react-tabs'
 
 class Categories extends Component {
     constructor(props) {
@@ -10,11 +11,20 @@ class Categories extends Component {
 
     }
 
+    handleChange (){
+        console.log("test tabs");
+    }
     render() {
+        const {
+            value,
+            dataCategories
+        }=this.props;
+        console.log("data Categories =====",dataCategories);
         return (
             <>
             <div class="product-area">
                 <div class="container">
+                   
                     {/* Section Title & Tab Start */}
                     <div class="row">
                         {/* Section Title Start */}
@@ -24,30 +34,35 @@ class Categories extends Component {
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod incididunt ut labore et dolore magna aliqua. </p>
                             </div>
                             {/* Tab Start */}
-                            <div class="tab-slider swiper-container slider-nav-style-1 small-nav">
-                                <ul class="product-tab-nav nav swiper-wrapper ">
-                                    <li class="nav-item swiper-slide">
-                                        <a class="nav-link active" data-bs-toggle="tab" href="#tab-jewelry"> <img src="assets/images/icons/jewelry-icon.png" alt=""></img><span>Jewelry</span></a>
+                            <div class="swiper-container slider-nav-style-1 small-nav">
+                                <ul class="product-tab-nav nav swiper-wrapper affCategories">
+                                    {dataCategories.map((data,index)=>(
+                                        <li class="nav-item swiper-slide-active ">
+                                            <a class={index==1 ?"nav-link active":"nav-link"} data-bs-toggle="tab"  id="nav-home-tab" role="tab" href="#tab-jewelry"> <img src={data._Image} alt=""></img><span>{data._Name}</span></a>
+                                        </li> 
+                                    ))}
+                                    {/* <li class="nav-item  swiper-slide-active ">
+                                        <a class="nav-link active" data-bs-toggle="tab"  id="nav-home-tab" role="tab" href="#tab-jewelry"> <img src="assets/images/icons/jewelry-icon.png" alt=""></img><span>Jewelry</span></a>
                                     </li>
 
-                                    <li class="nav-item swiper-slide">
-                                        <a class="nav-link" data-bs-toggle="tab" href="#tab-pottery"> <img src="assets/images/icons/pottery-icon.png" alt=""></img><span>Pottery</span></a>
+                                    <li class="nav-item swiper-slide-active">
+                                        <a class="nav-link" data-bs-toggle="tab" id="nav-2-tab" role="tab" href="#tab-pottery"> <img src="assets/images/icons/pottery-icon.png" alt=""></img><span>Pottery</span></a>
                                     </li>
-                                    <li class="nav-item swiper-slide">
+                                    <li class="nav-item swiper-slide-active">
                                         <a class="nav-link" data-bs-toggle="tab" href="#tab-fabric"> <img src="assets/images/icons/fabric-icon.png" alt=""></img><span>Fabric</span></a>
                                     </li>
-                                    <li class="nav-item swiper-slide">
+                                    <li class="nav-item swiper-slide-active">
                                         <a class="nav-link" data-bs-toggle="tab" href="#tab-paintings"> <img src="assets/images/icons/paintings-icon.png" alt=""></img><span>Paintings</span></a>
                                     </li>
-                                    <li class="nav-item swiper-slide">
+                                    <li class="nav-item swiper-slide-active">
                                         <a class="nav-link" data-bs-toggle="tab" href="#tab-sculptures"> <img src="assets/images/icons/sculptures-icon.png" alt=""></img><span>Sculptures</span></a>
                                     </li>
-                                    <li class="nav-item swiper-slide">
+                                    <li class="nav-item swiper-slide-active">
                                         <a class="nav-link" data-bs-toggle="tab" href="#tab-wooden"> <img src="assets/images/icons/wooden-icon.png" alt=""></img><span>Wooden</span></a>
                                     </li>
-                                    <li class="nav-item swiper-slide">
+                                    <li class="nav-item swiper-slide-active">
                                         <a class="nav-link" data-bs-toggle="tab" href="#tab-pottery"> <img src="assets/images/icons/pottery-icon.png" alt=""></img><span>Pottery</span></a>
-                                    </li>
+                                    </li> */}
                                 </ul>
                                 {/* Add Arrows */}
                                 <div class="swiper-buttons">
@@ -66,7 +81,7 @@ class Categories extends Component {
                         <div class="col">
                             <div class="tab-content mt-60px">
                                 {/* 1st tab start */}
-                                <div class="tab-pane fade show active" id="tab-jewelry">
+                                <div class="tab-pane fade show active" id="tab-jewelry" role="tabpanel" aria-labelledby="nav-home-tab">
                                     <div class="row">
                                         <div class="col-lg-4 col-xl-3 col-md-6 col-sm-6 col-xs-6 mb-30px">
                                             {/* Single Prodect */}
@@ -376,7 +391,7 @@ class Categories extends Component {
                                 </div>
                                 {/* 1st tab end */}
                                 {/* 2nd tab start */}
-                                <div class="tab-pane fade" id="tab-pottery">
+                                <div class="tab-pane fade" role="tabpanel" aria-labelledby="nav-2-tab" id="tab-pottery">
                                     <div class="row">
                                         <div class="col-lg-4 col-xl-3 col-md-6 col-sm-6 col-xs-6 mb-30px">
                                             {/* Single Prodect */}

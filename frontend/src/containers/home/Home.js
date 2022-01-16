@@ -6,8 +6,28 @@ import Categories from '../../components/contains/Categories';
 import Testimonial from '../../components/contains/Testimonial';
 import BestSellerPage from '../../components/contains/BestSellerPage';
 import PropTypes from 'prop-types'
+import {categoryService} from '../../service/categoryService'
 
 class Home extends Component {
+    constructor(props){
+        super(props);
+        this.state={
+            dataCategories:[],
+            errorMessage:''
+        }
+    }
+    async componentDidMount(){
+        await categoryService.getAllCategories()
+            .then(res =>{
+                const Categories = res;
+                this.setState({dataCategories:Categories});
+                console.log("daata Catagories ????? ",Categories);
+            })
+            .catch(error =>{
+                this.setState({errorMessage:"Get All Categories Error"});
+                console.log("error Message ====",this.state.errorMessage);
+            })
+    }
 
     render() {
         return (
@@ -16,7 +36,9 @@ class Home extends Component {
                     <IntroSlide/>
                 </section>
                 <BestSellerPage/>
-                <Categories/>
+                <Categories
+                    dataCategories = {this.state.dataCategories}
+                />
                 <Banner/>
                 <PaymentMode/>
                 <Testimonial/>

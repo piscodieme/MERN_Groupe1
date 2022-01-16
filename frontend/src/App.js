@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import Home from './containers/home/Home';
 import reactDom from 'react-dom';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
-import Header from './components/header/header';
+import Header from './containers/header/Header';
 import Footer from './components/contains/Footer';
 import Login from './containers/loginAndRegister/Login';
 import About from './containers/header/About';
@@ -13,6 +13,7 @@ import SingleCategory from './containers/category/SingleCategory';
 import AllProduct from './containers/product/AllProduct';
 import './App.css';
 import SingleProduct from './containers/product/SingleProduct';
+import Thanks from './components/utilities/Thanks';
 
 
 function App() {
@@ -29,7 +30,8 @@ function App() {
         <Route path='/cart' element={<MyCart/>}></Route>
         <Route path='/category' element={<SingleCategory/>}></Route>
         <Route path='/produits' element={<AllProduct/>}></Route>
-        <Route path='/produit' element={<SingleProduct/>}></Route>
+        <Route path="/produit/:productNumber" element={<SingleProduct/>}></Route>
+        <Route path='/thanks' element={<Thanks/>}></Route>
         <Route path='*' exact={true} element={<PageNotFound/>}></Route>
       </Routes>
       <div className="App">
