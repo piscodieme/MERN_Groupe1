@@ -12,18 +12,17 @@ exports.getAllCategory = (req, res, next) => {
 
 
 
-exports.postCategory = (req, res, next) => {
+exports.postCategory = (req, res) => {
+
     let category = new Category ;
-    let cat = req.body ;
-    category._Name = cat._Name ;
-    category._Image = cat._Image ;
+    category._Name = req.body.name ;
+    category._Image = req.file.destination + req.file.filename ;
     category.save((err) =>{
         if(err){
-            res.send(err);
+            return res.send(err);
         }
-        res.send({message: 'category created'});
+        return res.send({message: 'category created'});
     });
-    next();
 } ;
 
 exports.updateCategory = (req, res) => {
@@ -44,11 +43,10 @@ exports.updateCategory = (req, res) => {
 } ;
 
 exports.deleteCategory = (req, res, next) => {
-    Category.remove({_id: req.params.id}, (error) => {
+    Category.deleteOne({_id: req.params.id}, (error) => {
         if(error){
             res.send(error);
         }
-        res.send({message: 'category deleted'});
+        res.redirect(200, '/allCategory') ;
     }) ;
-    next();
 } ;
