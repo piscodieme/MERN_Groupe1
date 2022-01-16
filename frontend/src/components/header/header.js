@@ -13,6 +13,9 @@ class Header extends Component {
     }
 
     render() {
+        const {
+            dataCategories
+        }=this.props;
         return ( 
             
         <header>
@@ -36,27 +39,15 @@ class Header extends Component {
                                 <li class="dropdown position-static"><a href="/">Nos Categories <i class="fa fa-angle-down"></i></a>
                                     <ul class="mega-menu d-block">
                                         <li class="d-flex">
+                                            {dataCategories.map((data,index)=>(
                                             <ul class="d-block">
-                                                <li class="title"><a href="/">Habillement</a></li>
+                                                <li class="title"><a href="/">{data._Name}</a></li>
                                                 <li><a href="/category">404 Page</a></li>
                                                 <li><a href="/category">Privacy Policy</a></li>
                                                 <li><a href="/category">Faq Page</a></li>
                                                 <li><a href="/category">Coming Soon Page</a></li>
                                             </ul>
-                                            <ul class="d-block">
-                                                <li class="title"><a href="/">Vaissel</a></li>
-                                                <li><a href="/category">Cart Page</a></li>
-                                                <li><a href="/category">Checkout Page</a></li>
-                                                <li><a href="/category">Compare Page</a></li>
-                                                <li><a href="/category">Wishlist Page</a></li>
-                                            </ul>
-                                            <ul class="d-block">
-                                                <li class="title"><a href="/">Electro-menager</a></li>
-                                                <li><a href="/category">Account Page</a></li>
-                                                <li><a href="/category">Login & Register Page</a></li>
-                                                <li><a href="/category">Empty Cart Page</a></li>
-                                                <li><a href="/category">Thank You Page</a></li>
-                                            </ul>
+                                            ))};
                                             <ul class="d-flex align-items-center p-0 border-0 flex-column justify-content-center">
                                                 <li>
                                                     <a class="p-0" href="shop-left-sidebar.html"><img class="img-responsive w-100" src="assets/images/banner/menu-banner-1.jpg" alt=""></img></a>

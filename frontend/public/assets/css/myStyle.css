@@ -1,0 +1,4 @@
+.affCategories{
+    display: flex;
+    justify-content: space-between;
+}
