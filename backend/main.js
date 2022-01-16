@@ -9,12 +9,32 @@ const adminController = require("./Controllers/AdminController");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const layouts = require("express-ejs-layouts") ;
+const path = require('path');
+const multer  = require('multer');
+const storage = multer.diskStorage({
+  destination: (req, file, callback) => {
+    callback(null, './public/image/');
+  },
+  filename: (req, file, callback) => {
+    const name = file.originalname ;
+    callback(null, name);
+  }
+});
+const upload =  multer({storage: storage})
+let bodyParser = require('body-parser');
 
 
+app.use( bodyParser.json() );       // to support JSON-encoded bodies
+app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+  extended: true
+})); 
 app.use(express.json());
 app.use(cors()) ;
 app.use(layouts);
 app.use(express.static("public"));
+app.use('/css', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/css'))) ;
+app.use('/js', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/js'))) ;
+app.use('/js', express.static(path.join(__dirname, 'node_modules/jquery/dist'))) ;
 
 app.set("view engine", "ejs") ;
 
@@ -27,14 +47,19 @@ db.once("open", () =>{
     console.log("Connected") ;
 })
 
+app.get("/", adminController.displayHome) ;
+
 app.get("/adminHome", adminController.displayHome) ;
+app.get("/allCategory", adminController.allCategory) ;
+app.get("/addingCategory", adminController.addCategory) ;
+app.get("/updatingCategory/:id", adminController.updateCategory) ;
+app.get("/allProducts", adminController.allProducts) ;
+app.get("/addProduct", adminController.addProduct) ;
 
 //Products Routes
 
 //Poster un produit
-app.post("/products", productsController.postProduct, (req, res, next) => {
-    console.log("Post Successful");
-});
+app.post("/products", productsController.postProduct) ;
 
 //Recuperer tous les produits
 app.get("/products", productsController.getAllProducts, (req, res, next) => {
@@ -55,22 +80,16 @@ app.get("/productsCategory/:category", productsController.getProductsByCategory,
 });
 
 //Modifier un produit
-app.put("/products/:id", productsController.updateProduct, (req, res, next) => {
-    res.status(200).json(req.data) ;
-});
+app.put("/products/:id", productsController.updateProduct);
 
 //Supprimer un produit
-app.delete("/products/:id", productsController.deleteProductById, (req, res, next) => {
-    console.log("products deleted"); 
-});
+app.delete("/products/:id", productsController.deleteProductById);
 
 
 //Categorie Route
 
 //Creer une categorie
-app.post("/category", categoryController.postCategory, (req, res, next) => {
-    console.log("Post Successful");
-});
+app.post("/category", upload.single('frame'), categoryController.postCategory);
 
 //Recuperer toutes les categories
 app.get("/category", categoryController.getAllCategory, (req, res, next) => {
@@ -79,14 +98,10 @@ app.get("/category", categoryController.getAllCategory, (req, res, next) => {
 });
 
 //Modifier une categorie
-app.put("/category/:id", categoryController.updateCategory, (req, res, next) => {
-    console.log("category updated"); 
-});
+app.put("/category/:id", categoryController.updateCategory);
 
 //Supprimer une categorie
-app.delete("/category/:id", categoryController.deleteCategory, (req, res, next) => {
-    console.log("category deleted"); 
-});
+app.get("/deleteCategory/:id", categoryController.deleteCategory);
 
 // Carts Routes
 

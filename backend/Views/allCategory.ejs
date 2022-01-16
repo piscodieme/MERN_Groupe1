@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="row">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Category Name</th>
+                    <th scope="col">SubCategory Name</th>
+                    <th scope="col">Options</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% let i = 0 ; cat.forEach(category => { %>
+                <tr>
+                    <th scope="row"><%= ++i %></th>
+                    <td><%= category._Name %></td>
+                    <td>
+                        SubCategory
+                    </td>
+                    <td>
+                        <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                            <a href="/updatingCategory/<%= category._id %>">
+                                <button type="button" class="btn btn-warning">Update</button></a>
+                            <a href="/deleteCategory/<%= category._id %>">
+                                <button type="button" class="btn btn-danger">Delete</button>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </div>
+</div>
