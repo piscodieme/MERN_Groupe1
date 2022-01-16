@@ -32,7 +32,7 @@ exports.postCart = (req, res, next) => {
 } ;
 
 exports.updateCart = (req, res) => {
-    Cart.findOne({_id: req.params.id}, (error, cart) => {
+    Cart.findOne({_id: req.params.id}, async (error, cart) => {
         if(error){
             res.send(error);
         }
@@ -41,16 +41,16 @@ exports.updateCart = (req, res) => {
         cart._Status = c._Status ;
         cart._Quantity = c._Quantity ;
         cart._Total = c._Total ;
-        cart._Products.splice(0, cart._Products.length) ;
-        for (let i = 0; i < c._Products.length; i++) {
-        cart._Products.push(c._Products[i]) ;     
-        }    
-        cart.save((err) =>{
-            if(err){
-                res.send(err);
-            }
-            res.send({message: 'cart updated'});
-        });
+        cart._Products = c._Products;
+        console.log(cart);
+        try{
+             await cart.save();
+             return res.send(cart);
+        }
+        catch(err) {
+            console.log(err) ;
+        }
+
     }) ;
 } ;
 
