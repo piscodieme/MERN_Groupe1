@@ -5,6 +5,7 @@ export const categoryService = {
     updateCategory,
     deleteCategory,
     getAllCategories,
+    getProductsByCategory
 }
 
 /* create Category Service */
@@ -35,4 +36,10 @@ async function getAllCategories (){
     return await Api.get('/category')
         .then(res => res.data)
         .catch(error => (" ++++++Error Get All Categories Service+++++++ "+error))
+}
+
+async function getProductsByCategory(category){
+    return await Api.get('/productsCategory/'+category)
+        .then(res => res.data)
+        .catch(error => ("error Get Product By Category"))
 }

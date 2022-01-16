@@ -16,7 +16,6 @@ class Categories extends Component {
     }
     render() {
         const {
-            value,
             dataCategories
         }=this.props;
         console.log("data Categories =====",dataCategories);
@@ -38,7 +37,7 @@ class Categories extends Component {
                                 <ul class="product-tab-nav nav swiper-wrapper affCategories">
                                     {dataCategories.map((data,index)=>(
                                         <li class="nav-item swiper-slide-active ">
-                                            <a class={index==1 ?"nav-link active":"nav-link"} data-bs-toggle="tab"  id="nav-home-tab" role="tab" href="#tab-jewelry"> <img src={data._Image} alt=""></img><span>{data._Name}</span></a>
+                                            <a class={index===0 ?"nav-link active":"nav-link"} data-bs-toggle="tab"  id="nav-home-tab" role="tab" href="#tab-jewelry"> <img src={data._Image} alt=""></img><span>{data._Name}</span></a>
                                         </li> 
                                     ))}
                                     {/* <li class="nav-item  swiper-slide-active ">
