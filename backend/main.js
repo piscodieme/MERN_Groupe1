@@ -59,7 +59,8 @@ app.get("/addProduct", adminController.addProduct) ;
 //Products Routes
 
 //Poster un produit
-app.post("/products", productsController.postProduct) ;
+const cpUpload = upload.fields([{ name: 'frame', maxCount: 1 }, { name: 'images', maxCount: 4 }])
+app.post("/products", cpUpload, productsController.postProduct) ;
 
 //Recuperer tous les produits
 app.get("/products", productsController.getAllProducts, (req, res, next) => {

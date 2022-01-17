@@ -32,5 +32,10 @@ exports.allProducts = (req, res) => {
 } ;
 
 exports.addProduct = (req, res) => {
-    res.render("addProduct") ;
+    Category.find({}, (error, categories) => {
+        if(error)
+            res.send(error);
+        res.render("addProduct", {cat: categories}) ;   
+        // res.send(categories);
+    }) ;
 } ;
