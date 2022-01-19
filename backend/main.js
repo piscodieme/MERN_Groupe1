@@ -11,6 +11,7 @@ const cors = require("cors");
 const layouts = require("express-ejs-layouts") ;
 const path = require('path');
 const multer  = require('multer');
+const auth = require('./Middleware/Auth');
 const storage = multer.diskStorage({
   destination: (req, file, callback) => {
     callback(null, './public/image/');
@@ -47,14 +48,20 @@ db.once("open", () =>{
     console.log("Connected") ;
 })
 
-app.get("/", adminController.displayHome) ;
+app.get("/", auth, adminController.displayHome) ;
+app.get("/displayLogin", adminController.displayLogin) ;
+app.get("/adminHome", auth, adminController.displayHome) ;
+app.get("/allAdmin", auth, adminController.allAdmin) ;
+app.get("/addingAdmin", auth, adminController.addAdmin) ;
+app.get("/allCategory", auth, adminController.allCategory) ;
+app.get("/addingCategory", auth, adminController.addCategory) ;
+app.get("/updatingCategory/:id", auth, adminController.updateCategory) ;
+app.get("/allProducts", auth, adminController.allProducts) ;
+app.get("/addProduct", auth, adminController.addProduct) ;
+app.post("/signUp", auth, upload.none(), adminController.signup) ;
+app.post("/login", upload.none(), adminController.login) ;
 
-app.get("/adminHome", adminController.displayHome) ;
-app.get("/allCategory", adminController.allCategory) ;
-app.get("/addingCategory", adminController.addCategory) ;
-app.get("/updatingCategory/:id", adminController.updateCategory) ;
-app.get("/allProducts", adminController.allProducts) ;
-app.get("/addProduct", adminController.addProduct) ;
+
 
 //Products Routes
 
@@ -84,7 +91,7 @@ app.get("/productsCategory/:category", productsController.getProductsByCategory,
 app.put("/products/:id", productsController.updateProduct);
 
 //Supprimer un produit
-app.delete("/products/:id", productsController.deleteProductById);
+app.get("/deleteProduct/:id", productsController.deleteProductById);
 
 
 //Categorie Route
@@ -130,18 +137,12 @@ app.delete("/cart/:id", cartsController.deleteCart, (req, res, next) => {
 // Customers Routes
 
 //Ajouter un client
-app.post("/customer/", customersController.postCustomer, (req, res, next) => {
-    console.log("Post Successful");
-});
+app.post("/customerInscription/", upload.none(), customersController.signup) ;
+app.post("/customerConnexion/", upload.none(), customersController.login) ;
 
 //Recuperer un client
 app.get("/customer/:id", customersController.getCustomer, (req, res, next) => {
     res.status(200).json(req.data) ;
-});
-
-//Modifier un client
-app.put("/customer/:id", customersController.updateCustomer, (req, res, next) => {
-    console.log("customer updated");
 });
 
 //Supprimer un client

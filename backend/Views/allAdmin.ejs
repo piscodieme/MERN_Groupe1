@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="row">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Admin Login</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Options</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% let i=0 ; ad.forEach(admin=> { %>
+                    <tr>
+                        <th scope="row">
+                            <%= ++i %>
+                        </th>
+                        <td>
+                            <%= admin._Login %>
+                        </td>
+                        <td>
+                            <%= admin._FirstName %>
+                        </td>
+                        <td>
+                            <%= admin._LastName %>
+                        </td>
+                        <td>
+                            <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                                <a href="">
+                                    <button type="button" class="btn btn-warning">Update</button></a>
+                                <a href="">
+                                    <button type="button" class="btn btn-danger">Delete</button>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                    <% }); %>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,18 +1,16 @@
 const mongoose = require("mongoose") ;
+const uniqueValidator = require('mongoose-unique-validator') ;
 
 const t_CustomerSchema = mongoose.Schema({
-    _id: String,
-    _FirstName: String,
-    _LastName: String,
-    _Password: String, 
-    _Adresse: {
-        _Pays: String,
-        _Region: String,
-        _Ville: String,
-        _Quartier: String
-    },
-    _NumeroTel: String
+    _Login: { type: String, required: true, unique: true},
+    _Password: { type: String, required: true},
+    _FirstName: { type: String, required: true},
+    _LastName: { type: String, required: true},
+    _NumeroTel: { type: String, required: true},
+    _Adresse: { type: String, required: true},
 });
+
+t_CustomerSchema.plugin(uniqueValidator) ;
 
 module.exports = mongoose.model("Customers", t_CustomerSchema ) ;
 
