@@ -12,6 +12,7 @@ const layouts = require("express-ejs-layouts") ;
 const path = require('path');
 const multer  = require('multer');
 const auth = require('./Middleware/Auth');
+var session = require('express-session');
 const storage = multer.diskStorage({
   destination: (req, file, callback) => {
     callback(null, './public/image/');
@@ -29,6 +30,12 @@ app.use( bodyParser.json() );       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
 })); 
+app.use(session({
+  secret: 'malako wax',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { maxAge: 60000 }
+})) ;
 app.use(express.json());
 app.use(cors()) ;
 app.use(layouts);
@@ -59,7 +66,17 @@ app.get("/updatingCategory/:id", auth, adminController.updateCategory) ;
 app.get("/allProducts", auth, adminController.allProducts) ;
 app.get("/addProduct", auth, adminController.addProduct) ;
 app.post("/signUp", auth, upload.none(), adminController.signup) ;
-app.post("/login", upload.none(), adminController.login) ;
+app.post("/login", upload.none(), adminController.login, (req, res, next) => {
+    var newUser = {id: req.body.login, password: req.body.password};
+    req.session.user = newUser;
+    res.redirect('/adminHome');
+});
+app.get('/logout', (req, res) => {
+   req.session.destroy(function(err) {
+       console.log('session destroyed') ;
+});
+   res.redirect('/displayLogin');
+});
 
 
 

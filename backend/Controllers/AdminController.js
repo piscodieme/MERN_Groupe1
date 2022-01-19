@@ -22,7 +22,7 @@ exports.signup = (req, res) => {
     .catch(error => res.status(500).json({ error }));
 };
 
-exports.login = (req, res) => {
+exports.login = (req, res, next) => {
   Admin.findOne({ _Login: req.body.login })
     .then(admin => {
       if (!admin) {
@@ -33,14 +33,14 @@ exports.login = (req, res) => {
           if (!valid) {
             return res.status(401).json({ error: 'Mot de passe incorrect !' });
           }
-          res.status(200).json({
-            userId: admin._id,
-            token: jwt.sign(
+          
+          req.body.login = admin._id ;
+          req.body.password = jwt.sign(
               { userId: admin._id },
               'RANDOM_TOKEN_SECRET',
               { expiresIn: '24h' }
-            )
-          });
+            );
+            next() ;
         })
         .catch(error => res.status(500).json({ error }));
     })
