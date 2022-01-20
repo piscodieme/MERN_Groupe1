@@ -1,5 +1,5 @@
 const mongoose = require("mongoose") ;
-const uniqueValidator = require('mongoose-unique-validator') ;
+//const uniqueValidator = require('mongoose-unique-validator') ;
 
 const t_CustomerSchema = mongoose.Schema({
     _Login: { type: String, required: true, unique: true},
@@ -10,7 +10,7 @@ const t_CustomerSchema = mongoose.Schema({
     _Adresse: { type: String, required: true},
 });
 
-t_CustomerSchema.plugin(uniqueValidator) ;
+//t_CustomerSchema.plugin(uniqueValidator) ;
 
 module.exports = mongoose.model("Customers", t_CustomerSchema ) ;
 

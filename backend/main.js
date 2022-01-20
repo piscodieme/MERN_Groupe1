@@ -32,7 +32,7 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 })); 
 app.use(session({
   secret: 'malako wax',
-  resave: false,
+  resave: true,
   saveUninitialized: true,
   cookie: { maxAge: 3600000 }
 })) ;
@@ -60,6 +60,9 @@ app.get("/displayLogin", adminController.displayLogin) ;
 app.get("/adminHome", auth, adminController.displayHome) ;
 app.get("/allAdmin", auth, adminController.allAdmin) ;
 app.get("/addingAdmin", auth, adminController.addAdmin) ;
+app.get("/updatingAdmin/:id", auth, adminController.updatingAdmin) ;
+app.post("/updateAdmin/:id", auth, upload.none(), adminController.updateAdmin) ;
+app.get("/deleteAdmin/:id", adminController.deleteAdmin);
 app.get("/allCategory", auth, adminController.allCategory) ;
 app.get("/addingCategory", auth, adminController.addCategory) ;
 app.get("/updatingCategory/:id", auth, adminController.updateCategory) ;
@@ -69,7 +72,7 @@ app.post("/signUp", auth, upload.none(), adminController.signup) ;
 app.post("/login", upload.none(), adminController.login, (req, res, next) => {
     var newUser = {id: req.body.login, password: req.body.password};
     req.session.user = newUser;
-    res.redirect('/adminHome');
+    res.redirect('/adminHome'); 
 });
 app.get('/logout', (req, res) => {
    req.session.destroy(function(err) {
