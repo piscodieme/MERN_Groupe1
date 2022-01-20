@@ -34,7 +34,7 @@ app.use(session({
   secret: 'malako wax',
   resave: false,
   saveUninitialized: true,
-  cookie: { maxAge: 60000 }
+  cookie: { maxAge: 3600000 }
 })) ;
 app.use(express.json());
 app.use(cors()) ;
@@ -123,7 +123,7 @@ app.get("/category", categoryController.getAllCategory, (req, res, next) => {
 });
 
 //Modifier une categorie
-app.put("/category/:id", categoryController.updateCategory);
+app.post("/category/:id", upload.single('frame'), categoryController.updateCategory);
 
 //Supprimer une categorie
 app.get("/deleteCategory/:id", categoryController.deleteCategory);

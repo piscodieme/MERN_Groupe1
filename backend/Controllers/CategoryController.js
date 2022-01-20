@@ -32,9 +32,14 @@ exports.updateCategory = (req, res) => {
             res.send(error);
         }
         let cat = req.body ;
-        category._Name = cat._Name ;
+        category._Name = cat.name ;
         category._SubCategory = cat.subcategory ;
-        category._Image = cat._Image ;
+        if(req.file){
+            category._Image = req.file.destination + req.file.filename ;
+        }
+        else{
+            category._Image = cat.framebis ;
+        }
         category.save((err) =>{
             if(err){
                 res.send(err);

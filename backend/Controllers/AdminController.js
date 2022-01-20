@@ -87,7 +87,7 @@ exports.updateCategory = (req, res) => {
         if(error){
             return res.send(error);
         }
-        return res.render("updateCategory") ;
+        return res.render("updateCategory", {cat: category}) ;
     }) ;
 } ;
 
