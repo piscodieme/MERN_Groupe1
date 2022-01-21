@@ -163,3 +163,21 @@ exports.addProduct = (req, res) => {
         // res.send(categories);
     }) ;
 } ;
+
+exports.updatingProduct = (req, res) => {
+    Products.findOne({_id: req.params.id}, (error, product) => {
+        if(error){
+            return res.send(error);
+        }
+        Category.find({}, (error, categories) => {
+            if(error)
+                res.send(error);
+            res.render("updateProduct", {cat: categories, pro: product}) ;   
+            // res.send(categories);
+        }) ;
+    }) ;
+} ;
+
+exports.allOrders = (req, res) => {
+    res.render("allOrders") ;
+} ;

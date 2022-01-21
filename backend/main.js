@@ -32,9 +32,9 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 })); 
 app.use(session({
   secret: 'malako wax',
-  resave: true,
+  resave: false,
   saveUninitialized: true,
-  cookie: { maxAge: 3600000 }
+  cookie: { expires: new Date(Date.now() + 3600000) }
 })) ;
 app.use(express.json());
 app.use(cors()) ;
@@ -68,6 +68,8 @@ app.get("/addingCategory", auth, adminController.addCategory) ;
 app.get("/updatingCategory/:id", auth, adminController.updateCategory) ;
 app.get("/allProducts", auth, adminController.allProducts) ;
 app.get("/addProduct", auth, adminController.addProduct) ;
+app.get("/updatingProduct/:id", auth, adminController.updatingProduct) ;
+app.get("/allOrders", auth, adminController.allOrders) ;
 app.post("/signUp", auth, upload.none(), adminController.signup) ;
 app.post("/login", upload.none(), adminController.login, (req, res, next) => {
     var newUser = {id: req.body.login, password: req.body.password};
@@ -108,7 +110,7 @@ app.get("/productsCategory/:category", productsController.getProductsByCategory,
 });
 
 //Modifier un produit
-app.put("/products/:id", productsController.updateProduct);
+app.post("/products/:id", productsController.updateProduct);
 
 //Supprimer un produit
 app.get("/deleteProduct/:id", productsController.deleteProductById);
