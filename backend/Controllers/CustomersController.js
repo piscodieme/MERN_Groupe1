@@ -1,4 +1,53 @@
 const Customer = require("../Models/CustomersModel") ;
+const bcrypt = require("bcrypt") ;
+const jwt = require('jsonwebtoken');
+
+
+
+
+exports.signup = (req, res) => {
+  bcrypt.hash(req.body._Password, 10)
+    .then(hash => {
+      const customer = new Customer({
+        _Login: req.body._Login,
+        _FirstName: req.body._FirstName,
+        _LastName: req.body._LastName,
+        _Adresse: req.body._Adresse,
+        _NumeroTel: req.body._NumeroTel,
+        _Password: hash
+      });
+      customer.save()
+        .then(() => res.status(201).json({ message: 'Utilisateur créé !' }))
+        .catch(error => res.status(400).json({ error }));
+    })
+    .catch(error => res.status(500).json({ error }));
+    
+};
+
+exports.login = (req, res) => {
+  Customer.findOne({ _Login: req.body._Login })
+    .then(customer => {
+      if (!customer) {
+        return res.status(401).json({ error: 'Utilisateur non trouvé !' });
+      }
+      bcrypt.compare(req.body._Password, customer._Password)
+        .then(valid => {
+          if (!valid) {
+            return res.status(401).json({ error: 'Mot de passe incorrect !' });
+          }
+          res.status(200).json({
+            userId: customer._id,
+            token: jwt.sign(
+              { userId: customer._id },
+              'RANDOM_TOKEN_SECRET',
+              { expiresIn: '24h' }
+            )
+          });
+        })
+        .catch(error => res.status(500).json({ error }));
+    })
+    .catch(error => res.status(500).json({ error }));
+};
 
 
 exports.getCustomer = (req, res, next) => {
@@ -12,51 +61,8 @@ exports.getCustomer = (req, res, next) => {
 
 
 
-exports.postCustomer = (req, res, next) => {
-    let customer = new Customer ;
-    let c = req.body ;
-    customer._id = c._id ;
-    customer._Password = c._Password ;
-    customer._FirstName = c._FirstName ;
-    customer._LastName = c._LastName ;
-    customer._NumeroTel = c.NumeroTel ;
-    customer._Adresse._Pays = c._Adresse._Pays ;
-    customer._Adresse._Region = c._Adresse._Region ;
-    customer._Adresse._Ville = c._Adresse._Ville ;
-    customer._Adresse._Quartier = c._Adresse._Quartier ;
-    customer.save((err) =>{
-        if(err){
-            return res.send(err);
-        }
-        return res.send({message: 'customer created'});
-    });
-    next();
-} ;
 
-exports.updateCustomer = (req, res) => {
-    Customer.findOne({_id: req.params.id}, async (error, customer) => {
-        if(error){
-            res.send(error);
-        }
-        let c = req.body ;
-        customer._Password = c._Password ;
-        customer._FirstName = c._FirstName ;
-        customer._LastName = c._LastName ;
-        customer._NumeroTel = c.NumeroTel ;
-        customer._Adresse._Pays = c._Adresse._Pays ;
-        customer._Adresse._Region = c._Adresse._Region ;
-        customer._Adresse._Ville = c._Adresse._Ville ;
-        customer._Adresse._Quartier = c._Adresse._Quartier ;
-        try{
-             await customer.save();
-             return res.send(customer);
-        }
-        catch(err) {
-            console.log(err) ;
-        }
 
-    }) ;
-} ;
 
 exports.deleteCustomer = (req, res, next) => {
     Customer.remove({_id: req.params.id}, (error) => {

@@ -32,29 +32,23 @@ exports.getProductsByCategory = (req, res, next) => {
 exports.postProduct = (req, res, next) => {
     let product = new Products ;
     let pro = req.body ;
-    product._Title = pro._Title ;
-    for (let i = 0; i < pro._Category.length; i++) {
-        product._Category[i] = pro._Category[i] ;    
+    product._Title = pro.name ;
+    product._Category = pro.category ;
+    product._Princing._Price = pro.price ;
+    product._Princing._Promo = pro.promo ;
+    product._Descriptions._Short = pro.short ;
+    product._Descriptions._Long = pro.long ;
+    product._Quantity = pro._quantity ;
+    product._Images._Frame = req.files.frame[0].destination + req.files.frame[0].filename ;
+    for (let j = 0; j < req.files.images.length; j++) {
+        product._Images._Others[j] = req.files.images[j].destination + req.files.images[j].filename ;    
     }
-    product._Princing._Price = pro._Princing._Price ;
-    product._Princing._Promo = pro._Princing._Promo ;
-    product._Descriptions._Short = pro._Descriptions._Short ;
-    product._Descriptions._Long = pro._Descriptions._Long ;
-    product._Quantity = pro._Quantity ;
-    product._Images._Frame = pro._Images._Frame ;
-    for (let j = 0; j < pro._Images._Others.length; j++) {
-        product._Images._Others[j] = pro._Images._Others[j] ;    
-    }
-    product._Comments._LoginUser = pro._Comments._LoginUser ;
-    product._Comments._Comment = pro._Comments._Comment ;
-    product._Mark = pro._Mark ;
     product.save((err) =>{
         if(err){
             res.send(err);
         }
         res.send({message: 'product created'});
     });
-    next();
 } ;
 
 exports.updateProduct = (req, res) => {
@@ -71,10 +65,7 @@ exports.updateProduct = (req, res) => {
         product._Descriptions._Long = pro._Descriptions._Long ;
         product._Quantity = pro._Quantity ;
         product._Images._Frame = pro._Images._Frame ;
-        product._Images._Others = pro._Images._Others
-        product._Comments._LoginUser = pro._Comments._LoginUser ;
-        product._Comments._Comment = pro._Comments._Comment ;
-        product._Mark = pro._Mark ;
+        product._Images._Others = pro._Images._Others;
         product.save((err) =>{
             if(err){
                 return res.send(err);
@@ -85,11 +76,10 @@ exports.updateProduct = (req, res) => {
 } ; 
 
 exports.deleteProductById = (req, res, next) => {
-    Products.remove({_id: req.params.id}, (error) => {``
+    Products.deleteOne({_id: req.params.id}, (error) => {
         if(error){
             res.send(err);
         }
-        res.send({message: 'product deleted'});
+        res.redirect(200, '/allProducts') ;
     }) ;
-    next();
 } ;

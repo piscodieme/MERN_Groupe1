@@ -11,6 +11,8 @@ const cors = require("cors");
 const layouts = require("express-ejs-layouts") ;
 const path = require('path');
 const multer  = require('multer');
+const auth = require('./Middleware/Auth');
+var session = require('express-session');
 const storage = multer.diskStorage({
   destination: (req, file, callback) => {
     callback(null, './public/image/');
@@ -28,6 +30,12 @@ app.use( bodyParser.json() );       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
 })); 
+app.use(session({
+  secret: 'malako wax',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { maxAge: 3600000 }
+})) ;
 app.use(express.json());
 app.use(cors()) ;
 app.use(layouts);
@@ -47,19 +55,36 @@ db.once("open", () =>{
     console.log("Connected") ;
 })
 
-app.get("/", adminController.displayHome) ;
+app.get("/", auth, adminController.displayHome) ;
+app.get("/displayLogin", adminController.displayLogin) ;
+app.get("/adminHome", auth, adminController.displayHome) ;
+app.get("/allAdmin", auth, adminController.allAdmin) ;
+app.get("/addingAdmin", auth, adminController.addAdmin) ;
+app.get("/allCategory", auth, adminController.allCategory) ;
+app.get("/addingCategory", auth, adminController.addCategory) ;
+app.get("/updatingCategory/:id", auth, adminController.updateCategory) ;
+app.get("/allProducts", auth, adminController.allProducts) ;
+app.get("/addProduct", auth, adminController.addProduct) ;
+app.post("/signUp", auth, upload.none(), adminController.signup) ;
+app.post("/login", upload.none(), adminController.login, (req, res, next) => {
+    var newUser = {id: req.body.login, password: req.body.password};
+    req.session.user = newUser;
+    res.redirect('/adminHome');
+});
+app.get('/logout', (req, res) => {
+   req.session.destroy(function(err) {
+       console.log('session destroyed') ;
+});
+   res.redirect('/displayLogin');
+});
 
-app.get("/adminHome", adminController.displayHome) ;
-app.get("/allCategory", adminController.allCategory) ;
-app.get("/addingCategory", adminController.addCategory) ;
-app.get("/updatingCategory/:id", adminController.updateCategory) ;
-app.get("/allProducts", adminController.allProducts) ;
-app.get("/addProduct", adminController.addProduct) ;
+
 
 //Products Routes
 
 //Poster un produit
-app.post("/products", productsController.postProduct) ;
+const cpUpload = upload.fields([{ name: 'frame', maxCount: 1 }, { name: 'images', maxCount: 4 }])
+app.post("/products", cpUpload, productsController.postProduct) ;
 
 //Recuperer tous les produits
 app.get("/products", productsController.getAllProducts, (req, res, next) => {
@@ -83,7 +108,7 @@ app.get("/productsCategory/:category", productsController.getProductsByCategory,
 app.put("/products/:id", productsController.updateProduct);
 
 //Supprimer un produit
-app.delete("/products/:id", productsController.deleteProductById);
+app.get("/deleteProduct/:id", productsController.deleteProductById);
 
 
 //Categorie Route
@@ -98,7 +123,7 @@ app.get("/category", categoryController.getAllCategory, (req, res, next) => {
 });
 
 //Modifier une categorie
-app.put("/category/:id", categoryController.updateCategory);
+app.post("/category/:id", upload.single('frame'), categoryController.updateCategory);
 
 //Supprimer une categorie
 app.get("/deleteCategory/:id", categoryController.deleteCategory);
@@ -129,18 +154,12 @@ app.delete("/cart/:id", cartsController.deleteCart, (req, res, next) => {
 // Customers Routes
 
 //Ajouter un client
-app.post("/customer/", customersController.postCustomer, (req, res, next) => {
-    console.log("Post Successful");
-});
+app.post("/customerInscription/", upload.none(), customersController.signup) ;
+app.post("/customerConnexion/", upload.none(), customersController.login) ;
 
 //Recuperer un client
 app.get("/customer/:id", customersController.getCustomer, (req, res, next) => {
     res.status(200).json(req.data) ;
-});
-
-//Modifier un client
-app.put("/customer/:id", customersController.updateCustomer, (req, res, next) => {
-    console.log("customer updated");
 });
 
 //Supprimer un client

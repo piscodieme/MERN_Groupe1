@@ -5,10 +5,10 @@
 <head>
     <meta charset="UTF-8">
     <title> Admin Home</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="/style.css">
     <!-- Boxiocns CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' type="text/css" rel='stylesheet'>
-    <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
@@ -59,6 +59,21 @@
                 </ul>
             </li>
             <li>
+                <div class="iocn-link">
+                    <a href="/allAdmin">
+                        <i class='bx bx-collection'></i>
+                        <span class="link_name">Administration</span>
+                    </a>
+                    <i class='bx bxs-chevron-down arrow'></i>
+                </div>
+                <ul class="sub-menu">
+                    <li><a class="link_name" href="#">Administration</a></li>
+                    <li><a href="/allAdmin">All Admin</a></li>
+                    <li><a href="/addingAdmin">Add Admin</a></li>
+                    <li><a href="#">Settings</a></li>
+                </ul>
+            </li>
+            <li>
                 <a href="#">
                     <i class='bx bx-history'></i>
                     <span class="link_name">History</span>
@@ -79,13 +94,13 @@
             <li>
                 <div class="profile-details">
                     <div class="profile-content">
-                        <img src="image/profile.jpg" alt="profileImg">
+                        <img src="/image/profile.jpg" alt="profileImg">
                     </div>
                     <div class="name-job">
                         <div class="profile_name">Mame Mar</div>
                         <div class="job">Administrator</div>
                     </div>
-                    <i class='bx bx-log-out'></i>
+                    <a href="/logout"><i class='bx bx-log-out'></i></a>
                 </div>
             </li>
         </ul>
@@ -99,9 +114,9 @@
         </div>
     </section>
 
-    <script src="script.js"></script>
-    <script src="./js/bootstrap.min.js"></script>
-    <script src="./js/jquery.min.js"></script>
+    <script src="/script.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/jquery.min.js"></script>
 </body>
 
 </html>

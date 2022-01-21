@@ -1,14 +1,22 @@
 <div class="container">
     <div class="row">
-        <form action="/category" enctype="multipart/form-data" method="post">
+        <form action="/category/<%= cat._id%>" enctype="multipart/form-data" method="post">
             <div class="mb-3">
                 <label for="name" class="form-label">Category Name</label>
-                <input type="text" class="form-control" name="name" id="name" placeholder="Sandales">
+                <input type="text" value="<%= cat._Name%>" class="form-control" name="name" id="name" placeholder="Sandales">
             </div>
             <div class="mb-3">
                 <label for="frame" class="form-label">Category Frame</label>
+                <input type="hidden" name="framebis" value="<%= cat._Image%>" class="form-control" id="frame">
                 <input type="file" name="frame" class="form-control" id="frame">
             </div>
+            <% cat._SubCategory.forEach(sub => { %>
+            <div class="mb-3">
+                <label for="subcategory" class="form-label">Subcategory Name</label>
+                <input type="text" value="<%= sub %>" name="subcategory[]" class="form-control">
+            </div>
+            <% }) ; %>
+            <button type="button" id="add" class="btn btn-warning">Add Subcategory</button></a>
             <button type="submit" class="btn btn-primary">Save</button>
         </form>
     </div>
