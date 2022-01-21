@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 
+
 class LoginForm extends Component {
 
     constructor(props){
@@ -26,7 +27,10 @@ class LoginForm extends Component {
         })
         console.log("PASSWORD =======",this.state.userPassword);
     }
-
+    handleSubmitTest = () => {
+        //console.log("usernamme == ",this.state.username,"  ++ passWord =====",this.state.userPassword);
+        this.props.handleSubmit(this.state.username,this.state.userPassword);
+    }
     render() {
         const {
             handleSubmit,
@@ -38,7 +42,7 @@ class LoginForm extends Component {
             <div id="lg1" class="tab-pane active">
                 <div class="login-form-container">
                     <div class="login-register-form">
-                        <form action="#" method={handleSubmit(this.state.username,this.state.userPassword)}>
+                        <form onSubmit={this.handleSubmitTest}>
                             <input 
                                 type="text" 
                                 name="username" 
@@ -59,7 +63,7 @@ class LoginForm extends Component {
                                 <Link class="flote-none" to="javascript:void(0)">Remember me</Link>
                                 <a href="/">Forgot Password?</a>
                             </div>
-                                <button type="submit" { ...this.state.userPassword && this.state.username ?'':'disabled'}><span>Login</span></button>
+                                <button type="submit"><span>Login</span></button>
                             </div>
                         </form>
                     </div>

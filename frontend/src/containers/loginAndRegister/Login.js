@@ -3,6 +3,7 @@ import LoginForm from '../../components/loginAndRegister/LoginForm'
 import PropTypes from 'prop-types';
 import BreadCrumb from '../../components/utilities/BreadCrumb';
 import RegisterForm from '../../components/loginAndRegister/RegisterForm';
+import { loginAndRegisterService } from '../../service/loginAndRegisterService';
 
 class Login extends Component {
 
@@ -11,7 +12,8 @@ class Login extends Component {
     }
     
     handleSubmit=(username, password)=>{
-
+        //console.log("user name AAAAAAAAA ", username,"pass word BBBBBBBBB", password);
+        loginAndRegisterService.login(username, password);
         
     }
     render() {

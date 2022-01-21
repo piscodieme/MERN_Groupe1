@@ -6,14 +6,16 @@ import Categories from '../../components/contains/Categories';
 import Testimonial from '../../components/contains/Testimonial';
 import BestSellerPage from '../../components/contains/BestSellerPage';
 import PropTypes from 'prop-types'
-import {categoryService} from '../../service/categoryService'
+import {categoryService} from '../../service/categoryService';
+import {productService} from '../../service/productService';
 
 class Home extends Component {
     constructor(props){
         super(props);
         this.state={
             dataCategories:[],
-            errorMessage:''
+            errorMessage:'',
+            dataProduct:[],
         }
     }
     async componentDidMount(){
@@ -26,8 +28,18 @@ class Home extends Component {
             .catch(error =>{
                 this.setState({errorMessage:"Get All Categories Error"});
                 console.log("error Message ====",this.state.errorMessage);
+            });
+        await productService.getAllProducts()
+            .then(res=>{
+                const products = res;
+                this.setState({dataProduct:products})
+                console.log("data products hommme ++++++ ",this.state.dataProduct);
             })
+            .catch(error => {
+                this.setState({errorMessage:"Error Get All Product"})
+                console.log("message erreur ==== ",this.state.errorMessage,"++++Error++++",error)})
     }
+   
 
     render() {
         return (
@@ -38,6 +50,7 @@ class Home extends Component {
                 <BestSellerPage/>
                 <Categories
                     dataCategories = {this.state.dataCategories}
+                    dataProduct = {this.state.dataProduct}
                 />
                 <Banner/>
                 <PaymentMode/>

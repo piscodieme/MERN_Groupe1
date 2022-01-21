@@ -33,7 +33,7 @@ exports.updateCategory = (req, res) => {
         }
         let cat = req.body ;
         category._Name = cat._Name ;
-        category._SubCategory = cat.subcategory ;
+        category._SubCategory = cat._SubCategory ;
         category._Image = cat._Image ;
         category.save((err) =>{
             if(err){

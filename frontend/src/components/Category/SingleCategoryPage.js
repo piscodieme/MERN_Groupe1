@@ -1,24 +1,49 @@
-import React, { Component } from 'react';
+import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import ProductsBanner from '../product/ProductsBanner';
 import ProductsCategoryList from './productsCategoryList';
+import {useNavigate, useParams } from 'react-router-dom';
+import { productService } from '../../service/productService';
+import BreadCrumb from '../utilities/BreadCrumb';
 
-class SingleCategoryPage extends Component {
-    constructor(props) {
-        super(props)
 
+function SingleCategoryPage  () {
+    let {categoryName} = useParams();
+/* const value = useState(()=>{
+
+});
+   let data = [];
+    console.log(categoryName);
+    let dataProducts = async () => {
+        await productService.getProductsByCategory(categoryName)
+            .then(res => {
+                value = res;
+                console.log(value);
+                return value;
+            })
+            .catch(error =>{
+            console.log("error error error",error);
+        })
     }
-    render() {
+     
+    
+        console.log("dataProducts  +++++",value); */
         return (
             <>
+                <BreadCrumb
+                    title1 = "Nos Categories"
+                    title2 = {categoryName}
+                />
                 <div class="shop-category-area pt-100px pb-100px">
                     <div class="container">
                         <div class="row">
                             <div class="col-12">
-                                
                                 <ProductsBanner/>
                                 {/*  Shop Top Area Start */}
-                                <ProductsCategoryList/>
+                                <ProductsCategoryList
+                                   /*  dataProducts = {dataProducts} */
+                                    categoryName = {categoryName}
+                                />
                                 {/*  Shop Bottom Area End */}
                             </div>
                         </div>
@@ -27,7 +52,7 @@ class SingleCategoryPage extends Component {
             </>
         )
     }
-}
+
 
 SingleCategoryPage.propTypes = {
 

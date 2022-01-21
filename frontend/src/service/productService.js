@@ -58,8 +58,14 @@ function createProduct (data){
 }
 
 /* get Products By Category service */
-function getProductsByCategory (id){
-    return Api.get('/productsCategory/'+id)
-        .then(res => res.dat)
-        .catch(()=>console.log("+++++++++Error Get products By Category Service++++++++++++"))
+function getProductsByCategory (category){
+    return new Promise((resolve,reject)=>{
+    Api.get('/productsCategory/'+category)
+    .then(res => {
+        resolve(res.data);
+    })
+    .catch((error) =>{
+        reject(error);
+    })
+})
 }
