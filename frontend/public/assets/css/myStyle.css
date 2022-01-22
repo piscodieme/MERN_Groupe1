@@ -2,3 +2,14 @@
     display: flex;
     justify-content: space-between;
 }
+
+.newAffCategories{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+}
+
+.product-tab-nav.nav {
+    display: flex;
+    justify-content: space-evenly;
+}

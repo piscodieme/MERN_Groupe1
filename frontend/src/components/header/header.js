@@ -1,21 +1,54 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import {productService} from '../../service/productService'
+
+let i=0;
 
 class Header extends Component {
     constructor(props) {
         super(props)
+        this.state = {
+            productsCategory:[],
+            errorMessage:''
+        }
 
     }
 
 
     componentDidMount() {
-
+       
     }
+
+    listSubCategory = (items) =>{
+        const i=0;
+        return (
+            <div>
+                {items.map((item)=>(
+                    <li><a href={"/category/"+item}>{item}</a></li>
+                ))}
+            </div>
+        )
+    }
+
+    /* async getProductsByCategory (category) {
+        await productService.getProductsByCategory(category)
+        .then(res => {
+            const products = res;
+            console.log(products);
+            this.setState({productsCategory:products})
+        })
+        .catch(error => {
+            console.log("error get Products By Category",error);
+            this.setState({errorMessage : "Error Get  Products By Category"})
+        })
+    } */
 
     render() {
         const {
-            dataCategories
+            dataCategories,
         }=this.props;
+
+        //console.log("donnees produit par categorie£££££££",this.state.productsCategory);
         return ( 
             
         <header>
@@ -40,12 +73,9 @@ class Header extends Component {
                                     <ul class="mega-menu d-block">
                                         <li class="d-flex">
                                             {dataCategories.map((data,index)=>(
-                                            <ul class="d-block">
-                                                <li class="title"><a href="/">{data._Name}</a></li>
-                                                <li><a href="/category">404 Page</a></li>
-                                                <li><a href="/category">Privacy Policy</a></li>
-                                                <li><a href="/category">Faq Page</a></li>
-                                                <li><a href="/category">Coming Soon Page</a></li>
+                                                <ul class="d-block">
+                                                <li class="title"><a href={"/category/"+data._Name}>{data._Name}</a></li>
+                                                {this.listSubCategory(data._SubCategory)}                                                                                          
                                             </ul>
                                             ))};
                                             <ul class="d-flex align-items-center p-0 border-0 flex-column justify-content-center">

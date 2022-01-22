@@ -13,10 +13,6 @@ class SingleCategory extends Component {
     render() {
         return (
             <>
-                <BreadCrumb
-                    title1 = "Nos Categories"
-                    title2 ="CategoryName"
-                />
                 <SingleCategoryPage/>
             </>
         )
