@@ -22,7 +22,7 @@ exports.postCategory = (req, res) => {
         if(err){
             return res.send(err);
         }
-        return res.send({message: 'category created'});
+        res.redirect('/allCategory') ;
     });
 } ;
 
@@ -44,7 +44,7 @@ exports.updateCategory = (req, res) => {
             if(err){
                 res.send(err);
             }
-            res.send({message: 'category updated'});
+            res.redirect('/allCategory') ;
         });
     }) ;
 } ;
@@ -54,6 +54,6 @@ exports.deleteCategory = (req, res, next) => {
         if(error){
             res.send(error);
         }
-        res.redirect(200, '/allCategory') ;
+        res.redirect('/allCategory') ;
     }) ;
 } ;

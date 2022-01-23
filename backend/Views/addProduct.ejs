@@ -1,21 +1,29 @@
-<div class="container">
-    <form action="/products" enctype="multipart/form-data" method="post" class="row g-3">
-        <div class="col-12">
-            <label for="name" class="form-label">Product Name</label>
-            <input type="text" class="form-control" name="name">
+<div class="container container_liste nice_nical_benito">
+    <div class="header_liste d-flex">
+        <div class="d-flex">
+            <i class="bx bx-add-to-queue"></i>
+            <h3 class="text_header  ">
+                Ajout de produit
+            </h3>
         </div>
-        <h4>Category</h4>
+    </div>
+    <form action="/products" enctype="multipart/form-data" method="post" class="row g-3 long_form">
+        <div class="col-12">
+            <label for="name" class="form-label">Nom de produit</label>
+            <input required type="text" class="form-control" name="name">
+        </div>
+        <h4>Categorie</h4>
         <div class="col-12">
             <ul class="list-group">
                 <% cat.forEach(category=> { %>
                 <li class="list-group-item">
-                    <input class="form-check-input me-1" type="checkbox" name="category[]" value="<%= category._Name %>" aria-label="...">
+                    <input required class="form-check-input me-1" type="checkbox" name="category[]" value="<%= category._Name %>" aria-label="...">
                     <%= category._Name %>
                     <% if(category._SubCategory.length != 0) {%>
                     <ul class="list-group">
                         <% category._SubCategory.forEach(sub=> {%>
                         <li class="list-group-item">
-                            <input class="form-check-input me-1" type="checkbox" name="category[]" value="<%= sub %>" aria-label="...">
+                            <input required class="form-check-input me-1" type="checkbox" name="category[]" value="<%= sub %>" aria-label="...">
                             <%= sub %>
                         </li> 
                         <% }); %>
@@ -27,34 +35,34 @@
         </div>
         <div class="col-md-6">
             <label for="frame" class="form-label">Image</label>
-            <input type="file" class="form-control" name="frame">
+            <input required type="file" class="form-control" name="frame">
         </div>
         <div class="col-md-6">
-            <label for="image" class="form-label">Others Images</label>
-            <input type="file" class="form-control" name="images" multiple>
+            <label for="image" class="form-label">Autre Images</label>
+            <input required type="file" class="form-control" name="images" multiple>
         </div>
         <div class="col-md-6">
-            <label for="price" class="form-label">Price</label>
-            <input type="text" class="form-control" name="price">
+            <label for="price" class="form-label">Prix</label>
+            <input required type="text" class="form-control" name="price">
         </div>
         <div class="col-md-6">
             <label for="promo" class="form-label">Promo</label>
-            <input type="text" class="form-control" name="promo">
+            <input required type="text" class="form-control" name="promo">
         </div>
         <div class="col-md-6">
             <label for="long" class="form-label">Description</label>
             <textarea class="form-control" name="long" rows="3"></textarea>
         </div>
         <div class="col-md-4">
-            <label for="short" class="form-label">Short Description</label>
+            <label for="short" class="form-label">Resume</label>
             <textarea class="form-control" name="short" rows="3"></textarea>
         </div>
         <div class="col-md-2">
-            <label for="quantity" class="form-label">Quantity</label>
-            <input type="text" class="form-control" name="quantity">
+            <label for="quantity" class="form-label">Quantite</label>
+            <input required type="text" class="form-control" name="quantity">
         </div>
         <div class="col-12">
-            <button type="submit" class="btn btn-primary">Save</button>
+            <button type="submit" class="btn update_btn">Enregistrer</button>
         </div>
     </form>
 </div>

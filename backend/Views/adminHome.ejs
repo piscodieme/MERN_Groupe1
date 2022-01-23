@@ -1,29 +1,42 @@
 <div class="body_container  mt-0 d-flex">
+    <div class="hide" id="add"></div>
     <div class="main_home_content nice_nical_benito h-100">
-        <div class="text_header_container">
-            <h2 class="text_header">
-                Tableau de bord Xaragn
-            </h2>
-            
-        </div>
         <div class="colored_resume_xaliss nice_nical_benito">
-
+            <h3 class="text_header">
+                Tableau de bord Xaragn
+            </h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos earum ea aliquid.</p>
         </div>
-        <h2 class="text_header mt-4">
-            Access Rapide
-        </h2>
-        <div class="quick_access w-100 d-flex">
+        <div class="quick_access w-100 d-flex mt-5">
             <div class="ajouts">
-                <div class="ajout_categorie nice_nical_benito horizontal_card"></div>
-                <div class="ajout_produit nice_nical_benito horizontal_card mt-4"></div>
+                <a href="/addingCategory">
+                    <div class="ajout_categorie nice_nical_benito horizontal_card">
+                        <p class="titre_action">Ajout categorie</p>
+                    </div>
+                </a>
+                <a href="/addProduct">
+                    <div class="ajout_produit nice_nical_benito horizontal_card mt-4">
+                        <p class="titre_action">Ajout produit</p>
+                    </div>
+                </a>
             </div>
             <div class="listes d-flex">
-                <div class="liste_categorie nice_nical_benito vertical_card"></div>
-                <div class="liste_produit nice_nical_benito vertical_card   "></div>
+                <a class="liste_categorie nice_nical_benito vertical_card" href="/allCategory">
+                    <p class="titre_action">Liste categories</p> 
+                </a>
+                <a class="liste_produit nice_nical_benito vertical_card" href="/allProducts">
+                    <p class="titre_action">Liste produits</p> 
+                </a>
             </div>
         </div>
     </div>
     <div class="right_home_content h-100">
-
+        <div class="liste_orders nice_nical_benito">
+            <h4>Liste des dernières commandes</h4>
+            <div class="commande">
+                    <p class="produit">Produit 1 commande</p>
+                    <p class="date">12 Janvier 2021</p>
+            </div>
+        </div>
     </div>
 </div>
