@@ -9,8 +9,9 @@ class SingleCategory extends Component {
         super(props)
 
     }
-
+    
     render() {
+       
         return (
             <>
                 <SingleCategoryPage/>
