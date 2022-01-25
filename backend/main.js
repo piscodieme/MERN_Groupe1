@@ -34,7 +34,7 @@ app.use(session({
   secret: 'malako wax',
   resave: false,
   saveUninitialized: true,
-  cookie: { maxAge: 3600000 }
+  cookie: { expires: new Date(Date.now() + 3600000) }
 })) ;
 app.use(express.json());
 app.use(cors()) ;
@@ -60,16 +60,21 @@ app.get("/displayLogin", adminController.displayLogin) ;
 app.get("/adminHome", auth, adminController.displayHome) ;
 app.get("/allAdmin", auth, adminController.allAdmin) ;
 app.get("/addingAdmin", auth, adminController.addAdmin) ;
+app.get("/updatingAdmin/:id", auth, adminController.updatingAdmin) ;
+app.post("/updateAdmin/:id", auth, upload.none(), adminController.updateAdmin) ;
+app.get("/deleteAdmin/:id", adminController.deleteAdmin);
 app.get("/allCategory", auth, adminController.allCategory) ;
 app.get("/addingCategory", auth, adminController.addCategory) ;
 app.get("/updatingCategory/:id", auth, adminController.updateCategory) ;
 app.get("/allProducts", auth, adminController.allProducts) ;
 app.get("/addProduct", auth, adminController.addProduct) ;
+app.get("/updatingProduct/:id", auth, adminController.updatingProduct) ;
+app.get("/allOrders", auth, adminController.allOrders) ;
 app.post("/signUp", auth, upload.none(), adminController.signup) ;
 app.post("/login", upload.none(), adminController.login, (req, res, next) => {
     var newUser = {id: req.body.login, password: req.body.password};
     req.session.user = newUser;
-    res.redirect('/adminHome');
+    res.redirect('/adminHome'); 
 });
 app.get('/logout', (req, res) => {
    req.session.destroy(function(err) {
@@ -105,7 +110,7 @@ app.get("/productsCategory/:category", productsController.getProductsByCategory,
 });
 
 //Modifier un produit
-app.put("/products/:id", productsController.updateProduct);
+app.post("/products/:id", productsController.updateProduct);
 
 //Supprimer un produit
 app.get("/deleteProduct/:id", productsController.deleteProductById);

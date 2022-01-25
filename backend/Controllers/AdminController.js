@@ -68,6 +68,61 @@ exports.addAdmin = (req, res) => {
     res.render("addAdmin") ;
 } ;
 
+exports.updateAdmin = (req, res) => {
+    Admin.findOne({_id: req.params.id}, (error, admin) => {
+        if(error){
+            return res.send(error);
+        }
+        if(req.body.password){
+            bcrypt.hash(req.body.password, 10)
+            .then(hash => {
+                admin._Login = req.body.login ;
+                admin._Password = hash ;
+                admin._FirstName = req.body.firstname ;
+                admin._LastName = req.body.lastname ;
+                admin.save((err) =>{
+                    if(err){
+                        return res.send(err);
+                    }
+                    return res.send({message: 'admin updated'});
+                }) ;
+            })
+            .catch(error => res.status(500).json({ error }));
+        }
+        else{
+            admin._Login = req.body.login ;
+            admin._Password = req.body.passwordbis ;
+            admin._FirstName = req.body.firstname ;
+            admin._LastName = req.body.lastname ;
+            admin.save((err) =>{
+                if(err){
+                    return res.send(err);
+                }
+                return res.send({message: 'admin updated'});
+            }) ;
+        }
+        
+    }) ;
+} ;
+
+exports.updatingAdmin = (req, res) => {
+    Admin.findOne({_id: req.params.id}, (error, admin) => {
+        if(error){
+            return res.send(error);
+        }
+        return res.render("updateAdmin", {ad: admin}) ;
+    }) ;
+} ;
+
+exports.deleteAdmin = (req, res, next) => {
+    Admin.deleteOne({_id: req.params.id}, (error) => {
+        if(error){
+            res.send(error);
+        }
+        res.redirect(200, '/allAdmin') ;
+    }) ;
+} ;
+
 exports.allCategory = (req, res) => {
     Category.find({}, (error, categories) => {
         if(error)
@@ -107,4 +162,22 @@ exports.addProduct = (req, res) => {
         res.render("addProduct", {cat: categories}) ;   
         // res.send(categories);
     }) ;
+} ;
+
+exports.updatingProduct = (req, res) => {
+    Products.findOne({_id: req.params.id}, (error, product) => {
+        if(error){
+            return res.send(error);
+        }
+        Category.find({}, (error, categories) => {
+            if(error)
+                res.send(error);
+            res.render("updateProduct", {cat: categories, pro: product}) ;   
+            // res.send(categories);
+        }) ;
+    }) ;
+} ;
+
+exports.allOrders = (req, res) => {
+    res.render("allOrders") ;
 } ;

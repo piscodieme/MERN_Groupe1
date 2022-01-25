@@ -1,6 +1,18 @@
-<div class="container">
-    <div class="row">
-        <table class="table table-striped">
+<div class="container container_liste nice_nical_benito">
+    <div class="hide" id="add"></div>
+    <div class="row ">
+        <div class="header_liste d-flex">
+            <div class="d-flex">
+                <i class="bx bx-collection"></i>
+                <h3 class="text_header  ">
+                    Liste des produits
+                </h3>
+            </div>
+            <a href="/addProduct" class="btn_ajout_item">
+                Ajouter produit
+            </a>
+        </div>
+        <table class="table table-hover">
             <thead>
                 <tr>
                     <th scope="col">#</th>
@@ -33,13 +45,14 @@
                         </td>
                         <td>
                             <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                                <a href="">
-                                    <button type="button" class="btn btn-warning">Update</button></a>
+                                <a href="/updatingProduct/<%= product._id %>">
+                                    <button type="button" class="btn btn_update">Update</button></a>
                                 <a href="/deleteProduct/<%= product._id %>">
-                                    <button type="button" class="btn btn-danger">Delete</button>
+                                    <button type="button" class="btn btn_delete">Delete</button>
                                 </a>
                             </div>
                         </td>
+                        
                     </tr>
                     <% }); %>
             </tbody>
