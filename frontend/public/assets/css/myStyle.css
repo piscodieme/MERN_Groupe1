@@ -13,3 +13,18 @@
     display: flex;
     justify-content: space-evenly;
 }
+
+.text-list-category{
+    text-decoration: none;
+    font-size: x-large;
+    text-align: center;
+    color: black;
+}
+
+.text-list-category:hover{
+    transform: scale(1.2,1.2);
+    color: black;
+}
+.slide-heigth{
+    height: 50vh;
+}
