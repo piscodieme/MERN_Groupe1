@@ -16,7 +16,7 @@ exports.signup = (req, res) => {
         _LastName: req.body.lastname,
       });
       admin.save()
-        .then(() => res.status(201).json({ message: 'Administrateur créé !' }))
+        .then(() => res.redirect('/allAdmin')  )
         .catch(error => res.status(400).json({ error }));
     })
     .catch(error => res.status(500).json({ error }));

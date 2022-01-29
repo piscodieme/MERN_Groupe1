@@ -1,6 +1,11 @@
 <div class="container container_liste nice_nical_benito">
     <div class="hide" id="add"></div>
     <div class="row ">
+        <% if(typeof message !== 'undefined'){ %>
+            <div class="alert alert-success" role="alert">
+                <%= message %>
+            </div>
+        <%} ;%>
         <div class="header_liste d-flex">
             <div class="d-flex">
                 <i class="bx bx-collection"></i>
