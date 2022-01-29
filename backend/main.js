@@ -110,7 +110,7 @@ app.get("/productsCategory/:category", productsController.getProductsByCategory,
 });
 
 //Modifier un produit
-app.post("/products/:id", productsController.updateProduct);
+app.post("/products/:id", cpUpload, productsController.updateProduct);
 
 //Supprimer un produit
 app.get("/deleteProduct/:id", productsController.deleteProductById);
