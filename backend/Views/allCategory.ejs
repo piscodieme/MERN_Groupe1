@@ -28,7 +28,7 @@
                     <td><%= category._Name %></td>
                     <td>
                         <% category._SubCategory.forEach(sub=> {%>
-                            <%= sub %>
+                            <span class="sous-category"><%= sub %></span>
                         <% }); %>
                     </td>
                     <td>
