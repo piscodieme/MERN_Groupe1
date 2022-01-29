@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
+import { useHistory } from "react-router-dom";
 
 
 class LoginForm extends Component {
@@ -12,6 +13,8 @@ class LoginForm extends Component {
             userPassword:'',
         }
     }
+
+
 
     /* recuperaion du champ username */
     handleUsernameChange = (event) =>{
@@ -63,7 +66,7 @@ class LoginForm extends Component {
                                 <Link class="flote-none" to="javascript:void(0)">Remember me</Link>
                                 <a href="/">Forgot Password?</a>
                             </div>
-                                <button type="submit"><span>Login</span></button>
+                                <button type="button" onClick={this.handleSubmitTest}><span>Login</span></button>
                             </div>
                         </form>
                     </div>
