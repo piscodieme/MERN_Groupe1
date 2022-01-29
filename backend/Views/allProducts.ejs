@@ -34,8 +34,8 @@
                         </td>
                         <td>
                             <% product._Category.forEach(sub=> {%>
-                                <%= sub %>
-                                    <% }); %>
+                                <span class="sous-category"><%= sub %></span>
+                            <% }); %>
                         </td>
                         <td>
                             <%= product._Princing._Price %>
@@ -45,10 +45,10 @@
                         </td>
                         <td>
                             <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                                <a href="/updatingProduct/<%= product._id %>">
-                                    <button type="button" class="btn btn_update">Update</button></a>
+                                <a href="/updatingProduct/<%= product._id %>"">
+                                    <button type="button" class="btn update_btn">Update</button></a>
                                 <a href="/deleteProduct/<%= product._id %>">
-                                    <button type="button" class="btn btn_delete">Delete</button>
+                                    <button type="button" class="btn delete_btn">Delete</button>
                                 </a>
                             </div>
                         </td>
