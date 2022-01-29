@@ -154,7 +154,7 @@ class ProductsCategoryList extends Component {
                                                             <div class="product">
                                                                 
                                                                 <div class="thumb">
-                                                                    <a href="/product" class="image">
+                                                                    <a href={"/produit/"+item._id} class="image">
                                                                         <img src={item._Images._Frame}
                                                                             alt="Product" />
                                                                         <img class="hover-image"

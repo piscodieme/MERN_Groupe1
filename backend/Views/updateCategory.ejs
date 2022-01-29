@@ -1,23 +1,31 @@
-<div class="container">
+<div class="container container_liste nice_nical_benito">
+    <div class="header_liste d-flex">
+        <div class="d-flex">
+            <i class="bx bx-add-to-queue"></i>
+            <h3 class="text_header  ">
+                Modification de categorie
+            </h3>
+        </div>
+    </div>
     <div class="row">
         <form action="/category/<%= cat._id%>" enctype="multipart/form-data" method="post">
             <div class="mb-3">
-                <label for="name" class="form-label">Category Name</label>
+                <label for="name" class="form-label">Nom de categorie</label>
                 <input type="text" value="<%= cat._Name%>" class="form-control" name="name" id="name" placeholder="Sandales">
             </div>
             <div class="mb-3">
-                <label for="frame" class="form-label">Category Frame</label>
+                <label for="frame" class="form-label">Image de categorie</label>
                 <input type="hidden" name="framebis" value="<%= cat._Image%>" class="form-control" id="frame">
                 <input type="file" name="frame" class="form-control" id="frame">
             </div>
             <% cat._SubCategory.forEach(sub => { %>
             <div class="mb-3">
-                <label for="subcategory" class="form-label">Subcategory Name</label>
+                <label for="subcategory" class="form-label"> Nom sous-categorie</label>
                 <input type="text" value="<%= sub %>" name="subcategory[]" class="form-control">
             </div>
             <% }) ; %>
-            <button type="button" id="add" class="btn btn-warning">Add Subcategory</button></a>
-            <button type="submit" class="btn btn-primary">Save</button>
+            <button type="button" id="add" class="btn btn-secondary">Ajouter sous-categirie</button></a>
+            <button type="submit" class="btn update_btn">Enregister</button>
         </form>
     </div>
 </div>
