@@ -15,9 +15,9 @@ function login(username, password){
     return new Promise((resolve,reject)=>{
         Api.get('/customerConnexion/'+dataLogin)
         .then(res => {
-            localStorage.setItem("token", res.data.token);
+            sessionStorage.setItem("token", JSON.stringify(res.data.token));
             console.log("res data ---------> ",res.data);
-            console.log(localStorage.getItem("token"))
+            console.log(sessionStorage.getItem("token"))
             
             resolve(res.data);
         })

@@ -66,7 +66,7 @@ class LoginForm extends Component {
                                 <Link class="flote-none" to="javascript:void(0)">Remember me</Link>
                                 <a href="/">Forgot Password?</a>
                             </div>
-                                <button type="submit"><span>Login</span></button>
+                                <button type="button" onClick={this.handleSubmitTest}><span>Login</span></button>
                             </div>
                         </form>
                     </div>

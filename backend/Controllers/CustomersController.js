@@ -47,6 +47,7 @@ exports.login = (req, res) => {
               { expiresIn: '24h' }
             )
           });
+          console.log(res.token);
         })
         .catch(error => res.status(500).json({ error }));
     })
