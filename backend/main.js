@@ -15,7 +15,7 @@ const auth = require('./Middleware/Auth');
 var session = require('express-session');
 const storage = multer.diskStorage({
   destination: (req, file, callback) => {
-    callback(null, './public/image/');
+    callback(null, './../frontend/public/assets/images/');
   },
   filename: (req, file, callback) => {
     const name = file.originalname ;
@@ -32,7 +32,7 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 })); 
 app.use(session({
   secret: 'malako wax',
-  resave: false,
+  resave: true,
   saveUninitialized: true,
   cookie: { expires: new Date(Date.now() + 3600000) }
 })) ;
@@ -110,7 +110,7 @@ app.get("/productsCategory/:category", productsController.getProductsByCategory,
 });
 
 //Modifier un produit
-app.post("/products/:id", productsController.updateProduct);
+app.post("/products/:id", cpUpload, productsController.updateProduct);
 
 //Supprimer un produit
 app.get("/deleteProduct/:id", productsController.deleteProductById);

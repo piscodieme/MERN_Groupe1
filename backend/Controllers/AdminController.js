@@ -84,7 +84,7 @@ exports.updateAdmin = (req, res) => {
                     if(err){
                         return res.send(err);
                     }
-                    return res.send({message: 'admin updated'});
+                    return res.redirect('/allAdmin') ;
                 }) ;
             })
             .catch(error => res.status(500).json({ error }));
@@ -98,7 +98,7 @@ exports.updateAdmin = (req, res) => {
                 if(err){
                     return res.send(err);
                 }
-                return res.send({message: 'admin updated'});
+                return res.redirect('/allAdmin') ;
             }) ;
         }
         
@@ -119,7 +119,7 @@ exports.deleteAdmin = (req, res, next) => {
         if(error){
             res.send(error);
         }
-        res.redirect(200, '/allAdmin') ;
+        res.redirect('/allAdmin') ;
     }) ;
 } ;
 

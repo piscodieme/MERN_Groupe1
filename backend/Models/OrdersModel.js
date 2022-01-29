@@ -9,7 +9,8 @@ const t_OrderSchema = mongoose.Schema({
     _DeliveryAdress: String,
     _PaymentStatus: String,
     _Status: String,
-    _Products: []
+    _TotalAmount: Number,
+    _Products: [String] 
 });
 
 module.exports = mongoose.model("Orders", t_OrderSchema ) ;

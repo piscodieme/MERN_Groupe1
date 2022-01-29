@@ -1,5 +1,5 @@
 <div class="container">
-    <form action="/products" enctype="multipart/form-data" method="post" class="row g-3">
+    <form action="/products/<%=pro._id%>" enctype="multipart/form-data" method="post" class="row g-3">
         <div class="col-12">
             <label for="name" class="form-label">Product Name</label>
             <input type="text" value="<%= pro._Title %>" class="form-control" name="name">
@@ -9,20 +9,29 @@
             <ul class="list-group">
                 <% cat.forEach(category=> { %>
                     <li class="list-group-item">
+                        <% if (pro._Category.indexOf(category._Name) === -1){ %>
                         <input class="form-check-input me-1" type="checkbox" name="category[]"
                             value="<%= category._Name %>" aria-label="...">
+                        <% } else { %>
+                            <input class="form-check-input me-1" type="checkbox" name="category[]" value="<%= category._Name %>"
+                                checked aria-label="...">
+                            <% } ; %>
                         <%= category._Name %>
-                            <% if(category._SubCategory.length !=0) {%>
+                            <% if(category._SubCategory.length != 0) {%>
                                 <ul class="list-group">
                                     <% category._SubCategory.forEach(sub=> {%>
                                         <li class="list-group-item">
+                                            <% if (pro._Category.indexOf(sub) === -1){ %>
                                             <input class="form-check-input me-1" type="checkbox" name="category[]"
                                                 value="<%= sub %>" aria-label="...">
-                                            <%= sub %>
+                                            <% } else { %>
+                                                <input class="form-check-input me-1" type="checkbox" name="category[]" value="<%= sub %>" checked aria-label="...">
+                                            <% } ; %>
+                                                <%= sub %>
                                         </li>
                                         <% }); %>
                                 </ul>
-                                <% } %>
+                                <% }; %>
                     </li>
                     <% }); %>
             </ul>
@@ -34,7 +43,7 @@
         </div>
         <div class="col-md-6">
             <label for="image" class="form-label">Others Images</label>
-            <input type="file" class="form-control" name="images" multiple>
+            <input type="file" class="form-control" name= "images" multiple>
         </div>
         <div class="col-md-6">
             <label for="price" class="form-label">Price</label>
