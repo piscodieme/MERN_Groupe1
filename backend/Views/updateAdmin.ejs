@@ -2,23 +2,23 @@
     <div class="row">
         <form action="/updateAdmin/<%= ad._id %>" enctype="multipart/form-data" method="post">
             <div class="mb-3">
-                <label for="login" class="form-label">Login</label>
+                <label for="login" class="form-label">Nom d'utilisateur</label>
                 <input type="text" value="<%= ad._Login %>" class="form-control" id="login" name="login">
             </div>
             <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
+                <label for="password" class="form-label">Mot de passe</label>
                 <input type="password" name="password" id="password" class="form-control">
                 <input type="hidden" value="<%= ad._Password %>" name="passwordbis" id="passwordbis" class="form-control">
             </div>
             <div class="mb-3">
-                <label for="firstname" class="form-label">First Name</label>
+                <label for="firstname" class="form-label">Nom</label>
                 <input type="text" value="<%= ad._FirstName %>" class="form-control" id="firstname" name="firstname">
             </div>
             <div class="mb-3">
-                <label for="lastname" class="form-label">Last Name</label>
+                <label for="lastname" class="form-label">Prenom</label>
                 <input type="text" value="<%= ad._LastName %>" class="form-control" id="lastname" name="lastname">
             </div>
-            <button type="submit" class="btn btn-primary">Save</button>
+            <button type="submit" class="btn btn-primary">Enregistrer</button>
         </form>
     </div>
 </div>

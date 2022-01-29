@@ -16,8 +16,8 @@
             <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Category Name</th>
-                    <th scope="col">SubCategory Name</th>
+                    <th scope="col">Categorie</th>
+                    <th scope="col">Sous categories</th>
                     <th scope="col">Options</th>
                 </tr>
             </thead>
@@ -28,15 +28,15 @@
                     <td><%= category._Name %></td>
                     <td>
                         <% category._SubCategory.forEach(sub=> {%>
-                            <%= sub %>
+                            <span class="sous-category"><%= sub %></span>
                         <% }); %>
                     </td>
                     <td>
                         <div class="btn-group" role="group" aria-label="Basic mixed styles example">
                             <a href="/updatingCategory/<%= category._id %>">
-                                <button type="button" class="btn update_btn">Update</button></a>
+                                <button type="button" class="btn update_btn">Modifier</button></a>
                             <a href="/deleteCategory/<%= category._id %>">
-                                <button type="button" class="btn delete_btn">Delete</button>
+                                <button type="button" class="btn delete_btn">Supprimer</button>
                             </a>
                         </div>
                     </td>

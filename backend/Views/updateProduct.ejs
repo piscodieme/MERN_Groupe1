@@ -1,10 +1,10 @@
 <div class="container">
     <form action="/products/<%=pro._id%>" enctype="multipart/form-data" method="post" class="row g-3">
         <div class="col-12">
-            <label for="name" class="form-label">Product Name</label>
+            <label for="name" class="form-label">Nom Produits</label>
             <input type="text" value="<%= pro._Title %>" class="form-control" name="name">
         </div>
-        <h4>Category</h4>
+        <h4>Categories</h4>
         <div class="col-12">
             <ul class="list-group">
                 <% cat.forEach(category=> { %>
@@ -42,15 +42,15 @@
             <input type="hidden" value="<%= pro._Images._Frame %>" class="form-control" name="framebis">
         </div>
         <div class="col-md-6">
-            <label for="image" class="form-label">Others Images</label>
+            <label for="image" class="form-label">Autres Images</label>
             <input type="file" class="form-control" name= "images" multiple>
         </div>
         <div class="col-md-6">
-            <label for="price" class="form-label">Price</label>
+            <label for="price" class="form-label">Prix</label>
             <input type="text" value="<%= pro._Princing._Price %>" class="form-control" name="price">
         </div>
         <div class="col-md-6">
-            <label for="promo" class="form-label">Promo</label>
+            <label for="promo" class="form-label"> Prix Promo</label>
             <input type="text" value="<%= pro._Princing._Promo %>" class="form-control" name="promo">
         </div>
         <div class="col-md-6">
@@ -58,15 +58,15 @@
             <textarea class="form-control" name="long" rows="3"><%= pro._Descriptions._Long %></textarea>
         </div>
         <div class="col-md-4">
-            <label for="short" class="form-label">Short Description</label>
+            <label for="short" class="form-label">Description courte</label>
             <textarea class="form-control" name="short" rows="3"><%= pro._Descriptions._Short %></textarea>
         </div>
         <div class="col-md-2">
-            <label for="quantity" class="form-label">Quantity</label>
+            <label for="quantity" class="form-label">Quantite</label>
             <input type="text" value="<%= pro._Quantity %>" class="form-control" name="quantity">
         </div>
         <div class="col-12">
-            <button type="submit" class="btn btn-primary">Save</button>
+            <button type="submit" class="btn btn-primary">Enregistrer</button>
         </div>
     </form>
 </div>
