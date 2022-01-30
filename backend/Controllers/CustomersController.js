@@ -6,6 +6,7 @@ const jwt = require('jsonwebtoken');
 
 
 exports.signup = (req, res) => {
+  console.log("register test+++++++++++++++++",req.body);
   bcrypt.hash(req.body._Password, 10)
     .then(hash => {
       const customer = new Customer({

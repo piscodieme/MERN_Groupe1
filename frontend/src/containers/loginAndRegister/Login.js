@@ -16,6 +16,11 @@ class Login extends Component {
         loginAndRegisterService.login(username, password);
         
     }
+
+    handleSubmitRegister = (firstname,lastname,login,adresse,telephone,password) => {
+        console.log("container register")
+        loginAndRegisterService.register(firstname,lastname,login,adresse,telephone,password);
+    }
     render() {
         return (
             <>
@@ -40,7 +45,9 @@ class Login extends Component {
                                     <LoginForm
                                         handleSubmit={this.handleSubmit}
                                     />
-                                    <RegisterForm/>
+                                    <RegisterForm
+                                        handleSubmitRegister={this.handleSubmitRegister}
+                                    />
                                 </div>
                             </div>
                         </div>

@@ -1,8 +1,10 @@
-import React, { Component } from 'react'
+import React, { Component, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import {productService} from '../../service/productService'
+import {loginAndRegisterService} from '../../service/loginAndRegisterService'
 
 let i=0;
+let token=''
 
 class Header extends Component {
     constructor(props) {
@@ -14,9 +16,30 @@ class Header extends Component {
 
     }
 
-
     componentDidMount() {
-       
+       token = sessionStorage.getItem("token");
+    }
+
+    disconnect =()=>{
+        loginAndRegisterService.disconnect();
+    }
+
+    connectOrdisconnect = () =>{
+        console.log("test tokenn ",token)
+        if(token){
+            return(
+                <div>
+                    <li><button class="dropdown-item" onClick={this.disconnect}>disconnect</button></li>
+                </div>
+            )
+        }else{
+            return( 
+                <div>         
+                <li><a class="dropdown-item" href="/login">Sign in</a></li>
+                </div>
+            )
+        }
+        
     }
 
     listSubCategory = (items) =>{
@@ -73,70 +96,20 @@ class Header extends Component {
                                     <ul class="mega-menu d-block">
                                         <li class="d-flex">
                                             {dataCategories.map((data,index)=>(
-                                                <ul class="d-block">
-                                                <li class="title"><a href={"/category/"+data._Name}>{data._Name}</a></li>
-                                                {this.listSubCategory(data._SubCategory)}                                                                                          
-                                            </ul>
-                                            ))};
-                                            <ul class="d-flex align-items-center p-0 border-0 flex-column justify-content-center">
+                                                <ul class="d-block" key={index}>
+                                                    <li class="title"><a href={"/category/"+data._Name}>{data._Name}</a></li>
+                                                    {this.listSubCategory(data._SubCategory)}                                                                                          
+                                                </ul>
+                                            ))}
+                                           {/*  <ul class="d-flex align-items-center p-0 border-0 flex-column justify-content-center">
                                                 <li>
                                                     <a class="p-0" href="shop-left-sidebar.html"><img class="img-responsive w-100" src="assets/images/banner/menu-banner-1.jpg" alt=""></img></a>
                                                 </li>
-                                            </ul>
+                                            </ul> */}
                                         </li>
                                     </ul>
                                 </li>
-                                <li /* class="dropdown position-static" */><a href="/produits">Nos Produits {/* <i
-                                    class="fa fa-angle-down"></i> */}</a>
-                                   {/*  <ul class="mega-menu d-block">
-                                        <li class="d-flex">
-                                            <ul class="d-block">
-
-                                                <li class="title"><a href="index.html">Shop Page</a></li>
-                                                <li><a href="shop-3-column.html">Shop 3 Column</a></li>
-                                                <li><a href="shop-4-column.html">Shop 4 Column</a></li>
-                                                <li><a href="shop-left-sidebar.html">Shop Left Sidebar</a></li>
-                                                <li><a href="shop-right-sidebar.html">Shop Right Sidebar</a></li>
-                                                <li><a href="shop-list-left-sidebar.html">Shop List Left Sidebar</a>
-                                                </li>
-                                                <li><a href="shop-list-right-sidebar.html">Shop List Right Sidebar</a>
-                                                </li>
-                                                <li><a href="cart.html">Cart Page</a></li>
-                                                <li><a href="checkout.html">Checkout Page</a></li>
-                                            </ul>
-                                            <ul class="d-block">
-                                                <li class="title"><a href="index.html">product Details Page</a></li>
-                                                <li><a href="single-product.html">Product Single</a></li>
-                                                <li><a href="single-product-variable.html">Product Variable</a></li>
-                                                <li><a href="single-product-affiliate.html">Product Affiliate</a></li>
-                                                <li><a href="single-product-group.html">Product Group</a></li>
-                                                <li><a href="single-product-tabstyle-2.html">Product Tab 2</a></li>
-                                                <li><a href="single-product-tabstyle-3.html">Product Tab 3</a></li>
-                                                <li><a href="single-product-slider.html">Product Slider</a></li>
-                                                <li><a href="single-product-gallery-left.html">Product Gallery Left</a>
-                                                </li>
-                                            </ul>
-                                            <ul class="d-block">
-                                                <li class="title"><a href="index.html">Single Product Page</a></li>
-                                                <li><a href="single-product-gallery-right.html">Product Gallery Right</a> </li>
-                                                <li><a href="single-product-sticky-left.html">Product Sticky Left</a>
-                                                </li>
-                                                <li><a href="single-product-sticky-right.html">Product Sticky Right</a>
-                                                </li>
-                                                <li><a href="compare.html">Compare Page</a></li>
-                                                <li><a href="wishlist.html">Wishlist Page</a></li>
-                                                <li><a href="my-account.html">Account Page</a></li>
-                                                <li><a href="login.html">Login & Register Page</a></li>
-                                                <li><a href="empty-cart.html">Empty Cart Page</a></li>
-                                            </ul>
-                                            <ul class="d-flex align-items-center p-0 border-0 flex-column justify-content-center">
-                                                <li>
-                                                    <a class="p-0" href="shop-left-sidebar.html"><img class="img-responsive w-100" src="assets/images/banner/menu-banner-2.png" alt=""></img></a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                    </ul> */}
-                                </li>
+                                <li><a href="/produits">Nos Produits</a></li>
                                 <li><a href="/contact">Contact</a></li>
                                 <li><a href="/about">About</a></li>
                                 <li><a href="/cart">Mon Panier</a></li>
@@ -152,21 +125,21 @@ class Header extends Component {
                                 <button class="dropdown-toggle header-action-btn" data-bs-toggle="dropdown"><i
                                         class="pe-7s-users"></i></button>
                                 <ul class="dropdown-menu dropdown-menu-right">
-                                    <li><a class="dropdown-item" href="my-account.html">My account</a></li>
-                                    <li><a class="dropdown-item" href="checkout.html">Checkout</a></li>
-                                    <li><a class="dropdown-item" href="/login">Sign in</a></li>
+                                   {/*  <li><a class="dropdown-item" href="my-account.html">My account</a></li> */}
+                                   {this.connectOrdisconnect()}
+                                   
                                 </ul>
                             </div>
-                            <a href="#offcanvas-wishlist" class="header-action-btn offcanvas-toggle">
+                            {/* <a href="#offcanvas-wishlist" class="header-action-btn offcanvas-toggle">
                                 <i class="pe-7s-like"></i>
-                            </a>
+                            </a> */}
                             <a href="#offcanvas-cart" class="header-action-btn header-action-btn-cart offcanvas-toggle pr-0">
                                 <i class="pe-7s-shopbag"></i>
                                 <span class="header-action-num">01</span>
                             </a>
-                            <a href="#offcanvas-mobile-menu" class="header-action-btn header-action-btn-menu offcanvas-toggle d-lg-none">
+                            {/* <a href="#offcanvas-mobile-menu" class="header-action-btn header-action-btn-menu offcanvas-toggle d-lg-none">
                                 <i class="pe-7s-menu"></i>
-                            </a>
+                            </a> */}
                         </div>
                     </div>
                 </div>

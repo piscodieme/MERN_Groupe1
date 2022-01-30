@@ -1,16 +1,37 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import {Link} from 'react-router-dom'
+import {cartService} from '../../service/cartService'
+import AddToCartButton from '../utilities/AddToCartButon'
+//import history from './history'
 
+let token = ''
 class ProductsList extends Component {
     constructor(props) {
         super(props)
 
     }
+
+    componentDidMount(){
+        token = sessionStorage.getItem("token");
+       
+    }
+    
+    AddToCart = () =>{
+        if(token){
+           console.log("connecter il peux");
+           //cartService.AddToCart();
+          // history.push("/");
+        }else{
+            console.log(" NOT connect");
+        }
+    }
+
     render() {
         const  {
             dataProduct,
         }=this.props;
+        console.log("tooookennnnn  ====> ",token);
         return (
             <>
                 <div class="desktop-tab">
@@ -135,7 +156,7 @@ class ProductsList extends Component {
                                                             <div class="product">
                                                                 <div class="thumb">
                                                                     <a href={"/produit/"+data._id} class="image">
-                                                                        <img src="assets/images/product-image/1.jpg"
+                                                                        <img src={data._Images._Frame}
                                                                             alt="Product" />
                                                                         <img class="hover-image"
                                                                             src="assets/images/product-image/1.jpg" alt="Product" />
@@ -143,16 +164,7 @@ class ProductsList extends Component {
                                                                     <span class="badges">
                                                                         <span class="new">New</span>
                                                                     </span>
-                                                                    <div class="actions">
-                                                                        <a href="wishlist.html" class="action wishlist"
-                                                                            title="Wishlist"><i class="pe-7s-like"></i></a>
-                                                                        <a href="/" class="action quickview"
-                                                                            data-link-action="quickview" title="Quick view"
-                                                                            data-bs-toggle="modal" data-bs-target={"#exampleModal"+index}><i
-                                                                                class="pe-7s-look"></i></a>
-                                                                        <a href="compare.html" class="action compare"
-                                                                            title="Compare"><i class="pe-7s-refresh-2"></i></a>
-                                                                    </div>
+                                                                    
                                                                 </div>
                                                                 <div class="content">
                                                                     <span class="ratings">
@@ -169,15 +181,16 @@ class ProductsList extends Component {
                                                                         <span class="new">{data._Princing._Price} Fcfa</span>
                                                                     </span>
                                                                 </div>
-                                                                <button title="Add To Cart" class=" add-to-cart">Add
-                                                                    To Cart</button>
+                                                                <AddToCartButton
+                                                                    productNumber = {data._id}
+                                                                />
                                                             </div>
                                                         </div>
                                                         )
                                                         )};
                                                     </div>
                                                 </div>
-                                                <div class="tab-pane fade" id="shop-list">
+                                                {/* <div class="tab-pane fade" id="shop-list">
                                                 {dataProduct.map((data,index)=>(
                                                     <div class="shop-list-wrapper">
                                                         <div class="row">
@@ -235,7 +248,7 @@ class ProductsList extends Component {
                                                     </div>
                                                     )
                                                     )}; 
-                                                </div>
+                                                </div> */}
                                             </div>
                                         </div>
                                     </div>
@@ -249,7 +262,7 @@ class ProductsList extends Component {
                                                 </li>
                                                 <li class="li"><a class="page-link" href="/">1</a></li>
                                                 <li class="li"><a class="page-link active" href="/">2</a></li>
-                                                <li class="li"><a class="page-link" href="/">3</a></li>
+                                                <li class="li"><a class="page-link" href="/">33</a></li>
                                                 <li class="li"><a class="page-link" href="/"><i class="fa fa-angle-right"></i></a>
                                                 </li>
                                             </ul>
