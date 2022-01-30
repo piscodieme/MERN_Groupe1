@@ -3,8 +3,14 @@ import Api from "./Api";
 
 export const loginAndRegisterService = {
     login,
-    register
+    register,
+    disconnect,
 }
+
+function disconnect(){
+    sessionStorage.clear();
+}
+
 function login(username, password){
    
     console.log("test data SERVICE  >>>>>>>",username)

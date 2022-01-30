@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import Registerbutton from './registerButton'
 
 class RegisterForm extends Component {
     constructor(props) {
@@ -119,7 +120,9 @@ class RegisterForm extends Component {
                                     onChange={this.handleAdresseChange}
                                     />
                                 <div class="button-box">
-                                    <button type="button" onClick={this.handleSubmit}><span>Register</span></button>
+                                    <Registerbutton
+                                        handleSubmit = {this.handleSubmit}
+                                    />
                                 </div>
                             </form>
                         </div>
