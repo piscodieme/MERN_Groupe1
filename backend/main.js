@@ -137,7 +137,7 @@ app.get("/deleteCategory/:id", categoryController.deleteCategory);
 
 //Ajouter un panier
 //ajouter un produit au panier d'un client
-app.get("/cart/:id/:idproduct", customersController.updateCustomerCart, (req, res, next) => {
+app.post("/customercart", upload.none(), customersController.updateCustomerCart, (req, res, next) => {
     console.log("Produit ajouter au panier");
 });
 app.post("/cart/", cartsController.postCart, (req, res, next) => {
