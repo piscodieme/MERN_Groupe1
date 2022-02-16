@@ -69,10 +69,10 @@ exports.getCustomer = (req, res, next) => {
 
 
 exports.updateCustomerCart = (req, res, next) => {
-    Customer.findOne({_id: req.params.id}, (error, customer) => {
+    Customer.findOne({_id: req.body.id}, (error, customer) => {
         if(error)
             res.send(error);
-        customer._Panier.push(req.params.idproduct);
+        customer._Panier.push(req.body.idproduct);
         customer.save((err) =>{
             if(err){
                 res.send(err);
