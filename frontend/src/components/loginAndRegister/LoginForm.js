@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import { useHistory } from "react-router-dom";
+import Loginbutton from './loginButton';
 
 
 class LoginForm extends Component {
@@ -66,7 +67,9 @@ class LoginForm extends Component {
                                 <Link class="flote-none" to="javascript:void(0)">Remember me</Link>
                                 <a href="/">Forgot Password?</a>
                             </div>
-                                <button type="button" onClick={this.handleSubmitTest}><span>Login</span></button>
+                               <Loginbutton
+                                    handleSubmitTest={this.handleSubmitTest}
+                               />
                             </div>
                         </form>
                     </div>

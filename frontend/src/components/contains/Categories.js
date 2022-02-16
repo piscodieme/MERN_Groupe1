@@ -4,6 +4,7 @@ import{ Tab, TabList, TabPanel, Box, TabContext, Tabs} from 'react-tabs';
 import {productService} from '../../service/productService';
 
 let data= [];
+let token = ''
 
 class Categories extends Component {
     constructor(props) {
@@ -14,7 +15,14 @@ class Categories extends Component {
 
     }
     componentDidMount() {
+         token = sessionStorage.getItem("token");
+    }
 
+    addToCard = () =>{
+       
+        if(token){
+
+        }
     }
 
     handleTabChange = (item) => {
@@ -107,8 +115,9 @@ class Categories extends Component {
                                                         <span class="new">{items._Princing._Price} Fcfa</span>
                                                     </span>
                                                 </div>
-                                                <button title="Add To Cart" class=" add-to-cart">Add
-                                                    To Cart</button>
+                                                <a href={!token ? "/login":""}>
+                                                <button title="Add To Cart" class="add-to-cart">Add
+                                                    To Cart</button></a>
                                             </div>
                                             </div>
 

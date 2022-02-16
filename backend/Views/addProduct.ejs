@@ -10,20 +10,20 @@
     <form action="/products" enctype="multipart/form-data" method="post" class="row g-3 long_form">
         <div class="col-12">
             <label for="name" class="form-label">Nom de produit</label>
-            <input required type="text" class="form-control" name="name">
+            <input type="text" class="form-control" name="name">
         </div>
         <h4>Categorie</h4>
         <div class="col-12">
             <ul class="list-group">
                 <% cat.forEach(category=> { %>
                 <li class="list-group-item">
-                    <input required class="form-check-input me-1" type="checkbox" name="category[]" value="<%= category._Name %>" aria-label="...">
+                    <input class="form-check-input me-1" type="checkbox" name="category[]" value="<%= category._Name %>" aria-label="...">
                     <%= category._Name %>
                     <% if(category._SubCategory.length != 0) {%>
                     <ul class="list-group">
                         <% category._SubCategory.forEach(sub=> {%>
                         <li class="list-group-item">
-                            <input required class="form-check-input me-1" type="checkbox" name="category[]" value="<%= sub %>" aria-label="...">
+                            <input class="form-check-input me-1" type="checkbox" name="category[]" value="<%= sub %>" aria-label="...">
                             <%= sub %>
                         </li> 
                         <% }); %>
@@ -35,19 +35,19 @@
         </div>
         <div class="col-md-6">
             <label for="frame" class="form-label">Image</label>
-            <input required type="file" class="form-control" name="frame">
+            <input type="file" class="form-control" name="frame">
         </div>
         <div class="col-md-6">
             <label for="image" class="form-label">Autre Images</label>
-            <input required type="file" class="form-control" name="images" multiple>
+            <input type="file" class="form-control" name="images" multiple>
         </div>
         <div class="col-md-6">
             <label for="price" class="form-label">Prix</label>
-            <input required type="text" class="form-control" name="price">
+            <input type="text" class="form-control" name="price">
         </div>
         <div class="col-md-6">
             <label for="promo" class="form-label">Promo</label>
-            <input required type="text" class="form-control" name="promo">
+            <input type="text" class="form-control" name="promo">
         </div>
         <div class="col-md-6">
             <label for="long" class="form-label">Description</label>
@@ -59,7 +59,7 @@
         </div>
         <div class="col-md-2">
             <label for="quantity" class="form-label">Quantite</label>
-            <input required type="text" class="form-control" name="quantity">
+            <input type="text" class="form-control" name="quantity">
         </div>
         <div class="col-12">
             <button type="submit" class="btn update_btn">Enregistrer</button>
