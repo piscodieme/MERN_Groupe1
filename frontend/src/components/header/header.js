@@ -20,10 +20,12 @@ class Header extends Component {
        token = sessionStorage.getItem("token");
     }
 
+/* call of disconnect service function  */
     disconnect =()=>{
         loginAndRegisterService.disconnect();
     }
 
+    /* show connect or disconnect in header component */
     connectOrdisconnect = () =>{
         console.log("test tokenn ",token)
         if(token){

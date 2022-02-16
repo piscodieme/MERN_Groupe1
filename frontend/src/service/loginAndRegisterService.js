@@ -25,10 +25,11 @@ function login(username, password){
                 "firstname" : res.data.firstname,
                 "lastname" : res.data.lastname,
                 "adresse" : res.data.adresse,
-                "numero" : res.data.numero
+                "numero" : res.data.numero,
             }
             sessionStorage.setItem("token", JSON.stringify(res.data.token));
             sessionStorage.setItem("userInfo", JSON.stringify(userInfo));
+            sessionStorage.setItem("userId",JSON.stringify(res.data.userId))
 
             console.log("res data ---------> ",res.data);
             console.log(sessionStorage.getItem("token"))

@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import {useNavigate, useParams } from 'react-router-dom';
-import {productService} from '../../service/productService'
+import {productService} from '../../service/productService';
+import {cartService} from '../../service/cartService';
 //import {withRouter} from 'react-router-dom'
 
 class SingleProduct extends Component {
@@ -22,6 +23,11 @@ class SingleProduct extends Component {
                     console.log("errorr",error);
                 })
        }
+    AddToCart=()=>{
+        const number = this.props.productNumber;
+        const userId = sessionStorage.getItem("userId");
+        cartService.AddToCart(number,userId); 
+    }
 
     AfficheTitle(items){
         return(
@@ -148,7 +154,7 @@ class SingleProduct extends Component {
                                         <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1" />
                                     </div>
                                     <div class="pro-details-cart">
-                                        <button class="add-cart"> Add To
+                                        <button class="add-cart" onClick={this.AddToCart}> Add To
                                             Cart</button>
                                     </div>
                                     <div class="pro-details-cart">
