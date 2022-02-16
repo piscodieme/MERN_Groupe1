@@ -1,4 +1,5 @@
 const Customer = require("../Models/CustomersModel") ;
+const Product = require("../Models/ProductsModel") ;
 const bcrypt = require("bcrypt") ;
 const jwt = require('jsonwebtoken');
 
@@ -67,12 +68,23 @@ exports.getCustomer = (req, res, next) => {
     }) ;
 } ;
 
+exports.getCustomerCart = (req, res, next) => {
+    let client;
+    Customer.findOne({_id: req.params.id}, (error, customer) => {
+        if(error)
+            res.send(error); 
+        req.data = customer ;
+        next() ;         
+    }) ;
+    
+} ;
+
 
 exports.updateCustomerCart = (req, res, next) => {
-    Customer.findOne({_id: req.body.id}, (error, customer) => {
+    Customer.findOne({_id: req.params.id}, (error, customer) => {
         if(error)
             res.send(error);
-        customer._Panier.push(req.body.idproduct);
+        customer._Panier.push(req.body);
         customer.save((err) =>{
             if(err){
                 res.send(err);
