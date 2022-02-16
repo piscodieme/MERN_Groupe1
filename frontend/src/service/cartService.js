@@ -14,8 +14,12 @@ function AddToCart (productNumber, userId){
     console.log("debut service cart");
     const token = sessionStorage.getItem("token");
     console.log("service token ==>>  ",token);
+    const data = {
+        "idproduct" : productNumber,
+        "id" : userId
+    }
     if(token){
-        Api.get('/cart/'+userId+'/'+productNumber)
+        Api.get('/cart/',data)
             .then(res =>
                /*  res.data */
                 console.log(res.data)
