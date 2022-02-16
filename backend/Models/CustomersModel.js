@@ -8,6 +8,7 @@ const t_CustomerSchema = mongoose.Schema({
     _LastName: { type: String, required: true},
     _NumeroTel: { type: String, required: true},
     _Adresse: { type: String, required: true},
+    _Panier: {type: Array}
 });
 
 //t_CustomerSchema.plugin(uniqueValidator) ;

@@ -15,7 +15,8 @@ exports.signup = (req, res) => {
         _LastName: req.body._LastName,
         _Adresse: req.body._Adresse,
         _NumeroTel: req.body._NumeroTel,
-        _Password: hash
+        _Password: hash,
+        _Panier: []
       });
       customer.save()
         .then(() => res.status(201).json({ message: 'Utilisateur créé !' }))
@@ -42,6 +43,7 @@ exports.login = (req, res) => {
             lastname: customer._LastName,
             adresse: customer._Adresse,
             numero: customer._NumeroTel,
+            panier: customer._Panier,
             token: jwt.sign(
               { userId: customer._id },
               'RANDOM_TOKEN_SECRET',
@@ -66,6 +68,20 @@ exports.getCustomer = (req, res, next) => {
 } ;
 
 
+exports.updateCustomerCart = (req, res, next) => {
+    Customer.findOne({_id: req.params.id}, (error, customer) => {
+        if(error)
+            res.send(error);
+        customer._Panier.push(req.params.idproduct);
+        customer.save((err) =>{
+            if(err){
+                res.send(err);
+            }
+            res.send({ message: "Produit ajoute au panier"}) ;
+        });
+        next();    
+    }) ;
+} ;
 
 
 
