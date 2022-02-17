@@ -18,6 +18,7 @@ class SingleProduct extends Component {
             await productService.getOneProduct(this.props.productNumber)
                 .then(res => {
                     const data = res;
+                    console.log(data);
                     this.setState({dataProducts : data});
                 })
                 .catch(error => {
@@ -74,20 +75,24 @@ class SingleProduct extends Component {
         )
     }
 
-    AfficheImage (items){
-        const data = {...items}
-        
-        return (
-            <div>
-                
-                <img 
-                    class="img-responsive m-auto"
-                    src={data._Frame}
-                    alt="Image Produit"
-               />
-              
-            </div>
-        )
+    AfficheImage = () =>{
+        const data = this.state.dataProducts;
+        if(data._Images && data._Images._Frame){
+            console.log(data._Images._Frame);
+            const url = data._Images._Frame;
+            const newUrl = url.substring(20);
+            return (
+                <div>
+                    
+                    <img 
+                        class="img-responsive m-auto"
+                        src={newUrl}
+                        alt="Image Produit"
+                   />
+                  
+                </div>
+            )
+        }
     }
 
     AfficheDesc (items){
@@ -117,7 +122,7 @@ class SingleProduct extends Component {
                             <div class="swiper-container zoom-top">
                                 <div class="swiper-wrapper">
                                     <div class="swiper-slide zoom-image-hover">
-                                       {this.AfficheImage(products._Images)}
+                                       {this.AfficheImage()}
                                     </div>
                                    
                                 </div>
@@ -125,7 +130,7 @@ class SingleProduct extends Component {
                             <div class="swiper-container mt-20px zoom-thumbs ">
                                 <div class="swiper-wrapper">
                                     <div class="swiper-slide">
-                                    {this.AfficheOthers(products._Images)}
+                                   {/*  {this.AfficheOthers(products._Images)} */}
                                     </div>
                                 </div>
                                 

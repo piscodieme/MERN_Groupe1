@@ -74,7 +74,7 @@ class Header extends Component {
             dataCategories,
         }=this.props;
 
-        //console.log("donnees produit par categorie£££££££",this.state.productsCategory);
+        console.log("donnees produit par categorie£££££££",dataCategories);
         return ( 
             
         <header>
