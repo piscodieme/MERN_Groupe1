@@ -7,7 +7,6 @@ const t_OrderSchema = mongoose.Schema({
     _Numero: String,
     _Email: String,
     _DeliveryAdress: String,
-    _PaymentStatus: String,
     _Status: String,
     _TotalAmount: Number,
     _Products: [String] 

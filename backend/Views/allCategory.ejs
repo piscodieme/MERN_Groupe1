@@ -17,7 +17,6 @@
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Categorie</th>
-                    <th scope="col">Sous categories</th>
                     <th scope="col">Options</th>
                 </tr>
             </thead>
@@ -26,11 +25,6 @@
                 <tr>
                     <th scope="row"><%= ++i %></th>
                     <td><%= category._Name %></td>
-                    <td>
-                        <% category._SubCategory.forEach(sub=> {%>
-                            <span class="sous-category"><%= sub %></span>
-                        <% }); %>
-                    </td>
                     <td>
                         <div class="btn-group" role="group" aria-label="Basic mixed styles example">
                             <a href="/updatingCategory/<%= category._id %>">
