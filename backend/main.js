@@ -6,6 +6,7 @@ const categoryController = require("./Controllers/CategoryController");
 const cartsController = require("./Controllers/CartsController");
 const customersController = require("./Controllers/CustomersController");
 const adminController = require("./Controllers/AdminController");
+const orderController = require("./Controllers/OrdersController");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const layouts = require("express-ejs-layouts") ;
@@ -179,6 +180,9 @@ app.get("/customer/:id", customersController.getCustomer, (req, res, next) => {
 app.delete("/customer/:id", customersController.deleteCustomer, (req, res, next) => {
     console.log("customer deleted"); 
 });
+
+//Passer une commande 
+app.post("/postOrder/", upload.none(), orderController.postOrders) ;
 
 app.listen(port, () => {
     console.log(`Express.js server started at: http://localhost:${port}`) ;

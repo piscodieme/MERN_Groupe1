@@ -17,21 +17,6 @@
                                 checked aria-label="...">
                             <% } ; %>
                         <%= category._Name %>
-                            <% if(category._SubCategory.length != 0) {%>
-                                <ul class="list-group">
-                                    <% category._SubCategory.forEach(sub=> {%>
-                                        <li class="list-group-item">
-                                            <% if (pro._Category.indexOf(sub) === -1){ %>
-                                            <input class="form-check-input me-1" type="checkbox" name="category[]"
-                                                value="<%= sub %>" aria-label="...">
-                                            <% } else { %>
-                                                <input class="form-check-input me-1" type="checkbox" name="category[]" value="<%= sub %>" checked aria-label="...">
-                                            <% } ; %>
-                                                <%= sub %>
-                                        </li>
-                                        <% }); %>
-                                </ul>
-                                <% }; %>
                     </li>
                     <% }); %>
             </ul>

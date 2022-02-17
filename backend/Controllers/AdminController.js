@@ -1,6 +1,7 @@
 const Category = require("../Models/CategoryModel") ;
 const Products = require("../Models/ProductsModel") ;
 const Admin = require("../Models/AdminModel") ;
+const Orders = require("../Models/OrdersModel") ;
 const bcrypt = require("bcrypt") ;
 const jwt = require('jsonwebtoken');
 
@@ -179,5 +180,9 @@ exports.updatingProduct = (req, res) => {
 } ;
 
 exports.allOrders = (req, res) => {
-    res.render("allOrders") ;
+    Orders.find({}, (error, Orders) => {
+        if(error)
+            res.send(error);
+        res.render("allOrders", {order: Orders}) ;   
+    }) ;
 } ;

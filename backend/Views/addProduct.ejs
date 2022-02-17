@@ -19,16 +19,6 @@
                 <li class="list-group-item">
                     <input class="form-check-input me-1" type="checkbox" name="category[]" value="<%= category._Name %>" aria-label="...">
                     <%= category._Name %>
-                    <% if(category._SubCategory.length != 0) {%>
-                    <ul class="list-group">
-                        <% category._SubCategory.forEach(sub=> {%>
-                        <li class="list-group-item">
-                            <input class="form-check-input me-1" type="checkbox" name="category[]" value="<%= sub %>" aria-label="...">
-                            <%= sub %>
-                        </li> 
-                        <% }); %>
-                    </ul>
-                    <% } %>
                 </li>
                 <% }); %>
             </ul>

@@ -40,8 +40,10 @@ exports.postProduct = (req, res, next) => {
     product._Descriptions._Long = pro.long ;
     product._Quantity = pro.quantity ;
     product._Images._Frame = req.files.frame[0].destination + req.files.frame[0].filename ;
-    for (let j = 0; j < req.files.images.length; j++) {
-        product._Images._Others[j] = req.files.images[j].destination + req.files.images[j].filename ;    
+    if(req.files.images){
+        for (let j = 0; j < req.files.images.length; j++) {
+            product._Images._Others[j] = req.files.images[j].destination + req.files.images[j].filename ;    
+        }
     }
     product.save((err) =>{
         if(err){

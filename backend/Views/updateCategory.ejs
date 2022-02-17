@@ -18,13 +18,6 @@
                 <input type="hidden" name="framebis" value="<%= cat._Image%>" class="form-control" id="frame">
                 <input type="file" name="frame" class="form-control" id="frame">
             </div>
-            <% cat._SubCategory.forEach(sub => { %>
-            <div class="mb-3">
-                <label for="subcategory" class="form-label"> Nom sous-categorie</label>
-                <input type="text" value="<%= sub %>" name="subcategory[]" class="form-control">
-            </div>
-            <% }) ; %>
-            <button type="button" id="add" class="btn btn-secondary">Ajouter sous-categirie</button></a>
             <button type="submit" class="btn update_btn">Enregister</button>
         </form>
     </div>
