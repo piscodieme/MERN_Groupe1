@@ -73,10 +73,8 @@ exports.getCustomerCart = (req, res, next) => {
     Customer.findOne({_id: req.params.id}, (error, customer) => {
         if(error)
             res.send(error); 
-        req.data = customer ;
-        next() ;         
+        res.send(customer._Panier) ;       
     }) ;
-    
 } ;
 
 

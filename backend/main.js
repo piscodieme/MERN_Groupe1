@@ -142,7 +142,7 @@ app.post("/customercart/:id", upload.none(), customersController.updateCustomerC
 });
 
 //Recuperer le panier d'un client
-//app.get("/customercart/:id", customersController.getCustomerCart) ;
+app.get("/getcustomercart/:id", customersController.getCustomerCart) ;
 
 app.post("/cart/", cartsController.postCart, (req, res, next) => {
     console.log("Post Successful");
