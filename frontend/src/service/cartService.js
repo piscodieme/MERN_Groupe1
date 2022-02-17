@@ -35,7 +35,10 @@ function AddToCart (product, userId){
 }
 
 /* Get All products cart service */
-function getAllProductsCart(){
+async function getAllProductsCart(userId){
+    return await Api.get('/getcustomercart/'+userId)
+        .then(res => res.data)
+        .catch(error => (" ++++++Error Get All product cart service Service+++++++ "+error))
 
 }
 
