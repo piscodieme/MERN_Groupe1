@@ -70,6 +70,8 @@ exports.getCustomer = (req, res, next) => {
 
 exports.updateCustomerCart = (req, res, next) => {
     Customer.findOne({_id: req.body.id}, (error, customer) => {
+      console.log("user id =====> ",req.body.id);
+      console.log("user id =====> ",req.body.idproduct);
         if(error)
             res.send(error);
         customer._Panier.push(req.body.idproduct);

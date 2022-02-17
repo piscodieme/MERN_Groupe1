@@ -158,8 +158,8 @@ class ProductsList extends Component {
                                                                     <a href={"/produit/"+data._id} class="image">
                                                                         <img src={data._Images._Frame}
                                                                             alt="Product" />
-                                                                        <img class="hover-image"
-                                                                            src="assets/images/product-image/1.jpg" alt="Product" />
+                                                                       {/*  <img class="hover-image"
+                                                                            src="assets/images/product-image/1.jpg" alt="Product" /> */}
                                                                     </a>
                                                                     <span class="badges">
                                                                         <span class="new">New</span>
@@ -182,7 +182,7 @@ class ProductsList extends Component {
                                                                     </span>
                                                                 </div>
                                                                 <AddToCartButton
-                                                                    productNumber = {data._id}
+                                                                    product = {data}
                                                                 />
                                                             </div>
                                                         </div>

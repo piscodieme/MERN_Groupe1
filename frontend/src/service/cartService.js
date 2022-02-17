@@ -10,16 +10,15 @@ export const cartService = {
 
 /* ADD TO CART */
 
-function AddToCart (productNumber, userId){
-    console.log("debut service cart");
+function AddToCart (product, userId){
+    //console.log("debut service cart");
     const token = sessionStorage.getItem("token");
-    console.log("service token ==>>  ",token);
-    const data = {
-        "idproduct" : productNumber,
-        "id" : userId
-    }
+    //console.log("service token ==>>  ",token);
+    //console.log("user id",JSON.parse(userId));
+    const userID = JSON.parse(userId);
+   
     if(token){
-        Api.get('/cart/',data)
+        Api.post('/customercart/'+userID ,product)
             .then(res =>
                /*  res.data */
                 console.log(res.data)
@@ -28,6 +27,9 @@ function AddToCart (productNumber, userId){
                 console.log("error add to cart",error)
             })
             //console.log("user id   ",userId," ====product Number====",productNumber);
+    }
+    else{
+        console.log("connectez vous d'abord");
     }
 
 }

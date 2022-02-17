@@ -1,22 +1,35 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import {cartService} from '../../service/cartService'
-let token =''
+let token ='';
+let userID ='';
 
 function AddToCartButton (props) {
 
-    console.log(props.productNumber);
+    const [notifMessage, setNotifMessage] = useState("");
+    const [notif, setNotif] = useState(false);
+    console.log(props.product);
     let Navigate = useNavigate();
     let location = useLocation();
     console.log(location.pathname);
     useEffect(() => {
         token = sessionStorage.getItem("token");
+        userID = sessionStorage.getItem("userId");
     });
+    const closeButon = ()=>{
+        setNotif(false);
+    }
     const AddToCart = () =>{
+        console.log(props.product);
+        console.log(userID);
         console.log("tokenn ===>>  ",token);
         if(token){
-            cartService.AddToCart();
-            Navigate(location.pathname)
+            cartService.AddToCart(props.product,userID);
+            setNotifMessage("produit ajouté avec success");
+            console.log(notifMessage);
+            setNotif(true);
+            console.log(notif);
+            //Navigate(location.pathname)
         }else{
             Navigate("/login")
         }
@@ -24,6 +37,16 @@ function AddToCartButton (props) {
     }
   return (
     <>
+       {notif &&  
+       <div class="card border-success mb-3 bg-light"/*  style="max-width: 18rem;" */>
+            <div class="card-body text-success">
+                <h5 class="card-title text-success">{notifMessage}</h5>
+            <button type="button" class="close" aria-label="Close" onClick={closeButon}>
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+        </div>
+        }
         <button 
             title="Add To Cart" 
             class=" add-to-cart"
