@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ShippingPage from './ShippingPage';
 import ListProductCartPage from './ListProductCartPage';
 import PropTypes from 'prop-types'
 
@@ -18,7 +17,7 @@ class MyCart extends Component {
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                             <ListProductCartPage/>     
-                            <ShippingPage/>
+                           
                             </div>
                         </div>
                     </div>

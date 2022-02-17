@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import {useNavigate, useParams } from 'react-router-dom';
 import {productService} from '../../service/productService';
 import {cartService} from '../../service/cartService';
+import AddToCartButton from '../utilities/AddToCartButon';
 //import {withRouter} from 'react-router-dom'
 
 class SingleProduct extends Component {
@@ -24,9 +25,9 @@ class SingleProduct extends Component {
                 })
        }
     AddToCart=()=>{
-        const number = this.props.productNumber;
+        const product = this.state.dataProducts;
         const userId = sessionStorage.getItem("userId");
-        cartService.AddToCart(number,userId); 
+        cartService.AddToCart(product,userId); 
     }
 
     AfficheTitle(items){
@@ -155,7 +156,9 @@ class SingleProduct extends Component {
                                     </div>
                                     <div class="pro-details-cart">
                                         <button class="add-cart" onClick={this.AddToCart}> Add To
-                                            Cart</button>
+                                            Cart
+                                        </button>
+                                        
                                     </div>
                                     <div class="pro-details-cart">
                                         <button class="add-cart buy-button"> Buy It Now</button>

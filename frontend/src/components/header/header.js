@@ -16,9 +16,9 @@ class Header extends Component {
 
     }
 
-    componentDidMount() {
+   /*  componentDidMount() {
        token = sessionStorage.getItem("token");
-    }
+    } */
 
 /* call of disconnect service function  */
     disconnect =()=>{
@@ -27,6 +27,7 @@ class Header extends Component {
 
     /* show connect or disconnect in header component */
     connectOrdisconnect = () =>{
+        token = sessionStorage.getItem("token");
         console.log("test tokenn ",token)
         if(token){
             return(
@@ -100,7 +101,7 @@ class Header extends Component {
                                             {dataCategories.map((data,index)=>(
                                                 <ul class="d-block" key={index}>
                                                     <li class="title"><a href={"/category/"+data._Name}>{data._Name}</a></li>
-                                                    {this.listSubCategory(data._SubCategory)}                                                                                          
+                                                   {/*  {this.listSubCategory(data._SubCategory)}  */}                                                                                         
                                                 </ul>
                                             ))}
                                            {/*  <ul class="d-flex align-items-center p-0 border-0 flex-column justify-content-center">
@@ -124,8 +125,9 @@ class Header extends Component {
                                 <i class="pe-7s-search"></i>
                             </a> */}
                             <div class="header-bottom-set dropdown">
-                                <button class="dropdown-toggle header-action-btn" data-bs-toggle="dropdown"><i
-                                        class="pe-7s-users"></i></button>
+                                <button class="dropdown-toggle header-action-btn" data-bs-toggle="dropdown">
+                                    <i class="pe-7s-users"></i>
+                                </button>
                                 <ul class="dropdown-menu dropdown-menu-right">
                                    {/*  <li><a class="dropdown-item" href="my-account.html">My account</a></li> */}
                                    {this.connectOrdisconnect()}
@@ -135,10 +137,10 @@ class Header extends Component {
                             {/* <a href="#offcanvas-wishlist" class="header-action-btn offcanvas-toggle">
                                 <i class="pe-7s-like"></i>
                             </a> */}
-                            <a href="#offcanvas-cart" class="header-action-btn header-action-btn-cart offcanvas-toggle pr-0">
+                           {/*  <a href="#offcanvas-cart" class="header-action-btn header-action-btn-cart offcanvas-toggle pr-0">
                                 <i class="pe-7s-shopbag"></i>
                                 <span class="header-action-num">01</span>
-                            </a>
+                            </a> */}
                             {/* <a href="#offcanvas-mobile-menu" class="header-action-btn header-action-btn-menu offcanvas-toggle d-lg-none">
                                 <i class="pe-7s-menu"></i>
                             </a> */}

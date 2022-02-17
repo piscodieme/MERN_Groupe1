@@ -92,7 +92,7 @@ class Categories extends Component {
                                                 <div class="thumb">
                                                     <a href={"/produit/"+items._id} class="image">
                                                         <img src="assets/images/product-image/3.jpg" alt="Product" ></img>
-                                                        <img class="hover-image" src="assets/images/product-image/3.jpg" alt="Product" ></img>
+                                                       {/*  <img class="hover-image" src="assets/images/product-image/3.jpg" alt="Product" ></img> */}
                                                     </a>
                                                     <span class="badges">
                                                         <span class="new">Sale</span>
