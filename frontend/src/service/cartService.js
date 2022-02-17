@@ -2,7 +2,6 @@ import Api from "./Api";
 import { useNavigate } from "react-router-dom";
 
 export const cartService = {
-    createCart,
     getAllProductsCart,
     deleteOneProductCart,
     deleteAllProductsCart,
@@ -11,23 +10,26 @@ export const cartService = {
 
 /* ADD TO CART */
 
-function AddToCart (){
+function AddToCart (productNumber, userId){
     console.log("debut service cart");
-   // const Navigate = useNavigate();
     const token = sessionStorage.getItem("token");
     console.log("service token ==>>  ",token);
+    const data = {
+        "idproduct" : productNumber,
+        "id" : userId
+    }
     if(token){
-        console.log("okk il est connecter");
-       // Navigate("/");
-    }else{
-        console.log("NOT OKK il n'est pas Connecter");
+        Api.get('/cart/',data)
+            .then(res =>
+               /*  res.data */
+                console.log(res.data)
+            )
+            .catch(error => {
+                console.log("error add to cart",error)
+            })
+            //console.log("user id   ",userId," ====product Number====",productNumber);
     }
 
-}
-
-/* create Cart service */
-function createCart(){
-    
 }
 
 /* Get All products cart service */

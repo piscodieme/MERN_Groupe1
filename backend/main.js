@@ -33,7 +33,7 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 app.use(session({
   secret: 'malako wax',
   resave: true,
-  saveUninitialized: true,
+  saveUninitialized: true, 
   cookie: { expires: new Date(Date.now() + 3600000) }
 })) ;
 app.use(express.json());
@@ -136,6 +136,14 @@ app.get("/deleteCategory/:id", categoryController.deleteCategory);
 // Carts Routes
 
 //Ajouter un panier
+//ajouter un produit au panier d'un client
+app.post("/customercart/:id", upload.none(), customersController.updateCustomerCart, (req, res, next) => {
+    console.log("Produit ajouter au panier");
+});
+
+//Recuperer le panier d'un client
+//app.get("/customercart/:id", customersController.getCustomerCart) ;
+
 app.post("/cart/", cartsController.postCart, (req, res, next) => {
     console.log("Post Successful");
 });
