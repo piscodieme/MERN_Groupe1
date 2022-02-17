@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 
 class BestSellerPage extends Component {
+    // eslint-disable-next-line no-useless-constructor
     constructor(props) {
         super(props)
 
@@ -16,8 +16,8 @@ class BestSellerPage extends Component {
                                 <div class="single-banner">
                                     <img src="assets/images/banner/1.jpg" alt=""/>
                                     <div class="banner-content">
-                                        <span class="category">Best Seller</span>
-                                        <span class="title">Flower Vase <br/>
+                                        <span class="category">Meilleures ventes</span>
+                                        <span class="title">Vase incassable <br/>
                                             & Poot</span>
                                         <button><a href="shop-left-sidebar.html" class="shop-link btn btn-primary text-uppercase">Shop Now</a></button>
                                     </div>
@@ -27,8 +27,8 @@ class BestSellerPage extends Component {
                                 <div class="single-banner">
                                     <img src="assets/images/banner/2.jpg" alt=""/>
                                     <div class="banner-content">
-                                        <span class="category">Best Seller</span>
-                                        <span class="title">Wool Silk Dress <br/>
+                                        <span class="category">Meilleures ventes</span>
+                                        <span class="title">Matoss pour niaw <br/>
                                             & Offer 2021</span>
                                         <button><a href="shop-left-sidebar.html" class="shop-link btn btn-primary text-uppercase">Shop
                                             Now</a></button>
@@ -39,7 +39,7 @@ class BestSellerPage extends Component {
                                 <div class="single-banner">
                                     <img src="assets/images/banner/3.jpg" alt=""/>
                                     <div class="banner-content">
-                                        <span class="category">Best Seller</span>
+                                        <span class="category">Meilleures ventes</span>
                                         <span class="title">Pen Holder<br/>
                                             & Poot</span>
                                             <button><a href="shop-left-sidebar.html" class="shop-link btn btn-primary text-uppercase">Shop
