@@ -14,7 +14,7 @@ class listProductCartPage extends Component {
     }
 
     async componentDidMount(){
-        const userId = parse(sessionStorage.getItem("userId"));
+        const userId = JSON.parse(sessionStorage.getItem("userId"));
         await cartService.getAllProductsCart(userId)
             .then(res =>{
                 const carts = res;
@@ -29,6 +29,7 @@ class listProductCartPage extends Component {
 
     render() {
         console.log("data carts ",this.state.dataCart);
+        const carts = this.state.dataCart;
         return (
             <>
                  <form action="#">
@@ -45,12 +46,13 @@ class listProductCartPage extends Component {
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                {carts.map((cart,index)=>(
                                                 <tr>
                                                     <td class="product-thumbnail">
                                                         <a href="/"><img class="img-responsive ml-15px"
-                                                                src="assets/images/product-image/1.jpg" alt="" /></a>
+                                                                src={cart._Images._Frame} alt="" /></a>
                                                     </td>
-                                                    <td class="product-name"><a href="/">Product Name</a></td>
+                                                    <td class="product-name"><a href="/">{cart._Title}</a></td>
                                                     <td class="product-price-cart"><span class="amount">$60.00</span></td>
                                                     <td class="product-quantity">
                                                         <div class="cart-plus-minus">
@@ -64,6 +66,7 @@ class listProductCartPage extends Component {
                                                         <a href="/"><i class="fa fa-times"></i></a>
                                                     </td>
                                                 </tr>
+                                                ))}
                                             </tbody>
                                         </table>
                                     </div>

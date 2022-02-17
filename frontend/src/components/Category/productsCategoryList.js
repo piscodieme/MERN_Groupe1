@@ -24,6 +24,15 @@ class ProductsCategoryList extends Component {
         console.log("error error error",error);
     }) 
     }
+
+    addImage = (item)=>{
+        if(item){
+            const url = item.substring(20);
+            return(
+                <img src={url} alt="Product" />
+            )
+        }
+    }
     render() {
         const {
             dataProducts,
@@ -51,8 +60,7 @@ class ProductsCategoryList extends Component {
                                                 
                                                 <div class="thumb">
                                                     <a href={"/produit/"+item._id} class="image">
-                                                        <img src={item._Images._Frame}
-                                                            alt="Product" />
+                                                        {this.addImage(item._Images._Frame)}
                                                         {/* <img class="hover-image"
                                                             src={item._Images._Others[0]} alt="Product" /> */}
                                                     </a>

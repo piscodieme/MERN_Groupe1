@@ -28,10 +28,10 @@ export const productService = {
    
 }
 /* get one product service */
-function getOneProduct(id){
-    console.log("test getOneProducts");
-    return Api.get('/products/'+id)
-        .then(res => res.data)
+async function getOneProduct(id){
+    console.log("test getOneProducts",id);
+    return await Api.get('/products/'+id)
+        .then(res =>res.data)
         //.then(res.json()) 
         .catch(() => console.log("++++++++++error service getOneProducts+++++++++++"));  
 }

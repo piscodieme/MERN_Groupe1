@@ -33,7 +33,7 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 app.use(session({
   secret: 'malako wax',
   resave: true,
-  saveUninitialized: true, 
+  saveUninitialized: false, 
   cookie: { expires: new Date(Date.now() + 3600000) }
 })) ;
 app.use(express.json());

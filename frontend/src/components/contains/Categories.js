@@ -25,6 +25,15 @@ class Categories extends Component {
         }
     }
 
+    addImage =(url)=>{
+        console.log("test == ",url);
+        const newUrl = url.substring(20);
+        console.log("nouveau chemin iamge ========",newUrl);
+        return(
+            <img src={newUrl} alt="Product" ></img>
+        )
+    }
+
     handleTabChange = (item) => {
         console.log("test tabs");
         return productService.getProductsByCategory(item)
@@ -91,7 +100,7 @@ class Categories extends Component {
                                             <div class="product">
                                                 <div class="thumb">
                                                     <a href={"/produit/"+items._id} class="image">
-                                                        <img src="assets/images/product-image/3.jpg" alt="Product" ></img>
+                                                       {this.addImage(items._Images._Frame)}
                                                        {/*  <img class="hover-image" src="assets/images/product-image/3.jpg" alt="Product" ></img> */}
                                                     </a>
                                                     <span class="badges">
