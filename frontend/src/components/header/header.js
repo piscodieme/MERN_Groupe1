@@ -114,7 +114,6 @@ class Header extends Component {
                                 </li>
                                 <li><a href="/produits">Nos Produits</a></li>
                                 <li><a href="/contact">Contact</a></li>
-                                <li><a href="/about">About</a></li>
                                 <li><a href="/cart">Mon Panier</a></li>
                             </ul>
                         </div>

@@ -38,7 +38,6 @@ function SingleCategoryPage  () {
                     <div class="container">
                         <div class="row">
                             <div class="col-12">
-                                <ProductsBanner/>
                                 {/*  Shop Top Area Start */}
                                 <ProductsCategoryList
                                    /*  dataProducts = {dataProducts} */

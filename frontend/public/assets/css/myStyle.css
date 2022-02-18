@@ -55,3 +55,9 @@
     border: 0;
     text-align: left;
   }
+
+  .banner-content .title{
+      color: #070707 !important;
+      font-weight: 600;
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }

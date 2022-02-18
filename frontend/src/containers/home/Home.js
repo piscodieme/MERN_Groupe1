@@ -52,9 +52,8 @@ class Home extends Component {
                     dataCategories = {this.state.dataCategories}
                     dataProduct = {this.state.dataProduct}
                 />
-                <Banner/>
                 <PaymentMode/>
-                <Testimonial/>
+                <Banner/>
                 <br/>
                 
             </>
