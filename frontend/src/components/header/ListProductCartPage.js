@@ -27,12 +27,41 @@ class listProductCartPage extends Component {
             });
     }
 
+    sendOrder= async () =>{
+        const userInfo = JSON.parse(sessionStorage.getItem("userInfo"));
+        console.log(userInfo);
+        const dataCart = this.state.dataCart;
+        const dataOrder = {
+            "firstname" : userInfo.firstname,
+            "lastname" : userInfo.lastname,
+            "numero" : userInfo.numero,
+            "adresse" : userInfo.adresse,
+            "products" : dataCart,
+        }
+
+        const order = await cartService.sendOrder(dataOrder);
+        if(order){
+            console.log(order);
+        }
+    }
+
+    addImage =(cart)=>{
+        console.log(cart);
+        if(cart){
+            const newUrl = cart.substring(20);
+            console.log("url image cart",cart);
+            return(
+                <img class="img-responsive ml-15px" src={newUrl} alt="" />
+            )
+        }
+    }
+
     render() {
         console.log("data carts ",this.state.dataCart);
         const carts = this.state.dataCart;
         return (
             <>
-                 <form action="#">
+                 
                                     <div class="table-content table-responsive cart-table-content">
                                         <table>
                                             <thead>
@@ -47,23 +76,24 @@ class listProductCartPage extends Component {
                                             </thead>
                                             <tbody>
                                                 {carts.map((cart,index)=>(
-                                                <tr>
+                                                <tr key={index}>
                                                     <td class="product-thumbnail">
-                                                        <a href="/"><img class="img-responsive ml-15px"
-                                                                src={cart._Images._Frame} alt="" /></a>
+                                                        {this.addImage(cart._Images._Frame) }
                                                     </td>
-                                                    <td class="product-name"><a href="/">{cart._Title}</a></td>
-                                                    <td class="product-price-cart"><span class="amount">$60.00</span></td>
+                                                    <td class="product-name">{cart._Title}</td>
+                                                    <td class="product-price-cart"><span class="amount">{cart._Princing._Price}FCFA</span></td>
                                                     <td class="product-quantity">
+                                                            <button>-</button>
                                                         <div class="cart-plus-minus">
-                                                            <input class="cart-plus-minus-box" type="text" name="qtybutton"
-                                                                value="1" />
+                                                            {/* <input class="cart-plus-minus-box" type="text" name="qtybutton"
+                                                                value={1} /> */}
                                                         </div>
+                                                             <button>+</button>
                                                     </td>
-                                                    <td class="product-subtotal">$70.00</td>
+                                                    <td class="product-subtotal">{cart._Princing._Price}</td>
                                                     <td class="product-remove">
-                                                        <a href="/"><i class="fa fa-pencil"></i></a>
-                                                        <a href="/"><i class="fa fa-times"></i></a>
+                                                        <button ><i class="fa fa-pencil"></i></button>
+                                                        <button ><i class="fa fa-times"></i></button>
                                                     </td>
                                                 </tr>
                                                 ))}
@@ -77,13 +107,13 @@ class listProductCartPage extends Component {
                                                     <a href="/">Continue Shopping</a>
                                                 </div>
                                                 <div class="cart-clear">
-                                                    <button>Update Shopping Cart</button>
-                                                    <a href="/">Clear Shopping Cart</a>
+                                                    <button>Consulter Facture</button>
+                                                    <button onClick={this.sendOrder}>Valider Mon Panier</button>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </form>
+                           
             </>
         )
     }

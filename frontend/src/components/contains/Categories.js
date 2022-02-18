@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import{ Tab, TabList, TabPanel, Box, TabContext, Tabs} from 'react-tabs';
 import {productService} from '../../service/productService';
+import AddToCartButton from '../utilities/AddToCartButon';
 
 let data= [];
 let token = ''
@@ -34,6 +35,15 @@ class Categories extends Component {
         )
     }
 
+    addImageCategorie = (item) =>{
+        if(item){
+            const url = item.substring(20);
+            return(
+                <img src={url} alt=""/>
+            )
+        }
+    }
+
     handleTabChange = (item) => {
         console.log("test tabs");
         return productService.getProductsByCategory(item)
@@ -62,8 +72,8 @@ class Categories extends Component {
                         {/* Section Title Start */}
                         <div class="col-12">
                             <div class="section-title text-center mb-60px">
-                                <h2 class="title">Popular Categories</h2>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod incididunt ut labore et dolore magna aliqua. </p>
+                                <h2 class="title">Les Categories phares</h2>
+                                <p>Voici ci-dessus les categories les plus visitées  </p>
                             </div>
                         </div>
                         {/* Section Title End */}
@@ -76,7 +86,7 @@ class Categories extends Component {
                                     {dataCategories.map((data,index)=>(
                                         <a class="text-list-category" href={"/category/"+data._Name} key={index}>
                                         <figure>
-                                            <img src={data._Image} alt=""></img>
+                                            {this.addImageCategorie(data._Image)}
                                             <figcaption><span>{data._Name}</span></figcaption>
                                         </figure>
                                     </a>
@@ -124,9 +134,11 @@ class Categories extends Component {
                                                         <span class="new">{items._Princing._Price} Fcfa</span>
                                                     </span>
                                                 </div>
-                                                <a href={!token ? "/login":""}>
-                                                <button title="Add To Cart" class="add-to-cart">Add
-                                                    To Cart</button></a>
+                                                <AddToCartButton
+                                                    product = {items}
+                                                />
+                                               {/*  <button title="Add To Cart" class="add-to-cart">Add
+                                                    To Cart</button> */}
                                             </div>
                                             </div>
 

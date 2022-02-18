@@ -8,7 +8,8 @@ import {useNavigate} from 'react-router-dom';
 
 function Login (props){
     const [error, setError] = useState(false);
-    const[messageError, setMessgeError] = useState("");
+    const [errorRegister, setErrorRegister] = useState(false);
+    const[messageError, setMessageError] = useState("");
    const Navigate = useNavigate(); 
     const handleSubmit = async (username, password)=>{
         const log = await loginAndRegisterService.login(username, password);
@@ -18,21 +19,8 @@ function Login (props){
             Navigate("/");
         }else{
             setError(true);
-            setMessgeError("Email or Password Not Match");
+            setMessageError("Email or Password Not Match");
         }
-        //console.log("user name AAAAAAAAA ", username,"pass word BBBBBBBBB", password);
-       /*  return */ /* new Promise((resolve, reject)=>{ *//* await loginAndRegisterService.login(username, password) */
-           /*  .then(res => {
-                const log =res;
-                console.log("retour login container  ===",log);
-               
-            })
-            .catch(error => {
-                console.log("error login",error)
-               
-            }) */
-        /* }) */
-            
         
     }
 
@@ -40,9 +28,22 @@ function Login (props){
         setError(false);
     }
 
-   const handleSubmitRegister = (firstname,lastname,login,adresse,telephone,password) => {
+    const closeButtonRegister =()=>{
+        setErrorRegister(false);
+    }
+
+   const handleSubmitRegister = async (firstname,lastname,login,adresse,telephone,password) => {
         console.log("container register")
-        loginAndRegisterService.register(firstname,lastname,login,adresse,telephone,password);
+        const register = await loginAndRegisterService.register(firstname,lastname,login,adresse,telephone,password);
+        if(register){
+            console.log("return login ==== ",register);
+            setErrorRegister(true);
+            setMessageError("Création de compte réussi. Vous maintenant vous connectez")
+           
+        }else{
+            setError(true);
+            setMessageError("Erreur d'inscription essayez à nouveau");
+        }
     }
         return (
             <>
@@ -57,8 +58,18 @@ function Login (props){
                  {error &&  
                     <div class="card border-danger mb-3 bg-danger"/*  style="max-width: 18rem;" */>
                         <div class="card-body">
-                            <h5 class="card-title text-white">{messageError}</h5>
+                            <span class="text-white">{messageError}</span>
                         <button type="button" class="close text-white" aria-label="Close" onClick={closeButon}>
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                    </div>
+                }
+                {errorRegister &&  
+                    <div class="card border-danger mb-3 bg-success"/*  style="max-width: 18rem;" */>
+                        <div class="card-body">
+                            <span class="text-white">{messageError}</span>
+                        <button type="button" class="close text-white" aria-label="Close" onClick={closeButtonRegister}>
                             <span aria-hidden="true">&times;</span>
                         </button>
                         </div>

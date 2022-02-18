@@ -13,7 +13,7 @@ class MyCart extends Component {
             <>
                 <div class="cart-main-area pt-100px pb-100px">
                     <div class="container">
-                        <h3 class="cart-page-title">Your cart items</h3>
+                        <h3 class="cart-page-title">Votre Panier</h3>
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                             <ListProductCartPage/>     
