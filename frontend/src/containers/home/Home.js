@@ -54,7 +54,6 @@ class Home extends Component {
                 />
                 <Banner/>
                 <PaymentMode/>
-                <Testimonial/>
                 <br/>
                 
             </>

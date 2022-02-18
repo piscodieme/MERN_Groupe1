@@ -18,8 +18,7 @@ class BestSellerPage extends Component {
                                     <div class="banner-content">
                                         <span class="category">Meilleures ventes</span>
                                         <span class="title">Vase incassable <br/>
-                                            & Poot</span>
-                                        <button><a href="shop-left-sidebar.html" class="shop-link btn btn-primary text-uppercase">Shop Now</a></button>
+                                            & Pot</span>
                                     </div>
                                 </div>
                             </div>
@@ -28,10 +27,8 @@ class BestSellerPage extends Component {
                                     <img src="assets/images/banner/2.jpg" alt=""/>
                                     <div class="banner-content">
                                         <span class="category">Meilleures ventes</span>
-                                        <span class="title">Matoss pour niaw <br/>
-                                            & Offer 2021</span>
-                                        <button><a href="shop-left-sidebar.html" class="shop-link btn btn-primary text-uppercase">Shop
-                                            Now</a></button>
+                                        <span class="title">Materiels pour coudre <br/>
+                                            & pelot de fils</span>
                                     </div>
                                 </div>
                             </div>
@@ -40,10 +37,8 @@ class BestSellerPage extends Component {
                                     <img src="assets/images/banner/3.jpg" alt=""/>
                                     <div class="banner-content">
                                         <span class="category">Meilleures ventes</span>
-                                        <span class="title">Pen Holder<br/>
-                                            & Poot</span>
-                                            <button><a href="shop-left-sidebar.html" class="shop-link btn btn-primary text-uppercase">Shop
-                                            Now</a></button>
+                                        <span class="title">Vase noir blanc<br/>
+                                            </span>
                                     </div>
                                 </div>
                             </div>

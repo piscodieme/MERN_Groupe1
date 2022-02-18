@@ -26,8 +26,8 @@ class PaymentMode extends Component {
                                     <img src="assets/images/icons/1.png" alt=""></img>
                                 </div>
                                 <div class="feature-content">
-                                    <h4 class="title">Free Shipping</h4>
-                                    <span class="sub-title">Capped at $39 per order</span>
+                                    <h4 class="title">Livraison rapide</h4>
+                                    <span class="sub-title">2000FCFA a Dakar</span>
                                 </div>
                             </div>
                         </div>
@@ -38,8 +38,8 @@ class PaymentMode extends Component {
                                     <img src="assets/images/icons/2.png" alt=""></img>
                                 </div>
                                 <div class="feature-content">
-                                    <h4 class="title">Card Payments</h4>
-                                    <span class="sub-title">12 Months Installments</span>
+                                    <h4 class="title">Payer par carte </h4>
+                                    <span class="sub-title">Reduction sur carte</span>
                                 </div>
                             </div>
                         </div>
@@ -50,8 +50,8 @@ class PaymentMode extends Component {
                                     <img src="assets/images/icons/3.png" alt=""></img>
                                 </div>
                                 <div class="feature-content">
-                                    <h4 class="title">Easy Returns</h4>
-                                    <span class="sub-title">Shop With Confidence</span>
+                                    <h4 class="title">Retour produit</h4>
+                                    <span class="sub-title">Annuler les commandes</span>
                                 </div>
                             </div>
                             {/* single item */}
