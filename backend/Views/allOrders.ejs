@@ -41,8 +41,7 @@
                         </td>
                         <td>
                             <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                                <a href="">
-                                    <button type="button" class="btn update_btn">Details</button></a>
+                                    <button type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="btn update_btn">Details</button>
                                 <a href="">
                                     <button type="button" class="btn delete_btn">Terminer</button>
                                 </a>
@@ -50,6 +49,31 @@
                         </td>
                     </tr>
             </tbody>
+            <!-- Button trigger modal -->
+  
+            
         </table>
     </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Detail de la commande</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="commande_detail">
+            <span>Nom du client</span> : Mamadou Fall <br>
+            <span>Produits commamdes</span> : Benn pattu dall <br>
+            <span>Adresse du client</span> : Dakar Malika <br>
+            <span>Total prix</span> : 100 000 fcfa <br>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+      </div>
+    </div>
+  </div>
 </div>

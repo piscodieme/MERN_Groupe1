@@ -524,6 +524,17 @@ p.small {
   color: #ffffff;
 }
 
+/* Commande */
+.commande_detail{
+  font-weight: 600;
+  color: #a35224;
+}
+
+.commande_detail span{
+  font-weight: 200;
+  color: #252525;
+}
+
 @media (max-width: 420px) {
   .sidebar.close .nav-links li .sub-menu {
     display: none;
