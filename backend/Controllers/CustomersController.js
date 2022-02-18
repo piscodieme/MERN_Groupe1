@@ -80,7 +80,7 @@ exports.getCustomerCart = (req, res, next) => {
 
 exports.updateCustomerCart = (req, res, next) => {
     Customer.findOne({_id: req.params.id}, (error, customer) => {
-        if(error)
+        if(error) 
             return res.send(error);
         customer._Panier.push(req.body);
         customer.save((err) =>{

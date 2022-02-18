@@ -14,7 +14,6 @@
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Nom du client</th>
-                    <th scope="col">Produits</th>
                     <th scope="col">Montant Total</th>
                     <th scope="col">Etat</th>
                     <th scope="col">Options</th>
@@ -26,12 +25,6 @@
                         </th>
                         <td>
                             <%= order._FirstName %> <%= order._LastName %>
-                        </td>
-                        <td>
-                                <span class="sous-category">
-                                    produits
-                                </span>
-                            
                         </td>
                         <td>
                             <%= order._TotalAmount %>
@@ -65,10 +58,11 @@
       </div>
       <div class="modal-body">
         <div class="commande_detail">
-            <span>Nom du client</span> : Mamadou Fall <br>
-            <span>Produits commamdes</span> : Benn pattu dall <br>
-            <span>Adresse du client</span> : Dakar Malika <br>
-            <span>Total prix</span> : 100 000 fcfa <br>
+            <span>Nom du client</span> : <%= order._FirstName %> <%= order._LastName %> <br>
+            <span>Produits commandes</span> :  <br>
+            <span>Adresse du client</span> : <%= order._DeliveryAdress %> <br>
+            <span>Numero Tel</span> : <%= order._Numero %> <br>
+            <span>Total prix</span> : <%= order._TotalAmount %> <br>
         </div>
       </div>
       <div class="modal-footer">
