@@ -9,8 +9,8 @@ class ProductsBanner extends Component {
         return (
             <>
                 <div class="sidebar-widget-image">
-                    <a href="/" class="single-banner">
-                        <img src="assets/images/banner/12.jpg" alt=""/>
+                    <a href="#" class="single-banner">
+                        <img src="assets/images/slider-image/Slide 1.png" alt=""/>
                     </a>
                 </div>
             </>

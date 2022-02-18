@@ -72,24 +72,23 @@ exports.getCustomerCart = (req, res, next) => {
     let client;
     Customer.findOne({_id: req.params.id}, (error, customer) => {
         if(error)
-            res.send(error); 
-        res.send(customer._Panier) ;       
+            return res.send(error); 
+        return res.send(customer._Panier) ;       
     }) ;
 } ;
 
 
 exports.updateCustomerCart = (req, res, next) => {
     Customer.findOne({_id: req.params.id}, (error, customer) => {
-        if(error)
-            res.send(error);
+        if(error) 
+            return res.send(error);
         customer._Panier.push(req.body);
         customer.save((err) =>{
             if(err){
-                res.send(err);
+                return res.send(err);
             }
-            res.send({ message: "Produit ajoute au panier"}) ;
-        });
-        next();    
+            return res.send({ message: "Produit ajoute au panier"}) ;
+        });   
     }) ;
 } ;
 

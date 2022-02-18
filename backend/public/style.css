@@ -459,6 +459,7 @@ p {
 }
 p.small {
   font-size: 14px;
+  text-align: center;
 }
 
 .go-corner {
@@ -521,6 +522,17 @@ p.small {
 .card1:hover h3 {
   transition: all 0.3s ease-out;
   color: #ffffff;
+}
+
+/* Commande */
+.commande_detail{
+  font-weight: 600;
+  color: #a35224;
+}
+
+.commande_detail span{
+  font-weight: 200;
+  color: #252525;
 }
 
 @media (max-width: 420px) {

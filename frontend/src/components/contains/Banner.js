@@ -20,12 +20,11 @@ class Banner extends Component {
                         <div class="col-12">
                             <div class="deal-inner deal-bg position-relative ptb-80px bgi-banner" /* data-bg-image="assets/images/deal-img/deal-bg.jpg" */>
                                 <div class="deal-wrapper">
-                                    <h3 class="title">Handmade Pen Holder <br/> & Offer Sale -20% </h3>
+                                    <h3 class="title">Wanteer la <br/> & Des reductions jusqu'a -20% </h3>
                                     <span class="price">
-                                        <span class="old"> <del>$25.00</del></span>
-                                    <span class="new">- $18.00</span>
+                                        <span class="old"> <del>25 000 FCFA</del></span>
+                                    <span class="new"> - 15 000 FCFA</span>
                                     </span>
-                                    <a href="single-product-variable.html" class="btn btn-lg btn-primary">Add To Cart</a>
                                 </div>
                                 <div class="deal-image">
                                     <img class="img-fluid" src="assets/images/deal-img/woman.png" alt=""></img>
