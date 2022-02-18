@@ -55,3 +55,7 @@
     border: 0;
     text-align: left;
   }
+
+  .banner-content .title{
+      color: #b65923 !important;
+  }
