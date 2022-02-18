@@ -41,8 +41,12 @@ async function getAllProductsCart(userId){
 /* send order */
 
 async function sendOrder(dataOrder) {
-    return await Api.post('/postOrder/'+dataOrder)
-        .then(res =>res.data)
+    console.log("send order debut");
+    return await Api.post('/postOrder/',dataOrder)
+        .then(res =>{
+            const data = res;
+            console.log(data);
+        })
         .catch(error =>{
             console.log(error);
         })
