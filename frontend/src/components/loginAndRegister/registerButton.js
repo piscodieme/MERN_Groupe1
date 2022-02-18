@@ -5,7 +5,7 @@ const Registerbutton = (props) => {
     let Navigate = useNavigate();
     const handleSubmit = () => {
         props.handleSubmit();
-        Navigate("/login");
+        /* Navigate("/login"); */
     }
     return (
         <div>

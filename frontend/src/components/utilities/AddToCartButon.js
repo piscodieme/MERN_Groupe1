@@ -17,6 +17,10 @@ function AddToCartButton (props) {
         userID = sessionStorage.getItem("userId");
     });
    
+    const closeButon = ()=>{
+        setNotif(false);
+    }
+
     const AddToCart = () =>{
         console.log(props.product);
         console.log(userID);
@@ -35,6 +39,16 @@ function AddToCartButton (props) {
     }
   return (
     <>
+        {notif &&
+            <div class="card border-success bg-light"/*  style="max-width: 18rem;" */>
+            <div class="card-body">
+                <span class="text-success">{notifMessage}</span>
+                <button type="button" class="close text-success" aria-label="Close" onClick={closeButon}>
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+        }
         <button 
             title="Add To Cart" 
             class=" add-to-cart"

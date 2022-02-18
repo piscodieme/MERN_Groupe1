@@ -13,7 +13,6 @@ function disconnect(){
 }
 
 async function login(username, password){
-  // const navigate = useNavigate();
     console.log("test data SERVICE  >>>>>>>",username)
     const dataLogin = {
         "_Login": username,
@@ -41,34 +40,11 @@ async function login(username, password){
         console.log(e);
     }
 
-    //return /*  new Promise((resolve,reject)=>{ */await Api.post('/customerConnexion/',dataLogin)
-        /* .then(res => {
-            const userInfo = {
-                "firstname" : res.data.firstname,
-                "lastname" : res.data.lastname,
-                "adresse" : res.data.adresse,
-                "numero" : res.data.numero,
-            }
-            sessionStorage.setItem("token", JSON.stringify(res.data.token));
-            sessionStorage.setItem("userInfo", JSON.stringify(userInfo));
-            sessionStorage.setItem("userId",JSON.stringify(res.data.userId))
-
-            console.log("res data ---------> ",res.data);
-            console.log(sessionStorage.getItem("token"))
-             */
-            //resolve(res.data);
-           // navigate('/');
-            
-      /*   })
-        
-        .catch((error) =>{
-            console.log("errrorrr loginnnn",error)
-            //reject(error);
-        }) */
-    /*  }) */  
+   
 }
 
-function register(firstname,lastname,login,adresse,telephone,password) {
+async function register(firstname,lastname,login,adresse,telephone,password) {
+
     const dataRegister = {
         "_FirstName": firstname,
         "_LastName": lastname,
@@ -77,9 +53,17 @@ function register(firstname,lastname,login,adresse,telephone,password) {
         "_NumeroTel":telephone,
         "_Password":password
     }
-   // const data = dataRegister.json();
+   try{
+       const res = await Api.post('/customerInscription/',dataRegister);
+       console.log(res.data.message);
+       return res.data.message;
 
-    console.log("register service");
+   }
+   catch(e){
+       console.log(e);
+   }
+
+   /*  console.log("register service");
     return new Promise((resolve,reject)=>
         Api.post('/customerInscription/',dataRegister)
             .then(res => {
@@ -92,6 +76,6 @@ function register(firstname,lastname,login,adresse,telephone,password) {
                 console.log("error register"+error)
                 reject(error)
             })
-        )
+        ) */
 
 }
