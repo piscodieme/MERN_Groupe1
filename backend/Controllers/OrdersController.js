@@ -5,7 +5,6 @@ exports.postOrders = (req, res, next) => {
         order._FirstName = req.body.firstname;
         order._LastName = req.body.lastname;
         order._Numero = req.body.numero;
-        order._Email = req.body.email;
         order._DeliveryAdress = req.body.adresse ;
         order._Status = "En cours" ;
         order._TotalAmount = 0 ;
