@@ -57,5 +57,7 @@
   }
 
   .banner-content .title{
-      color: #b65923 !important;
+      color: #070707 !important;
+      font-weight: 600;
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   }
