@@ -58,7 +58,7 @@ class ProductsCategoryList extends Component {
                                             {/*  Single Prodect */}
                                             <div class="product">
                                                 
-                                                <div class="thumb">
+                                                <div class="thumb redimension">
                                                     <a href={"/produit/"+item._id} class="image">
                                                         {this.addImage(item._Images._Frame)}
                                                         {/* <img class="hover-image"

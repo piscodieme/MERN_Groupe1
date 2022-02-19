@@ -28,7 +28,7 @@ exports.postCategory = (req, res) => {
 exports.updateCategory = (req, res) => {
     Category.findOne({_id: req.params.id}, (error, category) => {
         if(error){
-            res.send(error);
+           return res.send(error);
         }
         let cat = req.body ;
         category._Name = cat.name ;
@@ -40,9 +40,9 @@ exports.updateCategory = (req, res) => {
         }
         category.save((err) =>{
             if(err){
-                res.send(err);
+                return res.send(err);
             }
-            res.redirect('/allCategory') ;
+            return res.redirect('/allCategory') ;
         });
     }) ;
 } ;
@@ -50,8 +50,8 @@ exports.updateCategory = (req, res) => {
 exports.deleteCategory = (req, res, next) => {
     Category.deleteOne({_id: req.params.id}, (error) => {
         if(error){
-            res.send(error);
+            return res.send(error);
         }
-        res.redirect('/allCategory') ;
+        return res.redirect('/allCategory') ;
     }) ;
 } ;

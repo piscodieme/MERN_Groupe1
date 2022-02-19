@@ -62,11 +62,7 @@ class LoginForm extends Component {
                                 onChange={this.handlePasswordChange}    
                             />
                             <div class="button-box">
-                            <div class="login-toggle-btn">
-                                <input type="checkbox" />
-                                <Link class="flote-none" to="javascript:void(0)">Remember me</Link>
-                                <a href="/">Forgot Password?</a>
-                            </div>
+                            
                                <Loginbutton
                                     handleSubmitTest={this.handleSubmitTest}
                                />

@@ -39,7 +39,9 @@ class Categories extends Component {
         if(item){
             const url = item.substring(20);
             return(
-                <img src={url} alt=""/>
+                <div className='redimensionCategory'>
+                    <img src={url} alt=""/>
+                </div>
             )
         }
     }
@@ -108,16 +110,11 @@ class Categories extends Component {
                                         {index < 8 ? (
                                             <div>                                            {/* Single Prodect */}
                                             <div class="product">
-                                                <div class="thumb">
+                                                <div class="thumb redimension">
                                                     <a href={"/produit/"+items._id} class="image">
                                                        {this.addImage(items._Images._Frame)}
                                                        {/*  <img class="hover-image" src="assets/images/product-image/3.jpg" alt="Product" ></img> */}
                                                     </a>
-                                                    <span class="badges">
-                                                        <span class="new">Sale</span>
-                                                        <span class="sale">-10%</span>
-                                                        <span class="new">New</span>
-                                                    </span>
                                                    
                                                 </div>
                                                 <div class="content">

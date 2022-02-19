@@ -24,9 +24,9 @@ exports.postCart = (req, res, next) => {
     }
     cart.save((err) =>{
         if(err){
-            res.send(err);
+            return res.send(err);
         }
-        res.send({message: 'cart created'});
+        return res.send({message: 'cart created'});
     });
     next();
 } ;
@@ -34,7 +34,7 @@ exports.postCart = (req, res, next) => {
 exports.updateCart = (req, res) => {
     Cart.findOne({_id: req.params.id}, async (error, cart) => {
         if(error){
-            res.send(error);
+           return res.send(error);
         }
         let c = req.body ;
         cart._id = c._id ;
@@ -57,9 +57,9 @@ exports.updateCart = (req, res) => {
 exports.deleteCart = (req, res, next) => {
     Cart.remove({_id: req.params.id}, (error) => {
         if(error){
-            res.send(error);
+           return res.send(error);
         }
-        res.send({message: 'cart deleted'});
+        return res.send({message: 'cart deleted'});
     }) ;
     next();
 } ;

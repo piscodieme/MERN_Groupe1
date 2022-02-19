@@ -12,6 +12,8 @@ class SingleProduct extends Component {
            super(props)
            this.state = {
                dataProducts : [],
+               add : false,
+               AddMessage : '',
            }
        } 
        async componentDidMount(){
@@ -25,10 +27,12 @@ class SingleProduct extends Component {
                     console.log("errorr",error);
                 })
        }
-    AddToCart=()=>{
+     AddToCart =  ()=>{
         const product = this.state.dataProducts;
         const userId = sessionStorage.getItem("userId");
-        cartService.AddToCart(product,userId); 
+        cartService.AddToCart(product,userId);
+        this.setState({add : true});
+        this.setState({AddMessage : "Produit Ajouté avec success !"}) 
     }
 
     AfficheTitle(items){
@@ -82,7 +86,7 @@ class SingleProduct extends Component {
             const url = data._Images._Frame;
             const newUrl = url.substring(20);
             return (
-                <div>
+                <div className='singleImg'>
                     
                     <img 
                         class="img-responsive m-auto"
@@ -156,38 +160,39 @@ class SingleProduct extends Component {
                                 </div>
                                 <p class="mt-30px mb-0">{this.AfficheDesc(products._Descriptions)}</p>
                                 <div class="pro-details-quality">
-                                    <div class="cart-plus-minus">
-                                        <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1" />
-                                    </div>
+                                    
                                     <div class="pro-details-cart">
-                                        <button class="add-cart" onClick={this.AddToCart}> Add To
-                                            Cart
+                                        <button class="add-cart" onClick={this.AddToCart}> 
+                                            Ajouter au panier
                                         </button>
+                                        {this.state.add &&  
+                                            <div class="card border-success mb-3 bg-light"/*  style="max-width: 18rem;" */>
+                                                <div class="card-body">
+                                                    <h6 class="text-success text-center">{this.state.AddMessage}</h6>
+                                                </div>
+                                            </div>
+                                        }  
                                         
-                                    </div>
-                                    <div class="pro-details-cart">
-                                        <button class="add-cart buy-button"> Buy It Now</button>
-                                    </div>
-                                    <div class="pro-details-compare-wishlist pro-details-wishlist ">
-                                        <a href="wishlist.html"><i class="pe-7s-like"></i></a>
                                     </div>
                                 </div>
                                 <div class="pro-details-categories-info pro-details-same-style d-flex">
                                     <span>Categories: </span>
                                     <ul class="d-flex">
                                         <li>
-                                            <a href="/">Handmade, </a>
+                                            <a href="/">Vêtements, </a>
                                         </li>
                                         <li>
-                                            <a href="/">Furniture, </a>
+                                            <a href="/">Chaussures, </a>
                                         </li>
                                         <li>
-                                            <a href="/">Decore</a>
+                                            <a href="/">vaissel,</a>
+                                        </li>
+                                        <li>
+                                            <a href="/">Electroménagers</a>
                                         </li>
                                     </ul>
                                 </div>
                                 <div class="pro-details-social-info pro-details-same-style d-flex">
-                                    <span>Share: </span>
                                     <ul class="d-flex">
                                         <li>
                                             <a href="/"><i class="fa fa-facebook"></i></a>

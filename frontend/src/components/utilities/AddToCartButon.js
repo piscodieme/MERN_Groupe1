@@ -51,10 +51,11 @@ function AddToCartButton (props) {
         }
         <button 
             title="Add To Cart" 
-            class=" add-to-cart"
+            class="add-to-cart addcart"
             onClick={AddToCart}
             >
-              Add To Cart
+                <span>Ajouter au Panier</span>
+             
         </button>
     </>
   )

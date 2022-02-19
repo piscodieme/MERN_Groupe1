@@ -47,9 +47,9 @@ exports.postProduct = (req, res, next) => {
     }
     product.save((err) =>{
         if(err){
-            res.send(err);
+            return res.send(err);
         }
-        res.redirect('/allProducts') ;
+        return res.redirect('/allProducts') ;
     });
 } ;
 

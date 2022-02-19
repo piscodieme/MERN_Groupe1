@@ -47,15 +47,10 @@ class ProductsList extends Component {
                                                             data-aos-delay="200">
                                                             {/*  Single Prodect */}
                                                             <div class="product">
-                                                                <div class="thumb">
+                                                                <div class="thumb redimension">
                                                                     <a href={"/produit/"+data._id} class="image">
                                                                        {this.addImage(data._Images._Frame)} 
-                                                                       {/*  <img class="hover-image"
-                                                                            src="assets/images/product-image/1.jpg" alt="Product" /> */}
                                                                     </a>
-                                                                    <span class="badges">
-                                                                        <span class="new">New</span>
-                                                                    </span>
                                                                     
                                                                 </div>
                                                                 <div class="content">
